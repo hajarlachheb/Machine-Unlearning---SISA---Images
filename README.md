@@ -20,7 +20,7 @@ Requires Python 3.10 or newer; no third-party packages are needed. Place your au
 
 ```powershell
 python src/audit_metadata.py data/raw/PADCHEST_chest_x_ray_images_labels_160K_01.02.19.csv.gz --output outputs/padchest-audit.json
-python -m unittest discover -s tests -v
+python -m unittest discover -s tests -p test_audit_metadata.py -v
 ```
 
 CSV.gz input is also supported. The report covers schema, missingness, duplicate/image-patient conflicts, images and studies per patient, date parsing and label counts. It does not establish cross-patient date comparability automatically. Outputs stay local by default.
@@ -37,6 +37,17 @@ python src/inspect_dataset.py data/raw/PADCHEST_chest_x_ray_images_labels_160K_0
 Open `outputs/inspection/sample-preview.png` for the radiograph, `metadata-overview.png` for aggregate charts, and `discovery-summary.json` for image checks and patient completeness. The preview uses two display windows; it does not change the original pixels or define training preprocessing. The script reads one image, not every image in a larger archive.
 
 The supplied `50.zip` contains only one image. It is sufficient to test loading, but not to train or evaluate unlearning. Select patients from the metadata and obtain their eligible images across archives before creating patient-disjoint splits. Keep dataset copies and individual previews local in accordance with the supplied dataset terms.
+
+## Inspect the downloaded pilot archive
+
+Archive `6.zip` has been matched to the metadata: 1,645 PNGs and 699 patients whose complete listed image sets are present. See [archive findings](results/archive6-audit.md). Read directly from Downloads to avoid copying or extracting the entire archive:
+
+```powershell
+python src/inspect_archive.py data/raw/PADCHEST_chest_x_ray_images_labels_160K_01.02.19.csv.gz "$env:USERPROFILE/Downloads/6.zip" --output-dir outputs/archive6
+python -m unittest discover -s tests -v
+```
+
+Install `requirements-inspection.txt` first for these commands. Outputs include a six-image contact sheet, aggregate JSON, and a **local-only** candidate CSV for complete patients with `Projection` exactly `PA` or `AP`. `AP_horizontal` and lateral views are excluded from this provisional candidate list. No label/quality filters or train/test assignments have been applied. Full-archive CRC/decode validation is not performed; six preview images are decoded and CRC-checked. Patients confined to one archive are a convenience sample for debugging, not a representative final study cohort.
 
 ## Layout
 
