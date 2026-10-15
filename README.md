@@ -1,4 +1,4 @@
-# Patient-priority unlearning
+# Machine Unlearning - SISA - Images
 
 Research project: reduce whole-patient deletion time in SISA for medical-image classification, while preserving diagnostic utility and establishing the conditions for exact unlearning.
 
