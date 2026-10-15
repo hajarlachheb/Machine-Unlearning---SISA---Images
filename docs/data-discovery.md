@@ -1,22 +1,25 @@
 # PadChest discovery checklist
 
-Status: planned; the actual release metadata has not yet been audited.
+Status: initial metadata audit and one-image inspection completed on 2026-10-15. See [findings](../results/initial-data-audit.md). Patient-complete cohort construction and date-policy verification remain open.
 
 ## Access and provenance
 
 - [ ] Record official access approval, usage terms and release/version identifier.
 - [ ] Obtain the metadata dictionary and CSV before the full image collection.
-- [ ] Record checksums locally; keep raw metadata, identifiers and image paths out of Git.
+- [x] Record input checksums; keep raw metadata, identifiers and image paths out of Git.
 
 ## Metadata audit
 
-- [ ] Confirm actual columns against documented PatientID, StudyID, ImageID and StudyDate_DICOM.
-- [ ] Read patient and study identifiers as strings, preserving leading zeros.
-- [ ] Report missing IDs, duplicate images and images mapped to multiple patients.
-- [ ] Validate date parsing, missing dates and the date de-identification policy.
+- [x] Confirm actual PatientID, StudyID, ImageID and StudyDate_DICOM columns.
+- [x] Read patient and study identifiers as strings, preserving leading zeros.
+- [x] Report missing IDs, duplicate images and images mapped to multiple patients.
+- [x] Validate date parsing and missing dates.
+- [ ] Verify the date de-identification policy and explain the 68 rows before 2009.
 - [ ] Confirm explicitly whether dates are comparable between patients; within-patient ordering is insufficient for a global recency ranking.
-- [ ] Summarize image/study counts per patient using aggregate quantiles.
-- [ ] Summarize label prevalence and physician versus automatic label provenance.
+- [x] Summarize image/study counts per patient (minimum, median and maximum).
+- [x] Count raw label strings and physician versus automatic label provenance.
+- [ ] Normalize label whitespace, handle empty strings and report eligible-cohort prevalence.
+- [ ] Obtain complete eligible image sets for selected patients across archives.
 - [ ] Define eligible views, image quality filters and label handling before counting training images.
 - [ ] Split by patient and check that all images and studies of each patient stay within one split.
 

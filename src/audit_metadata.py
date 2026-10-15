@@ -10,6 +10,11 @@ from pathlib import Path
 from statistics import median
 
 
+def is_missing(value):
+    """PadChest uses both blank cells and literal missing-value markers."""
+    return value.strip().lower() in {"", "nan", "none", "null", "n/a", "na"}
+
+
 def parse_date(value):
     for fmt in ("%Y%m%d", "%Y-%m-%d"):
         try:
@@ -29,7 +34,7 @@ def audit(path):
     label_rows = Counter()
     label_methods = Counter()
     years = Counter()
-    rows = invalid_dates = missing_dates = invalid_labels = 0
+    rows = invalid_dates = missing_dates = invalid_labels = missing_labels = 0
     with opener(path, "rt", encoding="utf-8-sig", newline="") as handle:
         reader = csv.DictReader(handle)
         columns = reader.fieldnames or []
@@ -43,10 +48,13 @@ def audit(path):
             if None in row or any(value is None for value in row.values()):
                 raise ValueError(f"Malformed CSV record at data row {rows}.")
             for column in columns:
-                if not row[column].strip():
+                if is_missing(row[column]):
                     missing[column] += 1
             patient, image = row["PatientID"].strip(), row["ImageID"].strip()
             study = row.get("StudyID", "").strip()
+            patient = "" if is_missing(patient) else patient
+            image = "" if is_missing(image) else image
+            study = "" if is_missing(study) else study
             if image:
                 image_counts[image] += 1
                 if patient:
@@ -61,13 +69,15 @@ def audit(path):
             if "StudyDate_DICOM" in columns:
                 raw_date = row["StudyDate_DICOM"].strip()
                 date = parse_date(raw_date)
-                if not raw_date:
+                if is_missing(raw_date):
                     missing_dates += 1
                 elif date is None:
                     invalid_dates += 1
                 else:
                     years[str(date.year)] += 1
-            if "Labels" in columns and row["Labels"].strip():
+            if "Labels" in columns and is_missing(row["Labels"]):
+                missing_labels += 1
+            elif "Labels" in columns:
                 try:
                     labels = ast.literal_eval(row["Labels"])
                     if not isinstance(labels, list) or not all(isinstance(x, str) for x in labels):
@@ -76,7 +86,8 @@ def audit(path):
                 except (SyntaxError, ValueError, TypeError):
                     invalid_labels += 1
             if "MethodLabel" in columns:
-                label_methods[row["MethodLabel"].strip() or "missing"] += 1
+                method = row["MethodLabel"].strip()
+                label_methods["missing" if is_missing(method) else method] += 1
 
     def summary(groups):
         sizes = [len(values) for values in groups.values()]
@@ -96,7 +107,7 @@ def audit(path):
         "dates": {"column_present": "StudyDate_DICOM" in columns, "missing": missing_dates,
                   "unparseable": invalid_dates, "rows_by_year": dict(sorted(years.items())),
                   "cross_patient_comparability": "UNVERIFIED: requires release documentation or provider confirmation"},
-        "labels": {"column_present": "Labels" in columns, "unparseable_rows": invalid_labels,
+        "labels": {"column_present": "Labels" in columns, "missing_rows": missing_labels, "unparseable_rows": invalid_labels,
                    "row_counts_not_patient_prevalence": dict(sorted(label_rows.items())),
                    "method_row_counts": dict(sorted(label_methods.items()))},
         "limitations": ["Duplicate rows are flagged, not automatically cleaned.",

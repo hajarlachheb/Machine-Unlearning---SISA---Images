@@ -12,18 +12,31 @@ PadChest is the provisional primary dataset. Audit the actual release metadata b
 4. Summarize images and studies per patient and diagnostic coverage.
 5. Build patient-disjoint development splits before training.
 
-See `docs/data-discovery.md` for the audit checklist. This scaffold contains no downloaded patient data or experimental results.
+See [the first local audit](results/initial-data-audit.md) and [the discovery checklist](docs/data-discovery.md). The downloaded metadata and one sample image have been inspected. Raw data and image previews stay in ignored local folders; this repository contains code and reviewed aggregate findings.
 
 ## Run the metadata audit
 
 Requires Python 3.10 or newer; no third-party packages are needed. Place your authorized metadata file under the ignored `data/` folder, then run from this repository:
 
 ```powershell
-python src/audit_metadata.py data/PADCHEST_chest_x_ray_images_labels_160K.csv --output outputs/padchest-audit.json
+python src/audit_metadata.py data/raw/PADCHEST_chest_x_ray_images_labels_160K_01.02.19.csv.gz --output outputs/padchest-audit.json
 python -m unittest discover -s tests -v
 ```
 
 CSV.gz input is also supported. The report covers schema, missingness, duplicate/image-patient conflicts, images and studies per patient, date parsing and label counts. It does not establish cross-patient date comparability automatically. Outputs stay local by default.
+
+## Preview the local sample
+
+Install the optional inspection dependencies, then read one PNG directly from the downloaded ZIP:
+
+```powershell
+python -m pip install -r requirements-inspection.txt
+python src/inspect_dataset.py data/raw/PADCHEST_chest_x_ray_images_labels_160K_01.02.19.csv.gz data/raw/50.zip
+```
+
+Open `outputs/inspection/sample-preview.png` for the radiograph, `metadata-overview.png` for aggregate charts, and `discovery-summary.json` for image checks and patient completeness. The preview uses two display windows; it does not change the original pixels or define training preprocessing. The script reads one image, not every image in a larger archive.
+
+The supplied `50.zip` contains only one image. It is sufficient to test loading, but not to train or evaluate unlearning. Select patients from the metadata and obtain their eligible images across archives before creating patient-disjoint splits. Keep dataset copies and individual previews local in accordance with the supplied dataset terms.
 
 ## Layout
 

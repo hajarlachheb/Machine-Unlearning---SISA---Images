@@ -48,6 +48,19 @@ class AuditTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 audit(path)
 
+    def test_missing_markers_are_not_patients_or_invalid_labels(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "synthetic.csv"
+            path.write_text("PatientID,ImageID,StudyDate_DICOM,Labels,MethodLabel\n"
+                            "NaN,a,NaN,nan,\n"
+                            "001,b,20160101,[],Physician\n", encoding="utf-8")
+            result = audit(path)
+            self.assertEqual(result["unique_patients"], 1)
+            self.assertEqual(result["dates"]["missing"], 1)
+            self.assertEqual(result["dates"]["unparseable"], 0)
+            self.assertEqual(result["labels"]["missing_rows"], 1)
+            self.assertEqual(result["labels"]["unparseable_rows"], 0)
+
     def test_reject_malformed_row(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "synthetic.csv"
