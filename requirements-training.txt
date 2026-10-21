@@ -1,0 +1,3 @@
+-r requirements-inspection.txt
+torch>=2.7,<3
+scikit-learn>=1.7,<2

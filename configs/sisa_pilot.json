@@ -1,0 +1,16 @@
+{
+  "seed": 20261021,
+  "shards": 4,
+  "slices": 3,
+  "epochs_per_stage": 3,
+  "batch_size": 32,
+  "learning_rate": 0.02,
+  "momentum": 0.9,
+  "stage_lr_gamma": 0.9,
+  "image_size": 64,
+  "threads": 1,
+  "target_label": "normal",
+  "allowed_projections": ["PA", "AP"],
+  "excluded_labels": ["exclude", "suboptimal study"],
+  "split_percentages": [70, 15, 15]
+}
