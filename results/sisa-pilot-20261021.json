@@ -1,0 +1,329 @@
+{
+  "scope": "Single-seed CPU mechanics pilot; not a clinical or paper-reproduction result",
+  "environment": {
+    "python": "3.13.5",
+    "torch": "2.7.1+cpu",
+    "device": "cpu",
+    "threads": 1
+  },
+  "config": {
+    "seed": 20261021,
+    "shards": 4,
+    "slices": 3,
+    "epochs_per_stage": 3,
+    "batch_size": 32,
+    "learning_rate": 0.02,
+    "momentum": 0.9,
+    "stage_lr_gamma": 0.9,
+    "image_size": 64,
+    "threads": 1,
+    "target_label": "normal",
+    "allowed_projections": [
+      "PA",
+      "AP"
+    ],
+    "excluded_labels": [
+      "exclude",
+      "suboptimal study"
+    ],
+    "split_percentages": [
+      70,
+      15,
+      15
+    ]
+  },
+  "data": {
+    "complete_patients_before_filters": 699,
+    "excluded_images": {
+      "projection": 379,
+      "quality_label": 6
+    },
+    "eligible_images": 686,
+    "eligible_patients": 653,
+    "splits": {
+      "train": {
+        "patients": 435,
+        "images": 459,
+        "positive_images": 187,
+        "patient_sex_counts": {
+          "F": 221,
+          "M": 214
+        }
+      },
+      "validation": {
+        "patients": 123,
+        "images": 128,
+        "positive_images": 51,
+        "patient_sex_counts": {
+          "F": 70,
+          "M": 53
+        }
+      },
+      "test": {
+        "patients": 95,
+        "images": 99,
+        "positive_images": 40,
+        "patient_sex_counts": {
+          "F": 50,
+          "M": 45
+        }
+      }
+    },
+    "shard_slice_counts": [
+      {
+        "shard": 0,
+        "slice": 0,
+        "patients": 26,
+        "images": 30,
+        "positive_images": 11
+      },
+      {
+        "shard": 0,
+        "slice": 1,
+        "patients": 39,
+        "images": 40,
+        "positive_images": 18
+      },
+      {
+        "shard": 0,
+        "slice": 2,
+        "patients": 27,
+        "images": 31,
+        "positive_images": 11
+      },
+      {
+        "shard": 1,
+        "slice": 0,
+        "patients": 36,
+        "images": 39,
+        "positive_images": 22
+      },
+      {
+        "shard": 1,
+        "slice": 1,
+        "patients": 46,
+        "images": 46,
+        "positive_images": 18
+      },
+      {
+        "shard": 1,
+        "slice": 2,
+        "patients": 34,
+        "images": 34,
+        "positive_images": 13
+      },
+      {
+        "shard": 2,
+        "slice": 0,
+        "patients": 26,
+        "images": 26,
+        "positive_images": 11
+      },
+      {
+        "shard": 2,
+        "slice": 1,
+        "patients": 36,
+        "images": 39,
+        "positive_images": 14
+      },
+      {
+        "shard": 2,
+        "slice": 2,
+        "patients": 38,
+        "images": 40,
+        "positive_images": 13
+      },
+      {
+        "shard": 3,
+        "slice": 0,
+        "patients": 42,
+        "images": 45,
+        "positive_images": 19
+      },
+      {
+        "shard": 3,
+        "slice": 1,
+        "patients": 40,
+        "images": 41,
+        "positive_images": 16
+      },
+      {
+        "shard": 3,
+        "slice": 2,
+        "patients": 45,
+        "images": 48,
+        "positive_images": 21
+      }
+    ],
+    "patient_overlap": {
+      "train/validation": 0,
+      "train/test": 0,
+      "validation/test": 0
+    },
+    "metadata_sha256": "ec49e52aa45609365f6b2f4d269d2e6242e56ca76bab932dce61ddb45fb3bade",
+    "archive_bytes": 12173530987
+  },
+  "data_load_or_prepare_seconds": 0.08414659998379648,
+  "used_prepared_cache": true,
+  "manifest_sha256": "73f1bbcaf816795dacda463b51292b387b735f457c17167f515c2d473587d842",
+  "original_training_seconds": 26.886244799941778,
+  "original_updates": 105,
+  "original_image_presentations": 2715,
+  "initial_utility": {
+    "validation": {
+      "images": 128,
+      "positive_images": 51,
+      "auroc": 0.552584670231729,
+      "accuracy": 0.6015625,
+      "balanced_accuracy": 0.5
+    },
+    "test": {
+      "images": 99,
+      "positive_images": 40,
+      "auroc": 0.7055084745762712,
+      "accuracy": 0.5959595959595959,
+      "balanced_accuracy": 0.5
+    }
+  },
+  "deletion_cases": [
+    {
+      "case": "early_slice",
+      "patients_removed": 1,
+      "images_removed": 3,
+      "entry_slices_one_based": [
+        1
+      ],
+      "affected_shards": 1,
+      "replayed_stages": 3,
+      "unlearning_seconds": 1.0273140999488533,
+      "clean_sisa_seconds": 3.454584199935198,
+      "speedup_vs_clean_sisa": 3.36273414343986,
+      "replay_updates": 30,
+      "clean_updates": 105,
+      "replay_image_presentations": 768,
+      "clean_image_presentations": 2688,
+      "withdrawn_images_seen": 0,
+      "max_prediction_delta": 0.0,
+      "model_parameters_and_buffers_exact": true,
+      "full_checkpoint_state_exact": true,
+      "max_parameter_or_buffer_delta": 0.0,
+      "utility": {
+        "validation": {
+          "images": 128,
+          "positive_images": 51,
+          "auroc": 0.5592055003819709,
+          "accuracy": 0.6015625,
+          "balanced_accuracy": 0.5
+        },
+        "test": {
+          "images": 99,
+          "positive_images": 40,
+          "auroc": 0.7050847457627119,
+          "accuracy": 0.5959595959595959,
+          "balanced_accuracy": 0.5
+        }
+      }
+    },
+    {
+      "case": "late_slice",
+      "patients_removed": 1,
+      "images_removed": 2,
+      "entry_slices_one_based": [
+        3
+      ],
+      "affected_shards": 1,
+      "replayed_stages": 1,
+      "unlearning_seconds": 0.5239774999208748,
+      "clean_sisa_seconds": 3.446788900066167,
+      "speedup_vs_clean_sisa": 6.578123870942287,
+      "replay_updates": 15,
+      "clean_updates": 105,
+      "replay_image_presentations": 396,
+      "clean_image_presentations": 2709,
+      "withdrawn_images_seen": 0,
+      "max_prediction_delta": 0.0,
+      "model_parameters_and_buffers_exact": true,
+      "full_checkpoint_state_exact": true,
+      "max_parameter_or_buffer_delta": 0.0,
+      "utility": {
+        "validation": {
+          "images": 128,
+          "positive_images": 51,
+          "auroc": 0.5546218487394958,
+          "accuracy": 0.6015625,
+          "balanced_accuracy": 0.5
+        },
+        "test": {
+          "images": 99,
+          "positive_images": 40,
+          "auroc": 0.6902542372881356,
+          "accuracy": 0.5959595959595959,
+          "balanced_accuracy": 0.5
+        }
+      }
+    },
+    {
+      "case": "cross_shard_batch",
+      "patients_removed": 2,
+      "images_removed": 4,
+      "entry_slices_one_based": [
+        1,
+        2
+      ],
+      "affected_shards": 2,
+      "replayed_stages": 5,
+      "unlearning_seconds": 1.6240055998787284,
+      "clean_sisa_seconds": 3.4004271999001503,
+      "speedup_vs_clean_sisa": 2.0938518932164243,
+      "replay_updates": 48,
+      "clean_updates": 102,
+      "replay_image_presentations": 1272,
+      "clean_image_presentations": 2682,
+      "withdrawn_images_seen": 0,
+      "max_prediction_delta": 0.0,
+      "model_parameters_and_buffers_exact": true,
+      "full_checkpoint_state_exact": true,
+      "max_parameter_or_buffer_delta": 0.0,
+      "utility": {
+        "validation": {
+          "images": 128,
+          "positive_images": 51,
+          "auroc": 0.5411255411255411,
+          "accuracy": 0.6015625,
+          "balanced_accuracy": 0.5
+        },
+        "test": {
+          "images": 99,
+          "positive_images": 40,
+          "auroc": 0.6610169491525424,
+          "accuracy": 0.5959595959595959,
+          "balanced_accuracy": 0.5
+        }
+      }
+    }
+  ],
+  "monolithic_retained_comparator": {
+    "epochs": 6,
+    "seconds": 3.322328499983996,
+    "updates": 90,
+    "image_presentations": 2742,
+    "utility": {
+      "validation": {
+        "images": 128,
+        "positive_images": 51,
+        "auroc": 0.5938375350140056,
+        "accuracy": 0.5546875,
+        "balanced_accuracy": 0.5967659791189204
+      },
+      "test": {
+        "images": 99,
+        "positive_images": 40,
+        "auroc": 0.6991525423728814,
+        "accuracy": 0.6060606060606061,
+        "balanced_accuracy": 0.6574152542372882
+      }
+    },
+    "scope": "Late-slice withdrawal only; approximate presentation-budget match, different LR schedule; not Nasirigerdeh reproduction"
+  },
+  "checkpoint_bytes_original": 548952
+}

@@ -2,6 +2,22 @@
 
 Research project: reduce whole-patient deletion time in SISA for medical-image classification, while preserving diagnostic utility and establishing the conditions for exact unlearning.
 
+## Run the first SISA pilot
+
+The first patient-random SISA implementation uses the downloaded PadChest `6.zip`: **4 shards x 3 cumulative slices**, full-state checkpoints and whole-patient replay. This is a single-seed CPU mechanics pilot with a small CNN, not a medical benchmark reproduction. Read the [pilot protocol](docs/sisa-pilot-protocol.md) and [first measured results](results/sisa-pilot-20261021.md). All three real-data replay checks match clean retained-data SISA exactly; predictive quality still needs improvement.
+
+```powershell
+python -m pip install -r requirements-training.txt
+python -m src.run_pilot --metadata data/raw/PADCHEST_chest_x_ray_images_labels_160K_01.02.19.csv.gz --archive "$env:USERPROFILE/Downloads/6.zip" --output outputs/my-first-sisa-run
+python -m unittest discover -s tests -v
+```
+
+Use a new output directory for each run; existing runs are never overwritten. The command prepares patient-disjoint splits, decodes retained images, trains SISA, tests early/late/cross-shard withdrawals against clean retained-data SISA, and runs a diagnostic monolithic retained-data comparator. It records timings, image presentations, checkpoint-state comparisons and utility in `results.json` under the local output directory. Raw identifiers, tensors, models and traces remain ignored by Git.
+
+The pilot predicts the presence of the `normal` annotation; its absence is not a confirmed abnormal diagnosis. Eligibility, image preprocessing, fixed seed and training settings are recorded in `configs/sisa_pilot.json`. Hash-based patient assignments survive deletion but do not enforce equal workloads. Model/state equality is checked on this deterministic implementation, not asserted as a general privacy certificate.
+
+**Withdrawal simulations retain historical experimental checkpoints and source data locally.** A lineage ledger invalidates affected old checkpoints and records the active version. This prototype does not physically erase records or backups.
+
 ## First milestone: discover the data
 
 PadChest is the provisional primary dataset. Audit the actual release metadata before using acquisition dates to rank patients. CheXpert remains the reproduction and confirmation dataset.
@@ -12,7 +28,7 @@ PadChest is the provisional primary dataset. Audit the actual release metadata b
 4. Summarize images and studies per patient and diagnostic coverage.
 5. Build patient-disjoint development splits before training.
 
-See [the first local audit](results/initial-data-audit.md) and [the discovery checklist](docs/data-discovery.md). The downloaded metadata and one sample image have been inspected. Raw data and image previews stay in ignored local folders; this repository contains code and reviewed aggregate findings.
+See [the first local audit](results/initial-data-audit.md), [archive 6 inspection](results/archive6-audit.md) and [the discovery checklist](docs/data-discovery.md). Raw data and image previews stay in ignored local folders; this repository contains code and reviewed aggregate findings.
 
 ## Run the metadata audit
 
