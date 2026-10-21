@@ -1,0 +1,314 @@
+{
+  "experiment": "conventional_resnet18_imagenet_full_finetune",
+  "config": {
+    "seed": 20261021,
+    "architecture": "resnet18",
+    "initialization": "ImageNet1K_V1",
+    "weights_sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+    "shards": 1,
+    "slices": 1,
+    "epochs": 6,
+    "batch_size": 16,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0001,
+    "image_size": 224,
+    "threads": 4,
+    "target_label": "normal",
+    "allowed_projections": [
+      "PA",
+      "AP"
+    ],
+    "excluded_labels": [
+      "exclude",
+      "suboptimal study"
+    ],
+    "split_percentages": [
+      70,
+      15,
+      15
+    ]
+  },
+  "data": {
+    "complete_patients_before_filters": 699,
+    "excluded_images": {
+      "projection": 379,
+      "quality_label": 6
+    },
+    "eligible_images": 686,
+    "eligible_patients": 653,
+    "splits": {
+      "train": {
+        "patients": 435,
+        "images": 459,
+        "positive_images": 187,
+        "patient_sex_counts": {
+          "M": 214,
+          "F": 221
+        }
+      },
+      "validation": {
+        "patients": 123,
+        "images": 128,
+        "positive_images": 51,
+        "patient_sex_counts": {
+          "F": 70,
+          "M": 53
+        }
+      },
+      "test": {
+        "patients": 95,
+        "images": 99,
+        "positive_images": 40,
+        "patient_sex_counts": {
+          "M": 45,
+          "F": 50
+        }
+      }
+    },
+    "shard_slice_counts": [
+      {
+        "shard": 0,
+        "slice": 0,
+        "patients": 435,
+        "images": 459,
+        "positive_images": 187
+      }
+    ],
+    "patient_overlap": {
+      "train/validation": 0,
+      "train/test": 0,
+      "validation/test": 0
+    },
+    "metadata_sha256": "ec49e52aa45609365f6b2f4d269d2e6242e56ca76bab932dce61ddb45fb3bade",
+    "archive_bytes": 12173530987
+  },
+  "best_epoch": 2,
+  "selection": "highest validation AUROC; earliest tie",
+  "preparation_seconds": 227.87794790021144,
+  "fit_wall_seconds": 231.0076160999015,
+  "training_seconds": 210.0731107997708,
+  "backbone_updated": true,
+  "trainable_parameters": 11177538,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.6125974803189047,
+      "training_seconds": 34.864816499873996,
+      "validation": {
+        "images": 128,
+        "auroc": 0.6725235548764961,
+        "accuracy": 0.6328125,
+        "balanced_accuracy": 0.5557677616501145,
+        "sensitivity_normal_label": 0.17647058823529413,
+        "specificity_normal_label": 0.935064935064935,
+        "confusion_matrix_true_rows_predicted_columns": [
+          [
+            72,
+            5
+          ],
+          [
+            42,
+            9
+          ]
+        ],
+        "threshold": 0.5
+      }
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.2027452954604475,
+      "training_seconds": 35.31021280004643,
+      "validation": {
+        "images": 128,
+        "auroc": 0.6908581614463968,
+        "accuracy": 0.703125,
+        "balanced_accuracy": 0.6605551311433664,
+        "sensitivity_normal_label": 0.45098039215686275,
+        "specificity_normal_label": 0.8701298701298701,
+        "confusion_matrix_true_rows_predicted_columns": [
+          [
+            67,
+            10
+          ],
+          [
+            28,
+            23
+          ]
+        ],
+        "threshold": 0.5
+      }
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.0637292885312847,
+      "training_seconds": 35.55743939988315,
+      "validation": {
+        "images": 128,
+        "auroc": 0.6819455054749172,
+        "accuracy": 0.6171875,
+        "balanced_accuracy": 0.6023682200152789,
+        "sensitivity_normal_label": 0.5294117647058824,
+        "specificity_normal_label": 0.6753246753246753,
+        "confusion_matrix_true_rows_predicted_columns": [
+          [
+            52,
+            25
+          ],
+          [
+            24,
+            27
+          ]
+        ],
+        "threshold": 0.5
+      }
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.04937206225141006,
+      "training_seconds": 35.46545369992964,
+      "validation": {
+        "images": 128,
+        "auroc": 0.6697224344283168,
+        "accuracy": 0.6640625,
+        "balanced_accuracy": 0.6214667685255921,
+        "sensitivity_normal_label": 0.4117647058823529,
+        "specificity_normal_label": 0.8311688311688312,
+        "confusion_matrix_true_rows_predicted_columns": [
+          [
+            64,
+            13
+          ],
+          [
+            30,
+            21
+          ]
+        ],
+        "threshold": 0.5
+      }
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.027078588062000496,
+      "training_seconds": 34.57073789997958,
+      "validation": {
+        "images": 128,
+        "auroc": 0.6895849248790425,
+        "accuracy": 0.6328125,
+        "balanced_accuracy": 0.6186656480774129,
+        "sensitivity_normal_label": 0.5490196078431373,
+        "specificity_normal_label": 0.6883116883116883,
+        "confusion_matrix_true_rows_predicted_columns": [
+          [
+            53,
+            24
+          ],
+          [
+            23,
+            28
+          ]
+        ],
+        "threshold": 0.5
+      }
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.0142446910203607,
+      "training_seconds": 34.30445050005801,
+      "validation": {
+        "images": 128,
+        "auroc": 0.6750700280112045,
+        "accuracy": 0.65625,
+        "balanced_accuracy": 0.6315253374076903,
+        "sensitivity_normal_label": 0.5098039215686274,
+        "specificity_normal_label": 0.7532467532467533,
+        "confusion_matrix_true_rows_predicted_columns": [
+          [
+            58,
+            19
+          ],
+          [
+            25,
+            26
+          ]
+        ],
+        "threshold": 0.5
+      }
+    }
+  ],
+  "metrics": {
+    "train": {
+      "images": 459,
+      "auroc": 0.9999803397294746,
+      "accuracy": 0.9912854030501089,
+      "balanced_accuracy": 0.9893048128342246,
+      "sensitivity_normal_label": 0.9786096256684492,
+      "specificity_normal_label": 1.0,
+      "confusion_matrix_true_rows_predicted_columns": [
+        [
+          272,
+          0
+        ],
+        [
+          4,
+          183
+        ]
+      ],
+      "threshold": 0.5
+    },
+    "validation": {
+      "images": 128,
+      "auroc": 0.6908581614463968,
+      "accuracy": 0.703125,
+      "balanced_accuracy": 0.6605551311433664,
+      "sensitivity_normal_label": 0.45098039215686275,
+      "specificity_normal_label": 0.8701298701298701,
+      "confusion_matrix_true_rows_predicted_columns": [
+        [
+          67,
+          10
+        ],
+        [
+          28,
+          23
+        ]
+      ],
+      "threshold": 0.5
+    },
+    "test": {
+      "images": 99,
+      "auroc": 0.7283898305084746,
+      "accuracy": 0.696969696969697,
+      "balanced_accuracy": 0.6612288135593221,
+      "sensitivity_normal_label": 0.475,
+      "specificity_normal_label": 0.847457627118644,
+      "confusion_matrix_true_rows_predicted_columns": [
+        [
+          50,
+          9
+        ],
+        [
+          21,
+          19
+        ]
+      ],
+      "threshold": 0.5
+    }
+  },
+  "environment": {
+    "python": "3.13.5",
+    "torch": "2.7.1+cpu",
+    "torchvision": "0.22.1+cpu",
+    "numpy": "2.3.1",
+    "sklearn": "1.7.0",
+    "device": "cpu",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "threads": 4,
+    "mkldnn": true
+  },
+  "limitations": [
+    "Single-seed convenience sample, exploratory reused test split",
+    "Predicts normal annotation presence, not confirmed disease absence",
+    "No SISA or unlearning in this run; no exactness claim",
+    "Different architecture/resolution/initialization from the TinyCNN pilot"
+  ]
+}

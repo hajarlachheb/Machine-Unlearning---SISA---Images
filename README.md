@@ -2,6 +2,12 @@
 
 Research project: reduce whole-patient deletion time in SISA for medical-image classification, while preserving diagnostic utility and establishing the conditions for exact unlearning.
 
+## First train one conventional model
+
+Use **ResNet-18 with ImageNet weights**, fine-tuning all layers on the downloaded PadChest subset. This conventional baseline uses one model, no shards or slices, and 224×224 inputs prepared from the original PNGs. See the [model choice, training settings and commands](docs/normal-training-protocol.md). Checkpoint selection uses validation AUROC. The current target is presence of the `normal` annotation, not a confirmed normal-versus-abnormal diagnosis.
+
+The next fair SISA comparison must use the same backbone, initialization, target and preprocessing. The earlier TinyCNN run below checks SISA mechanics and is not a matched comparator.
+
 ## Run the first SISA pilot
 
 The first patient-random SISA implementation uses the downloaded PadChest `6.zip`: **4 shards x 3 cumulative slices**, full-state checkpoints and whole-patient replay. This is a single-seed CPU mechanics pilot with a small CNN, not a medical benchmark reproduction. Read the [pilot protocol](docs/sisa-pilot-protocol.md) and [first measured results](results/sisa-pilot-20261021.md). All three real-data replay checks match clean retained-data SISA exactly; predictive quality still needs improvement.
