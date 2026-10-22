@@ -6,4 +6,6 @@ The SISA tests compare full state and predictions after early/late, cross-shard,
 
 The conventional-training checks cover grayscale-to-ImageNet normalization, detection of a majority-only classifier, actual backbone/head updates and restoration of ResNet predictions including batch-normalization buffers. They use randomly initialized weights and synthetic images, with no downloads.
 
+The multilabel checks preserve simultaneous findings, ensure label selection uses training patients only, validate positive-class weighting, check independent sigmoid/BCE behavior, handle missing held-out classes without NaNs, reject inconsistent patient splits and verify an actual ResNet multilabel update and output restoration.
+
 On restricted Windows hosts where the default temporary directory is inaccessible, point Python's `tempfile.tempdir` to a writable local directory before invoking the unittest runner. Do not change scientific behavior to work around host permissions.
