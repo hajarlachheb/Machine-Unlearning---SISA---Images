@@ -13,6 +13,8 @@ python -m src.report_multilabel outputs/my-multilabel-run/results.json --output-
 
 The audited cache and official ImageNet checkpoint are required; their preparation is documented in the earlier conventional protocol below. See the [multilabel protocol](docs/multilabel-training-protocol.md) and [first measured multilabel results](results/multilabel-resnet18-20261022.md). The six-epoch run selected epoch 4: test macro AUROC 0.705, macro AP 0.193 and micro F1 0.215 at threshold 0.5. Sparse held-out support and overfitting limit interpretation. The next SISA experiment should use this multilabel task with a matched model and preprocessing.
 
+The new `54` image folder is now verified and combined with `6.zip`: **2,441 eligible images from 2,317 patients**, with zero patient overlap. See the [expanded-cohort audit](results/cohort-6-54-20261027.md) and [preparation/next-training commands](docs/expanded-cohort.md). All 686 original images retain identical pixels and splits, and the 19-label task is fixed. **Training on the expanded cohort has not been run yet**; the metrics above are from the original small cohort.
+
 ## Earlier binary pipeline check
 
 Use **ResNet-18 with ImageNet weights**, fine-tuning all layers on the downloaded PadChest subset. This conventional baseline uses one model, no shards or slices, and 224×224 inputs prepared from the original PNGs. See the [model choice, training settings and commands](docs/normal-training-protocol.md). Checkpoint selection uses validation AUROC. The current target is presence of the `normal` annotation, not a confirmed normal-versus-abnormal diagnosis.

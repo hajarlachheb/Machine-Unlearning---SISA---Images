@@ -72,7 +72,9 @@ def main():
         lines.append(f"| {split} | {s['patients']} | {s['images']} | {s['images_with_multiple_selected_labels']} | "
                      f"{value(m['macro_auroc'])} | {value(m['macro_average_precision'])} | {value(m['micro_f1'])} | {m['valid_ranking_labels']}/{len(labels)} |")
     lines += ["", "## Per-finding support and test performance", "",
-              "Vocabulary chosen using training patients only: ≥10 positive and ≥10 negative patients, excluding `normal` and `unchanged`. "
+              ("Vocabulary fixed to the earlier pilot's ordered labels; no new findings added as the cohort expands. "
+               if config.get("fixed_labels") else
+               "Vocabulary chosen using training patients only: ≥10 positive and ≥10 negative patients, excluding `normal` and `unchanged`. ") +
               "These are raw recorded finding terms; this is not the entire PadChest label catalogue.", "",
               "| Finding | Train + patients | Train + images | Val + images | Test + images | Test AUROC | Test AP | Test recall at 0.5 |",
               "|---|---:|---:|---:|---:|---:|---:|---:|"]

@@ -44,6 +44,16 @@ class MultilabelTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             positive_weights(np.zeros((3, 2), dtype=np.float32))
 
+    def test_fixed_vocabulary_preserves_order_and_does_not_add_supported_labels(self):
+        config = {"excluded_targets": [], "min_positive_train_patients": 1,
+                  "min_negative_train_patients": 1, "fixed_labels": ["y", "x"]}
+        rows = [{"patient": "a", "split": "train", "labels": ["x", "y", "new"]},
+                {"patient": "b", "split": "train", "labels": ["normal"]}]
+        self.assertEqual(select_labels(rows, config)[0], ["y", "x"])
+        config["fixed_labels"] = ["y", "missing"]
+        with self.assertRaisesRegex(ValueError, "fixed label"):
+            select_labels(rows, config)
+
     def test_independent_bce_can_raise_both_positive_outputs(self):
         logits = torch.tensor([[0.0, 0.0]], requires_grad=True)
         loss = torch.nn.BCEWithLogitsLoss()(logits, torch.ones(1, 2))

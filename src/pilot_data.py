@@ -39,6 +39,28 @@ def normalized_labels(raw):
     return sorted({x.strip() for x in value if x.strip()})
 
 
+def preprocess_pixels(pixels, photo, size):
+    """Shared, per-image transform for the original and expanded cohorts."""
+    if pixels.ndim != 2 or not np.issubdtype(pixels.dtype, np.integer):
+        raise ValueError("Expected integer grayscale PNG")
+    if photo not in {"MONOCHROME1", "MONOCHROME2"}:
+        raise ValueError("Unknown photometric interpretation")
+    lo, hi = np.percentile(pixels, [1, 99])
+    if hi <= lo:
+        raise ValueError("Constant/degenerate image; revise eligibility explicitly")
+    values = np.clip((pixels.astype(np.float32) - lo) / (hi - lo), 0, 1).astype(np.float32)
+    if photo == "MONOCHROME1":
+        values = 1 - values
+    height, width = values.shape
+    scale = min(size / width, size / height)
+    resized = np.asarray(Image.fromarray(values).resize(
+        (max(1, round(width * scale)), max(1, round(height * scale))), Image.Resampling.BILINEAR))
+    canvas = np.zeros((size, size), dtype=np.float32)
+    y, x = (size - resized.shape[0]) // 2, (size - resized.shape[1]) // 2
+    canvas[y:y+resized.shape[0], x:x+resized.shape[1]] = resized
+    return canvas[None]
+
+
 def prepare(metadata, archive, output, config):
     """Decode all eligible images; fail on corruption instead of silently dropping."""
     output.mkdir(parents=True, exist_ok=False)
@@ -87,24 +109,7 @@ def prepare(metadata, archive, output, config):
                 if pixels.shape != (int(row["Rows_DICOM"]), int(row["Columns_DICOM"])):
                     raise ValueError("Decoded dimensions do not match metadata")
                 photo = row["PhotometricInterpretation_DICOM"]
-                if photo not in {"MONOCHROME1", "MONOCHROME2"}:
-                    raise ValueError("Unknown photometric interpretation")
-                # Per-image transformation only: no statistics learned from patients.
-                lo, hi = np.percentile(pixels, [1, 99])
-                if hi <= lo:
-                    raise ValueError("Constant/degenerate image; revise eligibility explicitly")
-                values = np.clip((pixels.astype(np.float32) - lo) / (hi - lo), 0, 1).astype(np.float32)
-                if photo == "MONOCHROME1":
-                    values = 1 - values
-                size = config["image_size"]
-                height, width = values.shape
-                scale = min(size / width, size / height)
-                resized = np.asarray(Image.fromarray(values).resize(
-                    (max(1, round(width * scale)), max(1, round(height * scale))), Image.Resampling.BILINEAR))
-                canvas = np.zeros((size, size), dtype=np.float32)
-                y, x = (size - resized.shape[0]) // 2, (size - resized.shape[1]) // 2
-                canvas[y:y+resized.shape[0], x:x+resized.shape[1]] = resized
-                arrays.append(canvas[None])
+                arrays.append(preprocess_pixels(pixels, photo, config["image_size"]))
                 manifest.append({"patient": patient, "image": row["ImageID"], "member": entry.filename,
                                  "study": row["StudyID"], "date": row["StudyDate_DICOM"],
                                  "sex": row["PatientSex_DICOM"], "projection": row["Projection"],

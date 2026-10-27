@@ -40,17 +40,25 @@ def select_labels(rows, config):
     train = [r for r in rows if r["split"] == "train"]
     patients = {r["patient"] for r in train}
     candidates = sorted({label for r in train for label in r["labels"]})
+    fixed = config.get("fixed_labels")
+    if fixed is not None and (len(fixed) != len(set(fixed)) or len(fixed) < 2):
+        raise ValueError("Fixed vocabulary must have at least two unique labels")
     audit, labels = [], []
     for label in candidates:
         positive = len({r["patient"] for r in train if label in r["labels"]})
-        selected = (label not in config["excluded_targets"] and
+        supported = (label not in config["excluded_targets"] and
                     positive >= config["min_positive_train_patients"] and
                     len(patients) - positive >= config["min_negative_train_patients"])
+        selected = supported and (fixed is None or label in fixed)
         audit.append({"label": label, "train_positive_patients": positive,
                       "train_positive_images": sum(label in r["labels"] for r in train),
                       "selected": selected})
         if selected:
             labels.append(label)
+    if fixed is not None:
+        if set(labels) != set(fixed):
+            raise ValueError("A fixed label is absent, excluded or below the training support threshold")
+        labels = list(fixed)  # Preserve the original head's semantic order.
     if len(labels) < 2:
         raise ValueError("Fewer than two supported training labels; expand the cohort")
     return labels, audit
