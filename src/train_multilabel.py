@@ -148,11 +148,12 @@ class MultilabelImages(Dataset):
         return torch.from_numpy(self.images[i].copy()), torch.from_numpy(self.targets[i].copy())
 
 
-def train_epoch(model, loader, optimizer, criterion, epoch):
+def train_epoch(model, loader, optimizer, criterion, epoch, device="cpu"):
     model.train()
     loss_sum, count = 0.0, 0
     started = last_message = time.perf_counter()
     for step, (gray, target) in enumerate(loader, 1):
+        gray, target = gray.to(device), target.to(device)
         optimizer.zero_grad(set_to_none=True)
         # Feed logits directly to BCEWithLogitsLoss (no sigmoid before the loss).
         loss = criterion(model(imagenet_input(gray)), target)
@@ -168,13 +169,13 @@ def train_epoch(model, loader, optimizer, criterion, epoch):
     return loss_sum / count, time.perf_counter() - started
 
 
-def evaluate(model, loader, labels, threshold):
+def evaluate(model, loader, labels, threshold, device="cpu"):
     model.eval()
     truth, probs = [], []
     with torch.inference_mode():
         for gray, target in loader:
             # Independent probabilities: several findings may be positive together.
-            probs.append(model(imagenet_input(gray)).sigmoid().numpy())
+            probs.append(model(imagenet_input(gray.to(device))).sigmoid().cpu().numpy())
             truth.append(target.numpy())
     truth, probs = np.concatenate(truth), np.concatenate(probs)
     return multilabel_metrics(truth, probs, labels, threshold), probs
@@ -211,6 +212,7 @@ def main():
     parser.add_argument("--data-dir", type=Path, default=Path("outputs/normal-resnet18-20261021/data"))
     parser.add_argument("--weights", type=Path, default=Path("outputs/model-cache/resnet18-f37072fd.pth"))
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--device", default="cpu", help="cpu (default, reference protocol) or e.g. cuda:0")
     args = parser.parse_args()
     config = json.loads(args.config.read_text())
     if (config["architecture"] != "resnet18" or config["initialization"] != "ImageNet1K_V1" or
@@ -239,18 +241,18 @@ def main():
     generator = torch.Generator().manual_seed(config["seed"])
     train = DataLoader(loaders["train"].dataset, batch_size=config["batch_size"], shuffle=True,
                        generator=generator, num_workers=0)
-    model = build_model(args.weights, config["weights_sha256"], num_classes=len(labels))
+    model = build_model(args.weights, config["weights_sha256"], num_classes=len(labels)).to(args.device)
     initial_conv = model.conv1.weight.detach().clone()
     optimizer = torch.optim.Adam(model.parameters(), lr=config["learning_rate"], weight_decay=config["weight_decay"])
-    criterion = torch.nn.BCEWithLogitsLoss(pos_weight=weights)
+    criterion = torch.nn.BCEWithLogitsLoss(pos_weight=weights.to(args.device))
     torch.save(checkpoint(model, optimizer, 0, generator, config), args.output / "initial.pt")
     best_score, best_epoch, history = float("-inf"), None, []
     print(f"Labels ({len(labels)}): {', '.join(labels)}", flush=True)
-    print(f"Full fine-tuning: {len(train.dataset)} images; {config['epochs']} epochs on CPU", flush=True)
+    print(f"Full fine-tuning: {len(train.dataset)} images; {config['epochs']} epochs on {args.device}", flush=True)
     fit_started = time.perf_counter()
     for epoch in range(1, config["epochs"] + 1):
-        loss, seconds = train_epoch(model, train, optimizer, criterion, epoch)
-        validation, _ = evaluate(model, loaders["validation"], labels, config["threshold"])
+        loss, seconds = train_epoch(model, train, optimizer, criterion, epoch, args.device)
+        validation, _ = evaluate(model, loaders["validation"], labels, config["threshold"], args.device)
         score = validation["macro_auroc"]
         if score is None:
             raise ValueError("No validation label has both classes; cannot select a checkpoint")
@@ -268,7 +270,7 @@ def main():
     final, baseline = {}, {}
     train_prevalence = targets[train_indices].mean(axis=0)
     for split, loader in loaders.items():
-        final[split], prob = evaluate(model, loader, labels, config["threshold"])
+        final[split], prob = evaluate(model, loader, labels, config["threshold"], args.device)
         np.save(args.output / f"{split}_probabilities.npy", prob)  # Local only, manifest order within split.
         truth = targets[loader.dataset.indices]
         baseline[split] = multilabel_metrics(truth, np.broadcast_to(train_prevalence, truth.shape), labels, config["threshold"])
@@ -280,7 +282,8 @@ def main():
               "trainable_parameters": sum(p.numel() for p in model.parameters() if p.requires_grad),
               "environment": {"python": platform.python_version(), "torch": torch.__version__,
                               "torchvision": torchvision.__version__, "sklearn": sklearn.__version__,
-                              "numpy": np.__version__, "device": "cpu", "threads": config["threads"]},
+                              "numpy": np.__version__, "device": args.device, "threads": config["threads"],
+                              "gpu": torch.cuda.get_device_name(args.device) if args.device.startswith("cuda") else None},
               "limitations": ["Single seed, small convenience sample and previously inspected exploratory test split",
                               "Absent annotation treated as zero, not confirmed clinical absence",
                               "Raw label terms without hierarchy propagation; findings subset, not all PadChest labels",
