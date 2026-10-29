@@ -1,0 +1,6518 @@
+{
+  "experiment": "multilabel_resnet18_imagenet_full_finetune",
+  "config": {
+    "seed": 20261021,
+    "architecture": "resnet18",
+    "initialization": "ImageNet1K_V1",
+    "weights_sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+    "epochs": 6,
+    "batch_size": 16,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0001,
+    "image_size": 224,
+    "threads": 4,
+    "allowed_projections": [
+      "PA",
+      "AP"
+    ],
+    "excluded_labels": [
+      "exclude",
+      "suboptimal study"
+    ],
+    "split_percentages": [
+      70,
+      15,
+      15
+    ],
+    "min_positive_train_patients": 10,
+    "min_negative_train_patients": 10,
+    "excluded_targets": [
+      "normal",
+      "unchanged"
+    ],
+    "positive_weight": "training_negative_images_divided_by_positive_images",
+    "selection": "validation_macro_auroc",
+    "threshold": 0.5,
+    "fixed_labels": [
+      "COPD signs",
+      "air trapping",
+      "aortic atheromatosis",
+      "aortic elongation",
+      "apical pleural thickening",
+      "callus rib fracture",
+      "cardiomegaly",
+      "chronic changes",
+      "costophrenic angle blunting",
+      "infiltrates",
+      "interstitial pattern",
+      "kyphosis",
+      "laminar atelectasis",
+      "pleural effusion",
+      "pneumonia",
+      "pseudonodule",
+      "scoliosis",
+      "vascular hilar enlargement",
+      "vertebral degenerative changes"
+    ],
+    "labels": [
+      "COPD signs",
+      "air trapping",
+      "aortic atheromatosis",
+      "aortic elongation",
+      "apical pleural thickening",
+      "callus rib fracture",
+      "cardiomegaly",
+      "chronic changes",
+      "costophrenic angle blunting",
+      "infiltrates",
+      "interstitial pattern",
+      "kyphosis",
+      "laminar atelectasis",
+      "pleural effusion",
+      "pneumonia",
+      "pseudonodule",
+      "scoliosis",
+      "vascular hilar enlargement",
+      "vertebral degenerative changes"
+    ],
+    "pos_weight": [
+      8.25,
+      18.821428298950195,
+      27.70689582824707,
+      11.425373077392578,
+      26.295082092285156,
+      52.709678649902344,
+      12.427419662475586,
+      10.97841739654541,
+      30.41509437561035,
+      40.625,
+      32.29999923706055,
+      34.425533294677734,
+      51.03125,
+      46.57143020629883,
+      33.6875,
+      42.81578826904297,
+      12.991596221923828,
+      24.227272033691406,
+      18.36046600341797
+    ]
+  },
+  "label_selection": [
+    {
+      "label": "COPD signs",
+      "train_positive_patients": 174,
+      "train_positive_images": 180,
+      "selected": true
+    },
+    {
+      "label": "NSG tube",
+      "train_positive_patients": 10,
+      "train_positive_images": 11,
+      "selected": false
+    },
+    {
+      "label": "abnormal foreign body",
+      "train_positive_patients": 2,
+      "train_positive_images": 3,
+      "selected": false
+    },
+    {
+      "label": "adenopathy",
+      "train_positive_patients": 2,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "air bronchogram",
+      "train_positive_patients": 2,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "air trapping",
+      "train_positive_patients": 82,
+      "train_positive_images": 84,
+      "selected": true
+    },
+    {
+      "label": "alveolar pattern",
+      "train_positive_patients": 25,
+      "train_positive_images": 25,
+      "selected": false
+    },
+    {
+      "label": "aortic aneurysm",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "aortic atheromatosis",
+      "train_positive_patients": 56,
+      "train_positive_images": 58,
+      "selected": true
+    },
+    {
+      "label": "aortic button enlargement",
+      "train_positive_patients": 8,
+      "train_positive_images": 8,
+      "selected": false
+    },
+    {
+      "label": "aortic elongation",
+      "train_positive_patients": 131,
+      "train_positive_images": 134,
+      "selected": true
+    },
+    {
+      "label": "apical pleural thickening",
+      "train_positive_patients": 61,
+      "train_positive_images": 61,
+      "selected": true
+    },
+    {
+      "label": "artificial heart valve",
+      "train_positive_patients": 2,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "artificial mitral heart valve",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "asbestosis signs",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "ascendent aortic elongation",
+      "train_positive_patients": 3,
+      "train_positive_images": 3,
+      "selected": false
+    },
+    {
+      "label": "atelectasis",
+      "train_positive_patients": 11,
+      "train_positive_images": 11,
+      "selected": false
+    },
+    {
+      "label": "atelectasis basal",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "axial hyperostosis",
+      "train_positive_patients": 5,
+      "train_positive_images": 5,
+      "selected": false
+    },
+    {
+      "label": "azygos lobe",
+      "train_positive_patients": 4,
+      "train_positive_images": 4,
+      "selected": false
+    },
+    {
+      "label": "blastic bone lesion",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "bone cement",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "bone metastasis",
+      "train_positive_patients": 3,
+      "train_positive_images": 3,
+      "selected": false
+    },
+    {
+      "label": "bronchiectasis",
+      "train_positive_patients": 25,
+      "train_positive_images": 25,
+      "selected": false
+    },
+    {
+      "label": "bronchovascular markings",
+      "train_positive_patients": 21,
+      "train_positive_images": 21,
+      "selected": false
+    },
+    {
+      "label": "bullas",
+      "train_positive_patients": 5,
+      "train_positive_images": 5,
+      "selected": false
+    },
+    {
+      "label": "calcified adenopathy",
+      "train_positive_patients": 4,
+      "train_positive_images": 4,
+      "selected": false
+    },
+    {
+      "label": "calcified densities",
+      "train_positive_patients": 12,
+      "train_positive_images": 12,
+      "selected": false
+    },
+    {
+      "label": "calcified granuloma",
+      "train_positive_patients": 23,
+      "train_positive_images": 23,
+      "selected": false
+    },
+    {
+      "label": "calcified mediastinal adenopathy",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "calcified pleural plaques",
+      "train_positive_patients": 2,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "calcified pleural thickening",
+      "train_positive_patients": 3,
+      "train_positive_images": 3,
+      "selected": false
+    },
+    {
+      "label": "callus rib fracture",
+      "train_positive_patients": 31,
+      "train_positive_images": 31,
+      "selected": true
+    },
+    {
+      "label": "cardiomegaly",
+      "train_positive_patients": 115,
+      "train_positive_images": 124,
+      "selected": true
+    },
+    {
+      "label": "catheter",
+      "train_positive_patients": 2,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "cavitation",
+      "train_positive_patients": 5,
+      "train_positive_images": 5,
+      "selected": false
+    },
+    {
+      "label": "central vascular redistribution",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "central venous catheter",
+      "train_positive_patients": 6,
+      "train_positive_images": 7,
+      "selected": false
+    },
+    {
+      "label": "central venous catheter via jugular vein",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "central venous catheter via subclavian vein",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "central venous catheter via umbilical vein",
+      "train_positive_patients": 6,
+      "train_positive_images": 7,
+      "selected": false
+    },
+    {
+      "label": "chronic changes",
+      "train_positive_patients": 138,
+      "train_positive_images": 139,
+      "selected": true
+    },
+    {
+      "label": "consolidation",
+      "train_positive_patients": 9,
+      "train_positive_images": 9,
+      "selected": false
+    },
+    {
+      "label": "costochondral junction hypertrophy",
+      "train_positive_patients": 3,
+      "train_positive_images": 3,
+      "selected": false
+    },
+    {
+      "label": "costophrenic angle blunting",
+      "train_positive_patients": 52,
+      "train_positive_images": 53,
+      "selected": true
+    },
+    {
+      "label": "cyst",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "dai",
+      "train_positive_patients": 3,
+      "train_positive_images": 3,
+      "selected": false
+    },
+    {
+      "label": "descendent aortic elongation",
+      "train_positive_patients": 8,
+      "train_positive_images": 8,
+      "selected": false
+    },
+    {
+      "label": "diaphragmatic eventration",
+      "train_positive_patients": 17,
+      "train_positive_images": 19,
+      "selected": false
+    },
+    {
+      "label": "dual chamber device",
+      "train_positive_patients": 6,
+      "train_positive_images": 6,
+      "selected": false
+    },
+    {
+      "label": "emphysema",
+      "train_positive_patients": 10,
+      "train_positive_images": 10,
+      "selected": false
+    },
+    {
+      "label": "end on vessel",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "endotracheal tube",
+      "train_positive_patients": 3,
+      "train_positive_images": 3,
+      "selected": false
+    },
+    {
+      "label": "external foreign body",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "fibrotic band",
+      "train_positive_patients": 43,
+      "train_positive_images": 43,
+      "selected": false
+    },
+    {
+      "label": "fissure thickening",
+      "train_positive_patients": 2,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "flattened diaphragm",
+      "train_positive_patients": 16,
+      "train_positive_images": 16,
+      "selected": false
+    },
+    {
+      "label": "fracture",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "goiter",
+      "train_positive_patients": 9,
+      "train_positive_images": 9,
+      "selected": false
+    },
+    {
+      "label": "granuloma",
+      "train_positive_patients": 6,
+      "train_positive_images": 6,
+      "selected": false
+    },
+    {
+      "label": "ground glass pattern",
+      "train_positive_patients": 6,
+      "train_positive_images": 7,
+      "selected": false
+    },
+    {
+      "label": "gynecomastia",
+      "train_positive_patients": 21,
+      "train_positive_images": 21,
+      "selected": false
+    },
+    {
+      "label": "heart insufficiency",
+      "train_positive_patients": 12,
+      "train_positive_images": 12,
+      "selected": false
+    },
+    {
+      "label": "heart valve calcified",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "hemidiaphragm elevation",
+      "train_positive_patients": 21,
+      "train_positive_images": 23,
+      "selected": false
+    },
+    {
+      "label": "hiatal hernia",
+      "train_positive_patients": 28,
+      "train_positive_images": 32,
+      "selected": false
+    },
+    {
+      "label": "hilar congestion",
+      "train_positive_patients": 15,
+      "train_positive_images": 15,
+      "selected": false
+    },
+    {
+      "label": "hilar enlargement",
+      "train_positive_patients": 13,
+      "train_positive_images": 13,
+      "selected": false
+    },
+    {
+      "label": "humeral fracture",
+      "train_positive_patients": 2,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "hyperinflated lung",
+      "train_positive_patients": 4,
+      "train_positive_images": 4,
+      "selected": false
+    },
+    {
+      "label": "hypoexpansion",
+      "train_positive_patients": 3,
+      "train_positive_images": 5,
+      "selected": false
+    },
+    {
+      "label": "hypoexpansion basal",
+      "train_positive_patients": 4,
+      "train_positive_images": 4,
+      "selected": false
+    },
+    {
+      "label": "increased density",
+      "train_positive_patients": 30,
+      "train_positive_images": 31,
+      "selected": false
+    },
+    {
+      "label": "infiltrates",
+      "train_positive_patients": 40,
+      "train_positive_images": 40,
+      "selected": true
+    },
+    {
+      "label": "interstitial pattern",
+      "train_positive_patients": 47,
+      "train_positive_images": 50,
+      "selected": true
+    },
+    {
+      "label": "kerley lines",
+      "train_positive_patients": 2,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "kyphosis",
+      "train_positive_patients": 45,
+      "train_positive_images": 47,
+      "selected": true
+    },
+    {
+      "label": "laminar atelectasis",
+      "train_positive_patients": 31,
+      "train_positive_images": 32,
+      "selected": true
+    },
+    {
+      "label": "lobar atelectasis",
+      "train_positive_patients": 3,
+      "train_positive_images": 3,
+      "selected": false
+    },
+    {
+      "label": "lung metastasis",
+      "train_positive_patients": 2,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "lung vascular paucity",
+      "train_positive_patients": 1,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "lymphangitis carcinomatosa",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "major fissure thickening",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "mammary prosthesis",
+      "train_positive_patients": 8,
+      "train_positive_images": 8,
+      "selected": false
+    },
+    {
+      "label": "mass",
+      "train_positive_patients": 1,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "mastectomy",
+      "train_positive_patients": 5,
+      "train_positive_images": 5,
+      "selected": false
+    },
+    {
+      "label": "mediastinal enlargement",
+      "train_positive_patients": 4,
+      "train_positive_images": 4,
+      "selected": false
+    },
+    {
+      "label": "mediastinal mass",
+      "train_positive_patients": 10,
+      "train_positive_images": 12,
+      "selected": false
+    },
+    {
+      "label": "mediastinal shift",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "mediastinic lipomatosis",
+      "train_positive_patients": 4,
+      "train_positive_images": 4,
+      "selected": false
+    },
+    {
+      "label": "metal",
+      "train_positive_patients": 9,
+      "train_positive_images": 9,
+      "selected": false
+    },
+    {
+      "label": "miliary opacities",
+      "train_positive_patients": 2,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "minor fissure thickening",
+      "train_positive_patients": 3,
+      "train_positive_images": 4,
+      "selected": false
+    },
+    {
+      "label": "multiple nodules",
+      "train_positive_patients": 2,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "nipple shadow",
+      "train_positive_patients": 26,
+      "train_positive_images": 26,
+      "selected": false
+    },
+    {
+      "label": "nodule",
+      "train_positive_patients": 35,
+      "train_positive_images": 36,
+      "selected": false
+    },
+    {
+      "label": "non axial articular degenerative changes",
+      "train_positive_patients": 5,
+      "train_positive_images": 5,
+      "selected": false
+    },
+    {
+      "label": "normal",
+      "train_positive_patients": 669,
+      "train_positive_images": 685,
+      "selected": false
+    },
+    {
+      "label": "obesity",
+      "train_positive_patients": 2,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "osteopenia",
+      "train_positive_patients": 11,
+      "train_positive_images": 11,
+      "selected": false
+    },
+    {
+      "label": "osteoporosis",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "osteosynthesis material",
+      "train_positive_patients": 11,
+      "train_positive_images": 12,
+      "selected": false
+    },
+    {
+      "label": "pacemaker",
+      "train_positive_patients": 24,
+      "train_positive_images": 25,
+      "selected": false
+    },
+    {
+      "label": "pectum carinatum",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "pectum excavatum",
+      "train_positive_patients": 3,
+      "train_positive_images": 3,
+      "selected": false
+    },
+    {
+      "label": "pleural effusion",
+      "train_positive_patients": 34,
+      "train_positive_images": 35,
+      "selected": true
+    },
+    {
+      "label": "pleural thickening",
+      "train_positive_patients": 2,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "pneumonia",
+      "train_positive_patients": 48,
+      "train_positive_images": 48,
+      "selected": true
+    },
+    {
+      "label": "pneumothorax",
+      "train_positive_patients": 1,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "post radiotherapy changes",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "prosthesis",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "pseudonodule",
+      "train_positive_patients": 38,
+      "train_positive_images": 38,
+      "selected": true
+    },
+    {
+      "label": "pulmonary fibrosis",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "pulmonary hypertension",
+      "train_positive_patients": 2,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "pulmonary mass",
+      "train_positive_patients": 7,
+      "train_positive_images": 7,
+      "selected": false
+    },
+    {
+      "label": "pulmonary venous hypertension",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "reservoir central venous catheter",
+      "train_positive_patients": 5,
+      "train_positive_images": 5,
+      "selected": false
+    },
+    {
+      "label": "reticular interstitial pattern",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "reticulonodular interstitial pattern",
+      "train_positive_patients": 2,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "rib fracture",
+      "train_positive_patients": 7,
+      "train_positive_images": 7,
+      "selected": false
+    },
+    {
+      "label": "sclerotic bone lesion",
+      "train_positive_patients": 12,
+      "train_positive_images": 13,
+      "selected": false
+    },
+    {
+      "label": "scoliosis",
+      "train_positive_patients": 113,
+      "train_positive_images": 119,
+      "selected": true
+    },
+    {
+      "label": "segmental atelectasis",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "single chamber device",
+      "train_positive_patients": 7,
+      "train_positive_images": 7,
+      "selected": false
+    },
+    {
+      "label": "sternoclavicular junction hypertrophy",
+      "train_positive_patients": 2,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "sternotomy",
+      "train_positive_patients": 13,
+      "train_positive_images": 13,
+      "selected": false
+    },
+    {
+      "label": "subacromial space narrowing",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "superior mediastinal enlargement",
+      "train_positive_patients": 2,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "supra aortic elongation",
+      "train_positive_patients": 6,
+      "train_positive_images": 6,
+      "selected": false
+    },
+    {
+      "label": "surgery",
+      "train_positive_patients": 2,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "surgery breast",
+      "train_positive_patients": 2,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "surgery humeral",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "surgery lung",
+      "train_positive_patients": 2,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "suture material",
+      "train_positive_patients": 11,
+      "train_positive_images": 11,
+      "selected": false
+    },
+    {
+      "label": "thoracic cage deformation",
+      "train_positive_patients": 4,
+      "train_positive_images": 4,
+      "selected": false
+    },
+    {
+      "label": "tracheal shift",
+      "train_positive_patients": 8,
+      "train_positive_images": 8,
+      "selected": false
+    },
+    {
+      "label": "tracheostomy tube",
+      "train_positive_patients": 3,
+      "train_positive_images": 3,
+      "selected": false
+    },
+    {
+      "label": "tuberculosis",
+      "train_positive_patients": 2,
+      "train_positive_images": 2,
+      "selected": false
+    },
+    {
+      "label": "tuberculosis sequelae",
+      "train_positive_patients": 5,
+      "train_positive_images": 5,
+      "selected": false
+    },
+    {
+      "label": "unchanged",
+      "train_positive_patients": 102,
+      "train_positive_images": 103,
+      "selected": false
+    },
+    {
+      "label": "vascular hilar enlargement",
+      "train_positive_patients": 64,
+      "train_positive_images": 66,
+      "selected": true
+    },
+    {
+      "label": "vascular redistribution",
+      "train_positive_patients": 7,
+      "train_positive_images": 8,
+      "selected": false
+    },
+    {
+      "label": "ventriculoperitoneal drain tube",
+      "train_positive_patients": 1,
+      "train_positive_images": 1,
+      "selected": false
+    },
+    {
+      "label": "vertebral anterior compression",
+      "train_positive_patients": 32,
+      "train_positive_images": 33,
+      "selected": false
+    },
+    {
+      "label": "vertebral compression",
+      "train_positive_patients": 6,
+      "train_positive_images": 6,
+      "selected": false
+    },
+    {
+      "label": "vertebral degenerative changes",
+      "train_positive_patients": 86,
+      "train_positive_images": 86,
+      "selected": true
+    },
+    {
+      "label": "volume loss",
+      "train_positive_patients": 21,
+      "train_positive_images": 23,
+      "selected": false
+    }
+  ],
+  "support": {
+    "train": {
+      "images": 1665,
+      "patients": 1586,
+      "images_with_multiple_selected_labels": 384,
+      "images_with_no_selected_labels": 883,
+      "annotation_method_images": {
+        "Physician": 1665
+      },
+      "labels": {
+        "COPD signs": {
+          "positive_images": 180,
+          "positive_patients": 174
+        },
+        "air trapping": {
+          "positive_images": 84,
+          "positive_patients": 82
+        },
+        "aortic atheromatosis": {
+          "positive_images": 58,
+          "positive_patients": 56
+        },
+        "aortic elongation": {
+          "positive_images": 134,
+          "positive_patients": 131
+        },
+        "apical pleural thickening": {
+          "positive_images": 61,
+          "positive_patients": 61
+        },
+        "callus rib fracture": {
+          "positive_images": 31,
+          "positive_patients": 31
+        },
+        "cardiomegaly": {
+          "positive_images": 124,
+          "positive_patients": 115
+        },
+        "chronic changes": {
+          "positive_images": 139,
+          "positive_patients": 138
+        },
+        "costophrenic angle blunting": {
+          "positive_images": 53,
+          "positive_patients": 52
+        },
+        "infiltrates": {
+          "positive_images": 40,
+          "positive_patients": 40
+        },
+        "interstitial pattern": {
+          "positive_images": 50,
+          "positive_patients": 47
+        },
+        "kyphosis": {
+          "positive_images": 47,
+          "positive_patients": 45
+        },
+        "laminar atelectasis": {
+          "positive_images": 32,
+          "positive_patients": 31
+        },
+        "pleural effusion": {
+          "positive_images": 35,
+          "positive_patients": 34
+        },
+        "pneumonia": {
+          "positive_images": 48,
+          "positive_patients": 48
+        },
+        "pseudonodule": {
+          "positive_images": 38,
+          "positive_patients": 38
+        },
+        "scoliosis": {
+          "positive_images": 119,
+          "positive_patients": 113
+        },
+        "vascular hilar enlargement": {
+          "positive_images": 66,
+          "positive_patients": 64
+        },
+        "vertebral degenerative changes": {
+          "positive_images": 86,
+          "positive_patients": 86
+        }
+      }
+    },
+    "validation": {
+      "images": 413,
+      "patients": 386,
+      "images_with_multiple_selected_labels": 104,
+      "images_with_no_selected_labels": 199,
+      "annotation_method_images": {
+        "Physician": 413
+      },
+      "labels": {
+        "COPD signs": {
+          "positive_images": 48,
+          "positive_patients": 46
+        },
+        "air trapping": {
+          "positive_images": 13,
+          "positive_patients": 13
+        },
+        "aortic atheromatosis": {
+          "positive_images": 13,
+          "positive_patients": 13
+        },
+        "aortic elongation": {
+          "positive_images": 26,
+          "positive_patients": 25
+        },
+        "apical pleural thickening": {
+          "positive_images": 17,
+          "positive_patients": 17
+        },
+        "callus rib fracture": {
+          "positive_images": 5,
+          "positive_patients": 4
+        },
+        "cardiomegaly": {
+          "positive_images": 32,
+          "positive_patients": 29
+        },
+        "chronic changes": {
+          "positive_images": 38,
+          "positive_patients": 37
+        },
+        "costophrenic angle blunting": {
+          "positive_images": 16,
+          "positive_patients": 15
+        },
+        "infiltrates": {
+          "positive_images": 18,
+          "positive_patients": 18
+        },
+        "interstitial pattern": {
+          "positive_images": 22,
+          "positive_patients": 20
+        },
+        "kyphosis": {
+          "positive_images": 9,
+          "positive_patients": 7
+        },
+        "laminar atelectasis": {
+          "positive_images": 18,
+          "positive_patients": 17
+        },
+        "pleural effusion": {
+          "positive_images": 15,
+          "positive_patients": 14
+        },
+        "pneumonia": {
+          "positive_images": 21,
+          "positive_patients": 18
+        },
+        "pseudonodule": {
+          "positive_images": 13,
+          "positive_patients": 13
+        },
+        "scoliosis": {
+          "positive_images": 27,
+          "positive_patients": 25
+        },
+        "vascular hilar enlargement": {
+          "positive_images": 11,
+          "positive_patients": 11
+        },
+        "vertebral degenerative changes": {
+          "positive_images": 22,
+          "positive_patients": 21
+        }
+      }
+    },
+    "test": {
+      "images": 363,
+      "patients": 345,
+      "images_with_multiple_selected_labels": 85,
+      "images_with_no_selected_labels": 189,
+      "annotation_method_images": {
+        "Physician": 363
+      },
+      "labels": {
+        "COPD signs": {
+          "positive_images": 38,
+          "positive_patients": 36
+        },
+        "air trapping": {
+          "positive_images": 24,
+          "positive_patients": 22
+        },
+        "aortic atheromatosis": {
+          "positive_images": 15,
+          "positive_patients": 15
+        },
+        "aortic elongation": {
+          "positive_images": 24,
+          "positive_patients": 23
+        },
+        "apical pleural thickening": {
+          "positive_images": 11,
+          "positive_patients": 11
+        },
+        "callus rib fracture": {
+          "positive_images": 7,
+          "positive_patients": 7
+        },
+        "cardiomegaly": {
+          "positive_images": 25,
+          "positive_patients": 24
+        },
+        "chronic changes": {
+          "positive_images": 27,
+          "positive_patients": 26
+        },
+        "costophrenic angle blunting": {
+          "positive_images": 18,
+          "positive_patients": 16
+        },
+        "infiltrates": {
+          "positive_images": 10,
+          "positive_patients": 10
+        },
+        "interstitial pattern": {
+          "positive_images": 13,
+          "positive_patients": 13
+        },
+        "kyphosis": {
+          "positive_images": 9,
+          "positive_patients": 9
+        },
+        "laminar atelectasis": {
+          "positive_images": 12,
+          "positive_patients": 12
+        },
+        "pleural effusion": {
+          "positive_images": 3,
+          "positive_patients": 3
+        },
+        "pneumonia": {
+          "positive_images": 19,
+          "positive_patients": 18
+        },
+        "pseudonodule": {
+          "positive_images": 6,
+          "positive_patients": 6
+        },
+        "scoliosis": {
+          "positive_images": 27,
+          "positive_patients": 27
+        },
+        "vascular hilar enlargement": {
+          "positive_images": 20,
+          "positive_patients": 19
+        },
+        "vertebral degenerative changes": {
+          "positive_images": 15,
+          "positive_patients": 15
+        }
+      }
+    }
+  },
+  "cache_sha256": {
+    "manifest.json": "9656c5a26602243d99168ca746642e547310983bd1a90a282c151c93d0ae6e23",
+    "images.npy": "295be010e1dfc6692d2c3ae645e8c6f539fb8801f6c8efad63a38664d342ff63",
+    "config.json": "b9074c2c64745a9b5a8e4ab61b245a5f7a9b16e0f162d71521f4602edc530dee"
+  },
+  "best_epoch": 3,
+  "history": [
+    {
+      "epoch": 1,
+      "training_loss": 1.2300883719155022,
+      "training_seconds": 95.53748160001123,
+      "validation": {
+        "images": 413,
+        "threshold": 0.5,
+        "per_label": {
+          "COPD signs": {
+            "positive_images": 48,
+            "negative_images": 365,
+            "prevalence": 0.1162227602905569,
+            "auroc": 0.7656963470319634,
+            "average_precision": 0.38425819984504017,
+            "precision": 0.168,
+            "recall": 0.875,
+            "specificity": 0.4301369863013699,
+            "balanced_accuracy": 0.652568493150685,
+            "f1": 0.28187919463087246,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                157,
+                208
+              ],
+              [
+                6,
+                42
+              ]
+            ]
+          },
+          "air trapping": {
+            "positive_images": 13,
+            "negative_images": 400,
+            "prevalence": 0.031476997578692496,
+            "auroc": 0.6738461538461539,
+            "average_precision": 0.13254812032448407,
+            "precision": 0.04150943396226415,
+            "recall": 0.8461538461538461,
+            "specificity": 0.365,
+            "balanced_accuracy": 0.605576923076923,
+            "f1": 0.07913669064748201,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                146,
+                254
+              ],
+              [
+                2,
+                11
+              ]
+            ]
+          },
+          "aortic atheromatosis": {
+            "positive_images": 13,
+            "negative_images": 400,
+            "prevalence": 0.031476997578692496,
+            "auroc": 0.8125,
+            "average_precision": 0.0955995565857426,
+            "precision": 0.05416666666666667,
+            "recall": 1.0,
+            "specificity": 0.4325,
+            "balanced_accuracy": 0.71625,
+            "f1": 0.10276679841897234,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                173,
+                227
+              ],
+              [
+                0,
+                13
+              ]
+            ]
+          },
+          "aortic elongation": {
+            "positive_images": 26,
+            "negative_images": 387,
+            "prevalence": 0.06295399515738499,
+            "auroc": 0.8106738223017294,
+            "average_precision": 0.16715188636890785,
+            "precision": 0.10121457489878542,
+            "recall": 0.9615384615384616,
+            "specificity": 0.4263565891472868,
+            "balanced_accuracy": 0.6939475253428742,
+            "f1": 0.18315018315018314,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                165,
+                222
+              ],
+              [
+                1,
+                25
+              ]
+            ]
+          },
+          "apical pleural thickening": {
+            "positive_images": 17,
+            "negative_images": 396,
+            "prevalence": 0.04116222760290557,
+            "auroc": 0.5533273915626857,
+            "average_precision": 0.061100813750412986,
+            "precision": 0.05142857142857143,
+            "recall": 0.5294117647058824,
+            "specificity": 0.5808080808080808,
+            "balanced_accuracy": 0.5551099227569816,
+            "f1": 0.09375,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                230,
+                166
+              ],
+              [
+                8,
+                9
+              ]
+            ]
+          },
+          "callus rib fracture": {
+            "positive_images": 5,
+            "negative_images": 408,
+            "prevalence": 0.012106537530266344,
+            "auroc": 0.9215686274509804,
+            "average_precision": 0.10917731354954605,
+            "precision": 0.01858736059479554,
+            "recall": 1.0,
+            "specificity": 0.35294117647058826,
+            "balanced_accuracy": 0.6764705882352942,
+            "f1": 0.0364963503649635,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                144,
+                264
+              ],
+              [
+                0,
+                5
+              ]
+            ]
+          },
+          "cardiomegaly": {
+            "positive_images": 32,
+            "negative_images": 381,
+            "prevalence": 0.0774818401937046,
+            "auroc": 0.8828740157480315,
+            "average_precision": 0.3917703484766805,
+            "precision": 0.13135593220338984,
+            "recall": 0.96875,
+            "specificity": 0.46194225721784776,
+            "balanced_accuracy": 0.7153461286089239,
+            "f1": 0.23134328358208955,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                176,
+                205
+              ],
+              [
+                1,
+                31
+              ]
+            ]
+          },
+          "chronic changes": {
+            "positive_images": 38,
+            "negative_images": 375,
+            "prevalence": 0.09200968523002422,
+            "auroc": 0.7396491228070174,
+            "average_precision": 0.16984185730912507,
+            "precision": 0.16842105263157894,
+            "recall": 0.8421052631578947,
+            "specificity": 0.5786666666666667,
+            "balanced_accuracy": 0.7103859649122807,
+            "f1": 0.2807017543859649,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                217,
+                158
+              ],
+              [
+                6,
+                32
+              ]
+            ]
+          },
+          "costophrenic angle blunting": {
+            "positive_images": 16,
+            "negative_images": 397,
+            "prevalence": 0.0387409200968523,
+            "auroc": 0.7512594458438288,
+            "average_precision": 0.30759083882405086,
+            "precision": 0.06770833333333333,
+            "recall": 0.8125,
+            "specificity": 0.5491183879093199,
+            "balanced_accuracy": 0.6808091939546599,
+            "f1": 0.125,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                218,
+                179
+              ],
+              [
+                3,
+                13
+              ]
+            ]
+          },
+          "infiltrates": {
+            "positive_images": 18,
+            "negative_images": 395,
+            "prevalence": 0.043583535108958835,
+            "auroc": 0.7282700421940929,
+            "average_precision": 0.09482767651631109,
+            "precision": 0.07692307692307693,
+            "recall": 0.8333333333333334,
+            "specificity": 0.5443037974683544,
+            "balanced_accuracy": 0.6888185654008439,
+            "f1": 0.14084507042253522,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                215,
+                180
+              ],
+              [
+                3,
+                15
+              ]
+            ]
+          },
+          "interstitial pattern": {
+            "positive_images": 22,
+            "negative_images": 391,
+            "prevalence": 0.053268765133171914,
+            "auroc": 0.7493606138107416,
+            "average_precision": 0.1915764065969668,
+            "precision": 0.08256880733944955,
+            "recall": 0.8181818181818182,
+            "specificity": 0.4884910485933504,
+            "balanced_accuracy": 0.6533364333875843,
+            "f1": 0.15,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                191,
+                200
+              ],
+              [
+                4,
+                18
+              ]
+            ]
+          },
+          "kyphosis": {
+            "positive_images": 9,
+            "negative_images": 404,
+            "prevalence": 0.021791767554479417,
+            "auroc": 0.9405940594059405,
+            "average_precision": 0.2253879466885702,
+            "precision": 0.046153846153846156,
+            "recall": 1.0,
+            "specificity": 0.5396039603960396,
+            "balanced_accuracy": 0.7698019801980198,
+            "f1": 0.08823529411764706,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                218,
+                186
+              ],
+              [
+                0,
+                9
+              ]
+            ]
+          },
+          "laminar atelectasis": {
+            "positive_images": 18,
+            "negative_images": 395,
+            "prevalence": 0.043583535108958835,
+            "auroc": 0.6331926863572432,
+            "average_precision": 0.07015870906182087,
+            "precision": 0.05517241379310345,
+            "recall": 0.8888888888888888,
+            "specificity": 0.30632911392405066,
+            "balanced_accuracy": 0.5976090014064698,
+            "f1": 0.1038961038961039,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                121,
+                274
+              ],
+              [
+                2,
+                16
+              ]
+            ]
+          },
+          "pleural effusion": {
+            "positive_images": 15,
+            "negative_images": 398,
+            "prevalence": 0.03631961259079903,
+            "auroc": 0.9331658291457287,
+            "average_precision": 0.5221736454291604,
+            "precision": 0.11864406779661017,
+            "recall": 0.9333333333333333,
+            "specificity": 0.7386934673366834,
+            "balanced_accuracy": 0.8360134003350084,
+            "f1": 0.21052631578947367,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                294,
+                104
+              ],
+              [
+                1,
+                14
+              ]
+            ]
+          },
+          "pneumonia": {
+            "positive_images": 21,
+            "negative_images": 392,
+            "prevalence": 0.05084745762711865,
+            "auroc": 0.7755102040816326,
+            "average_precision": 0.2864223473409592,
+            "precision": 0.12698412698412698,
+            "recall": 0.7619047619047619,
+            "specificity": 0.7193877551020408,
+            "balanced_accuracy": 0.7406462585034013,
+            "f1": 0.21768707482993196,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                282,
+                110
+              ],
+              [
+                5,
+                16
+              ]
+            ]
+          },
+          "pseudonodule": {
+            "positive_images": 13,
+            "negative_images": 400,
+            "prevalence": 0.031476997578692496,
+            "auroc": 0.7025,
+            "average_precision": 0.09136872005203206,
+            "precision": 0.04065040650406504,
+            "recall": 0.7692307692307693,
+            "specificity": 0.41,
+            "balanced_accuracy": 0.5896153846153847,
+            "f1": 0.07722007722007722,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                164,
+                236
+              ],
+              [
+                3,
+                10
+              ]
+            ]
+          },
+          "scoliosis": {
+            "positive_images": 27,
+            "negative_images": 386,
+            "prevalence": 0.06537530266343826,
+            "auroc": 0.6126463250815583,
+            "average_precision": 0.1032115518119871,
+            "precision": 0.08374384236453201,
+            "recall": 0.6296296296296297,
+            "specificity": 0.5181347150259067,
+            "balanced_accuracy": 0.5738821723277682,
+            "f1": 0.14782608695652175,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                200,
+                186
+              ],
+              [
+                10,
+                17
+              ]
+            ]
+          },
+          "vascular hilar enlargement": {
+            "positive_images": 11,
+            "negative_images": 402,
+            "prevalence": 0.026634382566585957,
+            "auroc": 0.7605156037991858,
+            "average_precision": 0.06301172563299953,
+            "precision": 0.05069124423963134,
+            "recall": 1.0,
+            "specificity": 0.48756218905472637,
+            "balanced_accuracy": 0.7437810945273632,
+            "f1": 0.09649122807017543,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                196,
+                206
+              ],
+              [
+                0,
+                11
+              ]
+            ]
+          },
+          "vertebral degenerative changes": {
+            "positive_images": 22,
+            "negative_images": 391,
+            "prevalence": 0.053268765133171914,
+            "auroc": 0.6619390839339688,
+            "average_precision": 0.1593317601160227,
+            "precision": 0.06806282722513089,
+            "recall": 0.5909090909090909,
+            "specificity": 0.5447570332480819,
+            "balanced_accuracy": 0.5678330620785864,
+            "f1": 0.12206572769953052,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                213,
+                178
+              ],
+              [
+                9,
+                13
+              ]
+            ]
+          }
+        },
+        "valid_ranking_labels": 19,
+        "total_labels": 19,
+        "macro_auroc": 0.7583731249685518,
+        "macro_average_precision": 0.1908689170674116,
+        "micro_auroc": 0.7444615659475635,
+        "micro_average_precision": 0.14924334388477534,
+        "macro_f1": 0.1457377491675013,
+        "micro_f1": 0.14391724758264,
+        "hamming_loss": 0.4851535618707786,
+        "exact_match_accuracy": 0.012106537530266344
+      }
+    },
+    {
+      "epoch": 2,
+      "training_loss": 0.8346676947476269,
+      "training_seconds": 140.30366689999937,
+      "validation": {
+        "images": 413,
+        "threshold": 0.5,
+        "per_label": {
+          "COPD signs": {
+            "positive_images": 48,
+            "negative_images": 365,
+            "prevalence": 0.1162227602905569,
+            "auroc": 0.7761986301369863,
+            "average_precision": 0.40527126121927765,
+            "precision": 0.24161073825503357,
+            "recall": 0.75,
+            "specificity": 0.6904109589041096,
+            "balanced_accuracy": 0.7202054794520548,
+            "f1": 0.36548223350253806,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                252,
+                113
+              ],
+              [
+                12,
+                36
+              ]
+            ]
+          },
+          "air trapping": {
+            "positive_images": 13,
+            "negative_images": 400,
+            "prevalence": 0.031476997578692496,
+            "auroc": 0.6738461538461539,
+            "average_precision": 0.1306451435022469,
+            "precision": 0.045454545454545456,
+            "recall": 0.3076923076923077,
+            "specificity": 0.79,
+            "balanced_accuracy": 0.5488461538461539,
+            "f1": 0.07920792079207921,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                316,
+                84
+              ],
+              [
+                9,
+                4
+              ]
+            ]
+          },
+          "aortic atheromatosis": {
+            "positive_images": 13,
+            "negative_images": 400,
+            "prevalence": 0.031476997578692496,
+            "auroc": 0.8528846153846154,
+            "average_precision": 0.12437569716282601,
+            "precision": 0.11267605633802817,
+            "recall": 0.6153846153846154,
+            "specificity": 0.8425,
+            "balanced_accuracy": 0.7289423076923077,
+            "f1": 0.19047619047619047,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                337,
+                63
+              ],
+              [
+                5,
+                8
+              ]
+            ]
+          },
+          "aortic elongation": {
+            "positive_images": 26,
+            "negative_images": 387,
+            "prevalence": 0.06295399515738499,
+            "auroc": 0.8483402902007553,
+            "average_precision": 0.22226509811474718,
+            "precision": 0.18803418803418803,
+            "recall": 0.8461538461538461,
+            "specificity": 0.7545219638242894,
+            "balanced_accuracy": 0.8003379049890678,
+            "f1": 0.3076923076923077,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                292,
+                95
+              ],
+              [
+                4,
+                22
+              ]
+            ]
+          },
+          "apical pleural thickening": {
+            "positive_images": 17,
+            "negative_images": 396,
+            "prevalence": 0.04116222760290557,
+            "auroc": 0.6246286393345216,
+            "average_precision": 0.07184733977037247,
+            "precision": 0.046153846153846156,
+            "recall": 0.17647058823529413,
+            "specificity": 0.8434343434343434,
+            "balanced_accuracy": 0.5099524658348188,
+            "f1": 0.07317073170731707,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                334,
+                62
+              ],
+              [
+                14,
+                3
+              ]
+            ]
+          },
+          "callus rib fracture": {
+            "positive_images": 5,
+            "negative_images": 408,
+            "prevalence": 0.012106537530266344,
+            "auroc": 0.9382352941176471,
+            "average_precision": 0.33764627889548626,
+            "precision": 0.052083333333333336,
+            "recall": 1.0,
+            "specificity": 0.7769607843137255,
+            "balanced_accuracy": 0.8884803921568627,
+            "f1": 0.09900990099009901,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                317,
+                91
+              ],
+              [
+                0,
+                5
+              ]
+            ]
+          },
+          "cardiomegaly": {
+            "positive_images": 32,
+            "negative_images": 381,
+            "prevalence": 0.0774818401937046,
+            "auroc": 0.860974409448819,
+            "average_precision": 0.39911963735906997,
+            "precision": 0.22330097087378642,
+            "recall": 0.71875,
+            "specificity": 0.7900262467191601,
+            "balanced_accuracy": 0.75438812335958,
+            "f1": 0.34074074074074073,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                301,
+                80
+              ],
+              [
+                9,
+                23
+              ]
+            ]
+          },
+          "chronic changes": {
+            "positive_images": 38,
+            "negative_images": 375,
+            "prevalence": 0.09200968523002422,
+            "auroc": 0.7603508771929824,
+            "average_precision": 0.1969573577687183,
+            "precision": 0.18497109826589594,
+            "recall": 0.8421052631578947,
+            "specificity": 0.624,
+            "balanced_accuracy": 0.7330526315789474,
+            "f1": 0.3033175355450237,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                234,
+                141
+              ],
+              [
+                6,
+                32
+              ]
+            ]
+          },
+          "costophrenic angle blunting": {
+            "positive_images": 16,
+            "negative_images": 397,
+            "prevalence": 0.0387409200968523,
+            "auroc": 0.7685768261964736,
+            "average_precision": 0.21070346684146796,
+            "precision": 0.1111111111111111,
+            "recall": 0.375,
+            "specificity": 0.8790931989924433,
+            "balanced_accuracy": 0.6270465994962217,
+            "f1": 0.17142857142857143,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                349,
+                48
+              ],
+              [
+                10,
+                6
+              ]
+            ]
+          },
+          "infiltrates": {
+            "positive_images": 18,
+            "negative_images": 395,
+            "prevalence": 0.043583535108958835,
+            "auroc": 0.5848101265822785,
+            "average_precision": 0.06514452954999138,
+            "precision": 0.06315789473684211,
+            "recall": 0.3333333333333333,
+            "specificity": 0.7746835443037975,
+            "balanced_accuracy": 0.5540084388185654,
+            "f1": 0.10619469026548672,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                306,
+                89
+              ],
+              [
+                12,
+                6
+              ]
+            ]
+          },
+          "interstitial pattern": {
+            "positive_images": 22,
+            "negative_images": 391,
+            "prevalence": 0.053268765133171914,
+            "auroc": 0.7657521506626367,
+            "average_precision": 0.3762054708471648,
+            "precision": 0.16216216216216217,
+            "recall": 0.5454545454545454,
+            "specificity": 0.8414322250639387,
+            "balanced_accuracy": 0.6934433852592421,
+            "f1": 0.25,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                329,
+                62
+              ],
+              [
+                10,
+                12
+              ]
+            ]
+          },
+          "kyphosis": {
+            "positive_images": 9,
+            "negative_images": 404,
+            "prevalence": 0.021791767554479417,
+            "auroc": 0.8921892189218921,
+            "average_precision": 0.1966658751468878,
+            "precision": 0.0875,
+            "recall": 0.7777777777777778,
+            "specificity": 0.8193069306930693,
+            "balanced_accuracy": 0.7985423542354235,
+            "f1": 0.15730337078651685,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                331,
+                73
+              ],
+              [
+                2,
+                7
+              ]
+            ]
+          },
+          "laminar atelectasis": {
+            "positive_images": 18,
+            "negative_images": 395,
+            "prevalence": 0.043583535108958835,
+            "auroc": 0.6319268635724332,
+            "average_precision": 0.08206108719741896,
+            "precision": 0.08823529411764706,
+            "recall": 0.16666666666666666,
+            "specificity": 0.9215189873417722,
+            "balanced_accuracy": 0.5440928270042195,
+            "f1": 0.11538461538461539,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                364,
+                31
+              ],
+              [
+                15,
+                3
+              ]
+            ]
+          },
+          "pleural effusion": {
+            "positive_images": 15,
+            "negative_images": 398,
+            "prevalence": 0.03631961259079903,
+            "auroc": 0.947571189279732,
+            "average_precision": 0.5402764509145601,
+            "precision": 0.3,
+            "recall": 0.8,
+            "specificity": 0.9296482412060302,
+            "balanced_accuracy": 0.8648241206030152,
+            "f1": 0.43636363636363634,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                370,
+                28
+              ],
+              [
+                3,
+                12
+              ]
+            ]
+          },
+          "pneumonia": {
+            "positive_images": 21,
+            "negative_images": 392,
+            "prevalence": 0.05084745762711865,
+            "auroc": 0.787536443148688,
+            "average_precision": 0.28503334634788097,
+            "precision": 0.16901408450704225,
+            "recall": 0.5714285714285714,
+            "specificity": 0.8494897959183674,
+            "balanced_accuracy": 0.7104591836734694,
+            "f1": 0.2608695652173913,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                333,
+                59
+              ],
+              [
+                9,
+                12
+              ]
+            ]
+          },
+          "pseudonodule": {
+            "positive_images": 13,
+            "negative_images": 400,
+            "prevalence": 0.031476997578692496,
+            "auroc": 0.5688461538461539,
+            "average_precision": 0.03940610186474916,
+            "precision": 0.02962962962962963,
+            "recall": 0.3076923076923077,
+            "specificity": 0.6725,
+            "balanced_accuracy": 0.49009615384615385,
+            "f1": 0.05405405405405406,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                269,
+                131
+              ],
+              [
+                9,
+                4
+              ]
+            ]
+          },
+          "scoliosis": {
+            "positive_images": 27,
+            "negative_images": 386,
+            "prevalence": 0.06537530266343826,
+            "auroc": 0.7486087123392823,
+            "average_precision": 0.19150016785911533,
+            "precision": 0.1574074074074074,
+            "recall": 0.6296296296296297,
+            "specificity": 0.7642487046632125,
+            "balanced_accuracy": 0.6969391671464211,
+            "f1": 0.2518518518518518,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                295,
+                91
+              ],
+              [
+                10,
+                17
+              ]
+            ]
+          },
+          "vascular hilar enlargement": {
+            "positive_images": 11,
+            "negative_images": 402,
+            "prevalence": 0.026634382566585957,
+            "auroc": 0.70239710538218,
+            "average_precision": 0.13487486545877567,
+            "precision": 0.06306306306306306,
+            "recall": 0.6363636363636364,
+            "specificity": 0.7412935323383084,
+            "balanced_accuracy": 0.6888285843509724,
+            "f1": 0.11475409836065574,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                298,
+                104
+              ],
+              [
+                4,
+                7
+              ]
+            ]
+          },
+          "vertebral degenerative changes": {
+            "positive_images": 22,
+            "negative_images": 391,
+            "prevalence": 0.053268765133171914,
+            "auroc": 0.6801906533364334,
+            "average_precision": 0.09701186781969101,
+            "precision": 0.10588235294117647,
+            "recall": 0.4090909090909091,
+            "specificity": 0.8056265984654731,
+            "balanced_accuracy": 0.6073587537781912,
+            "f1": 0.16822429906542055,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                315,
+                76
+              ],
+              [
+                13,
+                9
+              ]
+            ]
+          }
+        },
+        "valid_ranking_labels": 19,
+        "total_labels": 19,
+        "macro_auroc": 0.7586244396279297,
+        "macro_average_precision": 0.21615847598107618,
+        "micro_auroc": 0.7742383257403189,
+        "micro_average_precision": 0.18637400607186108,
+        "macro_f1": 0.20239612180128927,
+        "micro_f1": 0.21378340365682139,
+        "hamming_loss": 0.21371224671849115,
+        "exact_match_accuracy": 0.14769975786924938
+      }
+    },
+    {
+      "epoch": 3,
+      "training_loss": 0.546708953702772,
+      "training_seconds": 139.98692799999844,
+      "validation": {
+        "images": 413,
+        "threshold": 0.5,
+        "per_label": {
+          "COPD signs": {
+            "positive_images": 48,
+            "negative_images": 365,
+            "prevalence": 0.1162227602905569,
+            "auroc": 0.7712899543378995,
+            "average_precision": 0.40213769955385326,
+            "precision": 0.22556390977443608,
+            "recall": 0.625,
+            "specificity": 0.7178082191780822,
+            "balanced_accuracy": 0.6714041095890411,
+            "f1": 0.3314917127071823,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                262,
+                103
+              ],
+              [
+                18,
+                30
+              ]
+            ]
+          },
+          "air trapping": {
+            "positive_images": 13,
+            "negative_images": 400,
+            "prevalence": 0.031476997578692496,
+            "auroc": 0.6732692307692308,
+            "average_precision": 0.1253466109347316,
+            "precision": 0.0449438202247191,
+            "recall": 0.3076923076923077,
+            "specificity": 0.7875,
+            "balanced_accuracy": 0.5475961538461538,
+            "f1": 0.0784313725490196,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                315,
+                85
+              ],
+              [
+                9,
+                4
+              ]
+            ]
+          },
+          "aortic atheromatosis": {
+            "positive_images": 13,
+            "negative_images": 400,
+            "prevalence": 0.031476997578692496,
+            "auroc": 0.8411538461538461,
+            "average_precision": 0.16277829354208145,
+            "precision": 0.10588235294117647,
+            "recall": 0.6923076923076923,
+            "specificity": 0.81,
+            "balanced_accuracy": 0.7511538461538462,
+            "f1": 0.1836734693877551,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                324,
+                76
+              ],
+              [
+                4,
+                9
+              ]
+            ]
+          },
+          "aortic elongation": {
+            "positive_images": 26,
+            "negative_images": 387,
+            "prevalence": 0.06295399515738499,
+            "auroc": 0.8505267342476645,
+            "average_precision": 0.22134115990315525,
+            "precision": 0.171875,
+            "recall": 0.8461538461538461,
+            "specificity": 0.7260981912144703,
+            "balanced_accuracy": 0.7861260186841582,
+            "f1": 0.2857142857142857,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                281,
+                106
+              ],
+              [
+                4,
+                22
+              ]
+            ]
+          },
+          "apical pleural thickening": {
+            "positive_images": 17,
+            "negative_images": 396,
+            "prevalence": 0.04116222760290557,
+            "auroc": 0.6795900178253119,
+            "average_precision": 0.07381540631825165,
+            "precision": 0.07547169811320754,
+            "recall": 0.47058823529411764,
+            "specificity": 0.7525252525252525,
+            "balanced_accuracy": 0.6115567439096851,
+            "f1": 0.13008130081300814,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                298,
+                98
+              ],
+              [
+                9,
+                8
+              ]
+            ]
+          },
+          "callus rib fracture": {
+            "positive_images": 5,
+            "negative_images": 408,
+            "prevalence": 0.012106537530266344,
+            "auroc": 0.9235294117647059,
+            "average_precision": 0.21562946538556296,
+            "precision": 0.058823529411764705,
+            "recall": 0.6,
+            "specificity": 0.8823529411764706,
+            "balanced_accuracy": 0.7411764705882353,
+            "f1": 0.10714285714285714,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                360,
+                48
+              ],
+              [
+                2,
+                3
+              ]
+            ]
+          },
+          "cardiomegaly": {
+            "positive_images": 32,
+            "negative_images": 381,
+            "prevalence": 0.0774818401937046,
+            "auroc": 0.8739337270341208,
+            "average_precision": 0.43003478897845276,
+            "precision": 0.2524271844660194,
+            "recall": 0.8125,
+            "specificity": 0.7979002624671916,
+            "balanced_accuracy": 0.8052001312335958,
+            "f1": 0.3851851851851852,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                304,
+                77
+              ],
+              [
+                6,
+                26
+              ]
+            ]
+          },
+          "chronic changes": {
+            "positive_images": 38,
+            "negative_images": 375,
+            "prevalence": 0.09200968523002422,
+            "auroc": 0.7571228070175439,
+            "average_precision": 0.1975089888665769,
+            "precision": 0.20353982300884957,
+            "recall": 0.6052631578947368,
+            "specificity": 0.76,
+            "balanced_accuracy": 0.6826315789473685,
+            "f1": 0.304635761589404,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                285,
+                90
+              ],
+              [
+                15,
+                23
+              ]
+            ]
+          },
+          "costophrenic angle blunting": {
+            "positive_images": 16,
+            "negative_images": 397,
+            "prevalence": 0.0387409200968523,
+            "auroc": 0.7792821158690176,
+            "average_precision": 0.24171814017757498,
+            "precision": 0.1111111111111111,
+            "recall": 0.625,
+            "specificity": 0.7984886649874056,
+            "balanced_accuracy": 0.7117443324937027,
+            "f1": 0.18867924528301888,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                317,
+                80
+              ],
+              [
+                6,
+                10
+              ]
+            ]
+          },
+          "infiltrates": {
+            "positive_images": 18,
+            "negative_images": 395,
+            "prevalence": 0.043583535108958835,
+            "auroc": 0.6531645569620254,
+            "average_precision": 0.06958181633974705,
+            "precision": 0.07142857142857142,
+            "recall": 0.2222222222222222,
+            "specificity": 0.8683544303797468,
+            "balanced_accuracy": 0.5452883263009844,
+            "f1": 0.10810810810810811,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                343,
+                52
+              ],
+              [
+                14,
+                4
+              ]
+            ]
+          },
+          "interstitial pattern": {
+            "positive_images": 22,
+            "negative_images": 391,
+            "prevalence": 0.053268765133171914,
+            "auroc": 0.8050453382934201,
+            "average_precision": 0.3019087868186484,
+            "precision": 0.1935483870967742,
+            "recall": 0.5454545454545454,
+            "specificity": 0.8721227621483376,
+            "balanced_accuracy": 0.7087886538014415,
+            "f1": 0.2857142857142857,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                341,
+                50
+              ],
+              [
+                10,
+                12
+              ]
+            ]
+          },
+          "kyphosis": {
+            "positive_images": 9,
+            "negative_images": 404,
+            "prevalence": 0.021791767554479417,
+            "auroc": 0.9026402640264026,
+            "average_precision": 0.3419255255341482,
+            "precision": 0.16666666666666666,
+            "recall": 0.5555555555555556,
+            "specificity": 0.9381188118811881,
+            "balanced_accuracy": 0.7468371837183718,
+            "f1": 0.2564102564102564,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                379,
+                25
+              ],
+              [
+                4,
+                5
+              ]
+            ]
+          },
+          "laminar atelectasis": {
+            "positive_images": 18,
+            "negative_images": 395,
+            "prevalence": 0.043583535108958835,
+            "auroc": 0.5496483825597749,
+            "average_precision": 0.06424287570961791,
+            "precision": 0.05714285714285714,
+            "recall": 0.2222222222222222,
+            "specificity": 0.8329113924050633,
+            "balanced_accuracy": 0.5275668073136428,
+            "f1": 0.09090909090909091,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                329,
+                66
+              ],
+              [
+                14,
+                4
+              ]
+            ]
+          },
+          "pleural effusion": {
+            "positive_images": 15,
+            "negative_images": 398,
+            "prevalence": 0.03631961259079903,
+            "auroc": 0.9556113902847572,
+            "average_precision": 0.5761092153460574,
+            "precision": 0.3333333333333333,
+            "recall": 0.8,
+            "specificity": 0.9396984924623115,
+            "balanced_accuracy": 0.8698492462311558,
+            "f1": 0.47058823529411764,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                374,
+                24
+              ],
+              [
+                3,
+                12
+              ]
+            ]
+          },
+          "pneumonia": {
+            "positive_images": 21,
+            "negative_images": 392,
+            "prevalence": 0.05084745762711865,
+            "auroc": 0.7834062196307093,
+            "average_precision": 0.3421068678385207,
+            "precision": 0.19607843137254902,
+            "recall": 0.47619047619047616,
+            "specificity": 0.8954081632653061,
+            "balanced_accuracy": 0.6857993197278911,
+            "f1": 0.2777777777777778,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                351,
+                41
+              ],
+              [
+                11,
+                10
+              ]
+            ]
+          },
+          "pseudonodule": {
+            "positive_images": 13,
+            "negative_images": 400,
+            "prevalence": 0.031476997578692496,
+            "auroc": 0.5746153846153846,
+            "average_precision": 0.048082249279527915,
+            "precision": 0.10344827586206896,
+            "recall": 0.23076923076923078,
+            "specificity": 0.935,
+            "balanced_accuracy": 0.5828846153846154,
+            "f1": 0.14285714285714285,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                374,
+                26
+              ],
+              [
+                10,
+                3
+              ]
+            ]
+          },
+          "scoliosis": {
+            "positive_images": 27,
+            "negative_images": 386,
+            "prevalence": 0.06537530266343826,
+            "auroc": 0.7152178084820571,
+            "average_precision": 0.15526792297402772,
+            "precision": 0.12396694214876033,
+            "recall": 0.5555555555555556,
+            "specificity": 0.7253886010362695,
+            "balanced_accuracy": 0.6404720782959126,
+            "f1": 0.20270270270270271,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                280,
+                106
+              ],
+              [
+                12,
+                15
+              ]
+            ]
+          },
+          "vascular hilar enlargement": {
+            "positive_images": 11,
+            "negative_images": 402,
+            "prevalence": 0.026634382566585957,
+            "auroc": 0.7331524197195839,
+            "average_precision": 0.07423247786839612,
+            "precision": 0.0449438202247191,
+            "recall": 0.36363636363636365,
+            "specificity": 0.7885572139303483,
+            "balanced_accuracy": 0.5760967887833559,
+            "f1": 0.08,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                317,
+                85
+              ],
+              [
+                7,
+                4
+              ]
+            ]
+          },
+          "vertebral degenerative changes": {
+            "positive_images": 22,
+            "negative_images": 391,
+            "prevalence": 0.053268765133171914,
+            "auroc": 0.7388979307137875,
+            "average_precision": 0.1509363050473365,
+            "precision": 0.13402061855670103,
+            "recall": 0.5909090909090909,
+            "specificity": 0.7851662404092071,
+            "balanced_accuracy": 0.688037665659149,
+            "f1": 0.2184873949579832,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                307,
+                84
+              ],
+              [
+                9,
+                13
+              ]
+            ]
+          }
+        },
+        "valid_ranking_labels": 19,
+        "total_labels": 19,
+        "macro_auroc": 0.7663735547530128,
+        "macro_average_precision": 0.22077392612717206,
+        "micro_auroc": 0.7823973268122739,
+        "micro_average_precision": 0.20645106058532942,
+        "macro_f1": 0.21729422026858847,
+        "micro_f1": 0.22568902756110246,
+        "hamming_loss": 0.18975404613227986,
+        "exact_match_accuracy": 0.18886198547215496
+      }
+    },
+    {
+      "epoch": 4,
+      "training_loss": 0.3538602263361842,
+      "training_seconds": 139.034868799994,
+      "validation": {
+        "images": 413,
+        "threshold": 0.5,
+        "per_label": {
+          "COPD signs": {
+            "positive_images": 48,
+            "negative_images": 365,
+            "prevalence": 0.1162227602905569,
+            "auroc": 0.7727739726027397,
+            "average_precision": 0.39610118974746095,
+            "precision": 0.2871287128712871,
+            "recall": 0.6041666666666666,
+            "specificity": 0.8027397260273973,
+            "balanced_accuracy": 0.703453196347032,
+            "f1": 0.38926174496644295,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                293,
+                72
+              ],
+              [
+                19,
+                29
+              ]
+            ]
+          },
+          "air trapping": {
+            "positive_images": 13,
+            "negative_images": 400,
+            "prevalence": 0.031476997578692496,
+            "auroc": 0.7238461538461538,
+            "average_precision": 0.16230860681518175,
+            "precision": 0.07228915662650602,
+            "recall": 0.46153846153846156,
+            "specificity": 0.8075,
+            "balanced_accuracy": 0.6345192307692308,
+            "f1": 0.125,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                323,
+                77
+              ],
+              [
+                7,
+                6
+              ]
+            ]
+          },
+          "aortic atheromatosis": {
+            "positive_images": 13,
+            "negative_images": 400,
+            "prevalence": 0.031476997578692496,
+            "auroc": 0.7882692307692308,
+            "average_precision": 0.10877609618878997,
+            "precision": 0.0761904761904762,
+            "recall": 0.6153846153846154,
+            "specificity": 0.7575,
+            "balanced_accuracy": 0.6864423076923076,
+            "f1": 0.13559322033898305,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                303,
+                97
+              ],
+              [
+                5,
+                8
+              ]
+            ]
+          },
+          "aortic elongation": {
+            "positive_images": 26,
+            "negative_images": 387,
+            "prevalence": 0.06295399515738499,
+            "auroc": 0.8527131782945737,
+            "average_precision": 0.2506957935865365,
+            "precision": 0.20202020202020202,
+            "recall": 0.7692307692307693,
+            "specificity": 0.7958656330749354,
+            "balanced_accuracy": 0.7825482011528524,
+            "f1": 0.32,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                308,
+                79
+              ],
+              [
+                6,
+                20
+              ]
+            ]
+          },
+          "apical pleural thickening": {
+            "positive_images": 17,
+            "negative_images": 396,
+            "prevalence": 0.04116222760290557,
+            "auroc": 0.6510695187165776,
+            "average_precision": 0.06755180869701508,
+            "precision": 0.07142857142857142,
+            "recall": 0.11764705882352941,
+            "specificity": 0.9343434343434344,
+            "balanced_accuracy": 0.5259952465834818,
+            "f1": 0.08888888888888889,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                370,
+                26
+              ],
+              [
+                15,
+                2
+              ]
+            ]
+          },
+          "callus rib fracture": {
+            "positive_images": 5,
+            "negative_images": 408,
+            "prevalence": 0.012106537530266344,
+            "auroc": 0.8362745098039216,
+            "average_precision": 0.06620512473293011,
+            "precision": 0.0625,
+            "recall": 0.2,
+            "specificity": 0.9632352941176471,
+            "balanced_accuracy": 0.5816176470588236,
+            "f1": 0.09523809523809523,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                393,
+                15
+              ],
+              [
+                4,
+                1
+              ]
+            ]
+          },
+          "cardiomegaly": {
+            "positive_images": 32,
+            "negative_images": 381,
+            "prevalence": 0.0774818401937046,
+            "auroc": 0.8482611548556431,
+            "average_precision": 0.4039224712299551,
+            "precision": 0.23711340206185566,
+            "recall": 0.71875,
+            "specificity": 0.8057742782152231,
+            "balanced_accuracy": 0.7622621391076115,
+            "f1": 0.35658914728682173,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                307,
+                74
+              ],
+              [
+                9,
+                23
+              ]
+            ]
+          },
+          "chronic changes": {
+            "positive_images": 38,
+            "negative_images": 375,
+            "prevalence": 0.09200968523002422,
+            "auroc": 0.6784561403508772,
+            "average_precision": 0.17834441261144904,
+            "precision": 0.1566265060240964,
+            "recall": 0.34210526315789475,
+            "specificity": 0.8133333333333334,
+            "balanced_accuracy": 0.5777192982456141,
+            "f1": 0.21487603305785125,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                305,
+                70
+              ],
+              [
+                25,
+                13
+              ]
+            ]
+          },
+          "costophrenic angle blunting": {
+            "positive_images": 16,
+            "negative_images": 397,
+            "prevalence": 0.0387409200968523,
+            "auroc": 0.7616498740554155,
+            "average_precision": 0.19961343250296285,
+            "precision": 0.16666666666666666,
+            "recall": 0.4375,
+            "specificity": 0.9118387909319899,
+            "balanced_accuracy": 0.674669395465995,
+            "f1": 0.2413793103448276,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                362,
+                35
+              ],
+              [
+                9,
+                7
+              ]
+            ]
+          },
+          "infiltrates": {
+            "positive_images": 18,
+            "negative_images": 395,
+            "prevalence": 0.043583535108958835,
+            "auroc": 0.6842475386779184,
+            "average_precision": 0.07941726900449578,
+            "precision": 0.05555555555555555,
+            "recall": 0.05555555555555555,
+            "specificity": 0.9569620253164557,
+            "balanced_accuracy": 0.5062587904360056,
+            "f1": 0.05555555555555555,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                378,
+                17
+              ],
+              [
+                17,
+                1
+              ]
+            ]
+          },
+          "interstitial pattern": {
+            "positive_images": 22,
+            "negative_images": 391,
+            "prevalence": 0.053268765133171914,
+            "auroc": 0.7540106951871657,
+            "average_precision": 0.3198498643339411,
+            "precision": 0.24,
+            "recall": 0.2727272727272727,
+            "specificity": 0.9514066496163683,
+            "balanced_accuracy": 0.6120669611718206,
+            "f1": 0.2553191489361702,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                372,
+                19
+              ],
+              [
+                16,
+                6
+              ]
+            ]
+          },
+          "kyphosis": {
+            "positive_images": 9,
+            "negative_images": 404,
+            "prevalence": 0.021791767554479417,
+            "auroc": 0.8451595159515952,
+            "average_precision": 0.2067012604379729,
+            "precision": 0.15151515151515152,
+            "recall": 0.5555555555555556,
+            "specificity": 0.9306930693069307,
+            "balanced_accuracy": 0.7431243124312432,
+            "f1": 0.23809523809523808,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                376,
+                28
+              ],
+              [
+                4,
+                5
+              ]
+            ]
+          },
+          "laminar atelectasis": {
+            "positive_images": 18,
+            "negative_images": 395,
+            "prevalence": 0.043583535108958835,
+            "auroc": 0.5872011251758087,
+            "average_precision": 0.06790106547535103,
+            "precision": 0.043478260869565216,
+            "recall": 0.05555555555555555,
+            "specificity": 0.9443037974683545,
+            "balanced_accuracy": 0.499929676511955,
+            "f1": 0.04878048780487805,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                373,
+                22
+              ],
+              [
+                17,
+                1
+              ]
+            ]
+          },
+          "pleural effusion": {
+            "positive_images": 15,
+            "negative_images": 398,
+            "prevalence": 0.03631961259079903,
+            "auroc": 0.9534338358458961,
+            "average_precision": 0.5988370983492157,
+            "precision": 0.5,
+            "recall": 0.6666666666666666,
+            "specificity": 0.9748743718592965,
+            "balanced_accuracy": 0.8207705192629815,
+            "f1": 0.5714285714285714,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                388,
+                10
+              ],
+              [
+                5,
+                10
+              ]
+            ]
+          },
+          "pneumonia": {
+            "positive_images": 21,
+            "negative_images": 392,
+            "prevalence": 0.05084745762711865,
+            "auroc": 0.7282555879494654,
+            "average_precision": 0.31808988624850787,
+            "precision": 0.3448275862068966,
+            "recall": 0.47619047619047616,
+            "specificity": 0.951530612244898,
+            "balanced_accuracy": 0.7138605442176871,
+            "f1": 0.4,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                373,
+                19
+              ],
+              [
+                11,
+                10
+              ]
+            ]
+          },
+          "pseudonodule": {
+            "positive_images": 13,
+            "negative_images": 400,
+            "prevalence": 0.031476997578692496,
+            "auroc": 0.6711538461538461,
+            "average_precision": 0.06999969674822826,
+            "precision": 0.043478260869565216,
+            "recall": 0.07692307692307693,
+            "specificity": 0.945,
+            "balanced_accuracy": 0.5109615384615385,
+            "f1": 0.05555555555555555,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                378,
+                22
+              ],
+              [
+                12,
+                1
+              ]
+            ]
+          },
+          "scoliosis": {
+            "positive_images": 27,
+            "negative_images": 386,
+            "prevalence": 0.06537530266343826,
+            "auroc": 0.7362310497025523,
+            "average_precision": 0.19864156264906788,
+            "precision": 0.14049586776859505,
+            "recall": 0.6296296296296297,
+            "specificity": 0.7305699481865285,
+            "balanced_accuracy": 0.6800997889080791,
+            "f1": 0.22972972972972974,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                282,
+                104
+              ],
+              [
+                10,
+                17
+              ]
+            ]
+          },
+          "vascular hilar enlargement": {
+            "positive_images": 11,
+            "negative_images": 402,
+            "prevalence": 0.026634382566585957,
+            "auroc": 0.6924468566259611,
+            "average_precision": 0.05480205571626842,
+            "precision": 0.05128205128205128,
+            "recall": 0.18181818181818182,
+            "specificity": 0.9079601990049752,
+            "balanced_accuracy": 0.5448891904115785,
+            "f1": 0.08,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                365,
+                37
+              ],
+              [
+                9,
+                2
+              ]
+            ]
+          },
+          "vertebral degenerative changes": {
+            "positive_images": 22,
+            "negative_images": 391,
+            "prevalence": 0.053268765133171914,
+            "auroc": 0.6421762380841665,
+            "average_precision": 0.10795766971647489,
+            "precision": 0.09230769230769231,
+            "recall": 0.2727272727272727,
+            "specificity": 0.8491048593350383,
+            "balanced_accuracy": 0.5609160660311555,
+            "f1": 0.13793103448275862,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                332,
+                59
+              ],
+              [
+                16,
+                6
+              ]
+            ]
+          }
+        },
+        "valid_ranking_labels": 19,
+        "total_labels": 19,
+        "macro_auroc": 0.7477700011920794,
+        "macro_average_precision": 0.20293244025220028,
+        "micro_auroc": 0.760295932154183,
+        "micro_average_precision": 0.18585243166524565,
+        "macro_f1": 0.2125906190373878,
+        "micro_f1": 0.23430962343096234,
+        "hamming_loss": 0.1399260864024468,
+        "exact_match_accuracy": 0.23002421307506055
+      }
+    },
+    {
+      "epoch": 5,
+      "training_loss": 0.2379796803579316,
+      "training_seconds": 136.42411179997725,
+      "validation": {
+        "images": 413,
+        "threshold": 0.5,
+        "per_label": {
+          "COPD signs": {
+            "positive_images": 48,
+            "negative_images": 365,
+            "prevalence": 0.1162227602905569,
+            "auroc": 0.759417808219178,
+            "average_precision": 0.3757392494479474,
+            "precision": 0.3157894736842105,
+            "recall": 0.5,
+            "specificity": 0.8575342465753425,
+            "balanced_accuracy": 0.6787671232876713,
+            "f1": 0.3870967741935484,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                313,
+                52
+              ],
+              [
+                24,
+                24
+              ]
+            ]
+          },
+          "air trapping": {
+            "positive_images": 13,
+            "negative_images": 400,
+            "prevalence": 0.031476997578692496,
+            "auroc": 0.7317307692307693,
+            "average_precision": 0.15570904128320462,
+            "precision": 0.0967741935483871,
+            "recall": 0.23076923076923078,
+            "specificity": 0.93,
+            "balanced_accuracy": 0.5803846153846154,
+            "f1": 0.13636363636363635,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                372,
+                28
+              ],
+              [
+                10,
+                3
+              ]
+            ]
+          },
+          "aortic atheromatosis": {
+            "positive_images": 13,
+            "negative_images": 400,
+            "prevalence": 0.031476997578692496,
+            "auroc": 0.7288461538461539,
+            "average_precision": 0.08937139984650741,
+            "precision": 0.10714285714285714,
+            "recall": 0.23076923076923078,
+            "specificity": 0.9375,
+            "balanced_accuracy": 0.5841346153846154,
+            "f1": 0.14634146341463414,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                375,
+                25
+              ],
+              [
+                10,
+                3
+              ]
+            ]
+          },
+          "aortic elongation": {
+            "positive_images": 26,
+            "negative_images": 387,
+            "prevalence": 0.06295399515738499,
+            "auroc": 0.862850327966607,
+            "average_precision": 0.312956839045562,
+            "precision": 0.21176470588235294,
+            "recall": 0.6923076923076923,
+            "specificity": 0.8268733850129198,
+            "balanced_accuracy": 0.7595905386603061,
+            "f1": 0.32432432432432434,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                320,
+                67
+              ],
+              [
+                8,
+                18
+              ]
+            ]
+          },
+          "apical pleural thickening": {
+            "positive_images": 17,
+            "negative_images": 396,
+            "prevalence": 0.04116222760290557,
+            "auroc": 0.6893939393939394,
+            "average_precision": 0.15749415830531774,
+            "precision": 0.25,
+            "recall": 0.058823529411764705,
+            "specificity": 0.9924242424242424,
+            "balanced_accuracy": 0.5256238859180036,
+            "f1": 0.09523809523809523,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                393,
+                3
+              ],
+              [
+                16,
+                1
+              ]
+            ]
+          },
+          "callus rib fracture": {
+            "positive_images": 5,
+            "negative_images": 408,
+            "prevalence": 0.012106537530266344,
+            "auroc": 0.882843137254902,
+            "average_precision": 0.12276029055690074,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 0.9926470588235294,
+            "balanced_accuracy": 0.4963235294117647,
+            "f1": 0.0,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                405,
+                3
+              ],
+              [
+                5,
+                0
+              ]
+            ]
+          },
+          "cardiomegaly": {
+            "positive_images": 32,
+            "negative_images": 381,
+            "prevalence": 0.0774818401937046,
+            "auroc": 0.8526082677165354,
+            "average_precision": 0.45297970831379175,
+            "precision": 0.35555555555555557,
+            "recall": 0.5,
+            "specificity": 0.9238845144356955,
+            "balanced_accuracy": 0.7119422572178478,
+            "f1": 0.4155844155844156,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                352,
+                29
+              ],
+              [
+                16,
+                16
+              ]
+            ]
+          },
+          "chronic changes": {
+            "positive_images": 38,
+            "negative_images": 375,
+            "prevalence": 0.09200968523002422,
+            "auroc": 0.7107368421052632,
+            "average_precision": 0.21341702465625978,
+            "precision": 0.1951219512195122,
+            "recall": 0.21052631578947367,
+            "specificity": 0.912,
+            "balanced_accuracy": 0.5612631578947369,
+            "f1": 0.20253164556962025,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                342,
+                33
+              ],
+              [
+                30,
+                8
+              ]
+            ]
+          },
+          "costophrenic angle blunting": {
+            "positive_images": 16,
+            "negative_images": 397,
+            "prevalence": 0.0387409200968523,
+            "auroc": 0.7487405541561714,
+            "average_precision": 0.34357211838219764,
+            "precision": 0.4,
+            "recall": 0.375,
+            "specificity": 0.9773299748110831,
+            "balanced_accuracy": 0.6761649874055415,
+            "f1": 0.3870967741935484,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                388,
+                9
+              ],
+              [
+                10,
+                6
+              ]
+            ]
+          },
+          "infiltrates": {
+            "positive_images": 18,
+            "negative_images": 395,
+            "prevalence": 0.043583535108958835,
+            "auroc": 0.6578059071729957,
+            "average_precision": 0.06627198074952637,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 0.9974683544303797,
+            "balanced_accuracy": 0.49873417721518987,
+            "f1": 0.0,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                394,
+                1
+              ],
+              [
+                18,
+                0
+              ]
+            ]
+          },
+          "interstitial pattern": {
+            "positive_images": 22,
+            "negative_images": 391,
+            "prevalence": 0.053268765133171914,
+            "auroc": 0.7399441990234829,
+            "average_precision": 0.3245739730988638,
+            "precision": 0.35714285714285715,
+            "recall": 0.22727272727272727,
+            "specificity": 0.9769820971867008,
+            "balanced_accuracy": 0.602127412229714,
+            "f1": 0.2777777777777778,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                382,
+                9
+              ],
+              [
+                17,
+                5
+              ]
+            ]
+          },
+          "kyphosis": {
+            "positive_images": 9,
+            "negative_images": 404,
+            "prevalence": 0.021791767554479417,
+            "auroc": 0.8072057205720573,
+            "average_precision": 0.1656040500012912,
+            "precision": 0.4,
+            "recall": 0.2222222222222222,
+            "specificity": 0.9925742574257426,
+            "balanced_accuracy": 0.6073982398239823,
+            "f1": 0.2857142857142857,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                401,
+                3
+              ],
+              [
+                7,
+                2
+              ]
+            ]
+          },
+          "laminar atelectasis": {
+            "positive_images": 18,
+            "negative_images": 395,
+            "prevalence": 0.043583535108958835,
+            "auroc": 0.6090014064697609,
+            "average_precision": 0.08695392469447337,
+            "precision": 0.125,
+            "recall": 0.1111111111111111,
+            "specificity": 0.9645569620253165,
+            "balanced_accuracy": 0.5378340365682138,
+            "f1": 0.11764705882352941,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                381,
+                14
+              ],
+              [
+                16,
+                2
+              ]
+            ]
+          },
+          "pleural effusion": {
+            "positive_images": 15,
+            "negative_images": 398,
+            "prevalence": 0.03631961259079903,
+            "auroc": 0.945393634840871,
+            "average_precision": 0.4651216661523897,
+            "precision": 0.4117647058823529,
+            "recall": 0.4666666666666667,
+            "specificity": 0.9748743718592965,
+            "balanced_accuracy": 0.7207705192629816,
+            "f1": 0.4375,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                388,
+                10
+              ],
+              [
+                8,
+                7
+              ]
+            ]
+          },
+          "pneumonia": {
+            "positive_images": 21,
+            "negative_images": 392,
+            "prevalence": 0.05084745762711865,
+            "auroc": 0.7388241010689989,
+            "average_precision": 0.36522791363033263,
+            "precision": 0.4666666666666667,
+            "recall": 0.3333333333333333,
+            "specificity": 0.9795918367346939,
+            "balanced_accuracy": 0.6564625850340136,
+            "f1": 0.3888888888888889,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                384,
+                8
+              ],
+              [
+                14,
+                7
+              ]
+            ]
+          },
+          "pseudonodule": {
+            "positive_images": 13,
+            "negative_images": 400,
+            "prevalence": 0.031476997578692496,
+            "auroc": 0.62,
+            "average_precision": 0.06627904987086636,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 0.9925,
+            "balanced_accuracy": 0.49625,
+            "f1": 0.0,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                397,
+                3
+              ],
+              [
+                13,
+                0
+              ]
+            ]
+          },
+          "scoliosis": {
+            "positive_images": 27,
+            "negative_images": 386,
+            "prevalence": 0.06537530266343826,
+            "auroc": 0.7499520245634235,
+            "average_precision": 0.21613163212281897,
+            "precision": 0.2857142857142857,
+            "recall": 0.2962962962962963,
+            "specificity": 0.9481865284974094,
+            "balanced_accuracy": 0.6222414123968528,
+            "f1": 0.2909090909090909,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                366,
+                20
+              ],
+              [
+                19,
+                8
+              ]
+            ]
+          },
+          "vascular hilar enlargement": {
+            "positive_images": 11,
+            "negative_images": 402,
+            "prevalence": 0.026634382566585957,
+            "auroc": 0.6732247851650837,
+            "average_precision": 0.06026454437327455,
+            "precision": 0.0625,
+            "recall": 0.18181818181818182,
+            "specificity": 0.9253731343283582,
+            "balanced_accuracy": 0.55359565807327,
+            "f1": 0.09302325581395349,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                372,
+                30
+              ],
+              [
+                9,
+                2
+              ]
+            ]
+          },
+          "vertebral degenerative changes": {
+            "positive_images": 22,
+            "negative_images": 391,
+            "prevalence": 0.053268765133171914,
+            "auroc": 0.6951871657754011,
+            "average_precision": 0.12143650952264676,
+            "precision": 0.1,
+            "recall": 0.18181818181818182,
+            "specificity": 0.907928388746803,
+            "balanced_accuracy": 0.5448732852824925,
+            "f1": 0.12903225806451613,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                355,
+                36
+              ],
+              [
+                18,
+                4
+              ]
+            ]
+          }
+        },
+        "valid_ranking_labels": 19,
+        "total_labels": 19,
+        "macro_auroc": 0.7475635128706104,
+        "macro_average_precision": 0.2190455302133775,
+        "micro_auroc": 0.7626247822591451,
+        "micro_average_precision": 0.21214889749966281,
+        "macro_f1": 0.2165826181512561,
+        "micro_f1": 0.2627406568516421,
+        "hamming_loss": 0.08296164139161463,
+        "exact_match_accuracy": 0.39709443099273606
+      }
+    },
+    {
+      "epoch": 6,
+      "training_loss": 0.1657459812434586,
+      "training_seconds": 136.45676410000306,
+      "validation": {
+        "images": 413,
+        "threshold": 0.5,
+        "per_label": {
+          "COPD signs": {
+            "positive_images": 48,
+            "negative_images": 365,
+            "prevalence": 0.1162227602905569,
+            "auroc": 0.7587328767123288,
+            "average_precision": 0.3815288245106227,
+            "precision": 0.3150684931506849,
+            "recall": 0.4791666666666667,
+            "specificity": 0.863013698630137,
+            "balanced_accuracy": 0.6710901826484018,
+            "f1": 0.38016528925619836,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                315,
+                50
+              ],
+              [
+                25,
+                23
+              ]
+            ]
+          },
+          "air trapping": {
+            "positive_images": 13,
+            "negative_images": 400,
+            "prevalence": 0.031476997578692496,
+            "auroc": 0.7144230769230769,
+            "average_precision": 0.15297156333599995,
+            "precision": 0.11428571428571428,
+            "recall": 0.3076923076923077,
+            "specificity": 0.9225,
+            "balanced_accuracy": 0.6150961538461539,
+            "f1": 0.16666666666666666,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                369,
+                31
+              ],
+              [
+                9,
+                4
+              ]
+            ]
+          },
+          "aortic atheromatosis": {
+            "positive_images": 13,
+            "negative_images": 400,
+            "prevalence": 0.031476997578692496,
+            "auroc": 0.7757692307692308,
+            "average_precision": 0.09817451519150075,
+            "precision": 0.08333333333333333,
+            "recall": 0.15384615384615385,
+            "specificity": 0.945,
+            "balanced_accuracy": 0.5494230769230769,
+            "f1": 0.10810810810810811,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                378,
+                22
+              ],
+              [
+                11,
+                2
+              ]
+            ]
+          },
+          "aortic elongation": {
+            "positive_images": 26,
+            "negative_images": 387,
+            "prevalence": 0.06295399515738499,
+            "auroc": 0.8565891472868218,
+            "average_precision": 0.2559181527729146,
+            "precision": 0.25,
+            "recall": 0.5384615384615384,
+            "specificity": 0.8914728682170543,
+            "balanced_accuracy": 0.7149672033392964,
+            "f1": 0.34146341463414637,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                345,
+                42
+              ],
+              [
+                12,
+                14
+              ]
+            ]
+          },
+          "apical pleural thickening": {
+            "positive_images": 17,
+            "negative_images": 396,
+            "prevalence": 0.04116222760290557,
+            "auroc": 0.6284907902554961,
+            "average_precision": 0.0867281283939603,
+            "precision": 0.25,
+            "recall": 0.11764705882352941,
+            "specificity": 0.9848484848484849,
+            "balanced_accuracy": 0.5512477718360071,
+            "f1": 0.16,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                390,
+                6
+              ],
+              [
+                15,
+                2
+              ]
+            ]
+          },
+          "callus rib fracture": {
+            "positive_images": 5,
+            "negative_images": 408,
+            "prevalence": 0.012106537530266344,
+            "auroc": 0.9191176470588235,
+            "average_precision": 0.1116013594654871,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 0.9901960784313726,
+            "balanced_accuracy": 0.4950980392156863,
+            "f1": 0.0,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                404,
+                4
+              ],
+              [
+                5,
+                0
+              ]
+            ]
+          },
+          "cardiomegaly": {
+            "positive_images": 32,
+            "negative_images": 381,
+            "prevalence": 0.0774818401937046,
+            "auroc": 0.8403051181102362,
+            "average_precision": 0.5053833805686849,
+            "precision": 0.38636363636363635,
+            "recall": 0.53125,
+            "specificity": 0.9291338582677166,
+            "balanced_accuracy": 0.7301919291338583,
+            "f1": 0.4473684210526316,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                354,
+                27
+              ],
+              [
+                15,
+                17
+              ]
+            ]
+          },
+          "chronic changes": {
+            "positive_images": 38,
+            "negative_images": 375,
+            "prevalence": 0.09200968523002422,
+            "auroc": 0.6943859649122807,
+            "average_precision": 0.19528853031595766,
+            "precision": 0.16666666666666666,
+            "recall": 0.15789473684210525,
+            "specificity": 0.92,
+            "balanced_accuracy": 0.5389473684210526,
+            "f1": 0.16216216216216217,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                345,
+                30
+              ],
+              [
+                32,
+                6
+              ]
+            ]
+          },
+          "costophrenic angle blunting": {
+            "positive_images": 16,
+            "negative_images": 397,
+            "prevalence": 0.0387409200968523,
+            "auroc": 0.7701511335012595,
+            "average_precision": 0.28867564151846703,
+            "precision": 0.2857142857142857,
+            "recall": 0.375,
+            "specificity": 0.9622166246851386,
+            "balanced_accuracy": 0.6686083123425692,
+            "f1": 0.32432432432432434,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                382,
+                15
+              ],
+              [
+                10,
+                6
+              ]
+            ]
+          },
+          "infiltrates": {
+            "positive_images": 18,
+            "negative_images": 395,
+            "prevalence": 0.043583535108958835,
+            "auroc": 0.6277074542897327,
+            "average_precision": 0.06382823731521747,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 0.9772151898734177,
+            "balanced_accuracy": 0.48860759493670886,
+            "f1": 0.0,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                386,
+                9
+              ],
+              [
+                18,
+                0
+              ]
+            ]
+          },
+          "interstitial pattern": {
+            "positive_images": 22,
+            "negative_images": 391,
+            "prevalence": 0.053268765133171914,
+            "auroc": 0.6973959544292025,
+            "average_precision": 0.28396167403248573,
+            "precision": 0.25,
+            "recall": 0.18181818181818182,
+            "specificity": 0.969309462915601,
+            "balanced_accuracy": 0.5755638223668914,
+            "f1": 0.21052631578947367,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                379,
+                12
+              ],
+              [
+                18,
+                4
+              ]
+            ]
+          },
+          "kyphosis": {
+            "positive_images": 9,
+            "negative_images": 404,
+            "prevalence": 0.021791767554479417,
+            "auroc": 0.8432343234323432,
+            "average_precision": 0.1884390119114759,
+            "precision": 0.2222222222222222,
+            "recall": 0.2222222222222222,
+            "specificity": 0.9826732673267327,
+            "balanced_accuracy": 0.6024477447744774,
+            "f1": 0.2222222222222222,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                397,
+                7
+              ],
+              [
+                7,
+                2
+              ]
+            ]
+          },
+          "laminar atelectasis": {
+            "positive_images": 18,
+            "negative_images": 395,
+            "prevalence": 0.043583535108958835,
+            "auroc": 0.5845288326300984,
+            "average_precision": 0.07084450162860231,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 0.9772151898734177,
+            "balanced_accuracy": 0.48860759493670886,
+            "f1": 0.0,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                386,
+                9
+              ],
+              [
+                18,
+                0
+              ]
+            ]
+          },
+          "pleural effusion": {
+            "positive_images": 15,
+            "negative_images": 398,
+            "prevalence": 0.03631961259079903,
+            "auroc": 0.9385259631490788,
+            "average_precision": 0.5400593364554147,
+            "precision": 0.47058823529411764,
+            "recall": 0.5333333333333333,
+            "specificity": 0.9773869346733668,
+            "balanced_accuracy": 0.75536013400335,
+            "f1": 0.5,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                389,
+                9
+              ],
+              [
+                7,
+                8
+              ]
+            ]
+          },
+          "pneumonia": {
+            "positive_images": 21,
+            "negative_images": 392,
+            "prevalence": 0.05084745762711865,
+            "auroc": 0.7225461613216715,
+            "average_precision": 0.35169920066765026,
+            "precision": 0.375,
+            "recall": 0.2857142857142857,
+            "specificity": 0.9744897959183674,
+            "balanced_accuracy": 0.6301020408163265,
+            "f1": 0.32432432432432434,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                382,
+                10
+              ],
+              [
+                15,
+                6
+              ]
+            ]
+          },
+          "pseudonodule": {
+            "positive_images": 13,
+            "negative_images": 400,
+            "prevalence": 0.031476997578692496,
+            "auroc": 0.64,
+            "average_precision": 0.06899263168322531,
+            "precision": 0.0,
+            "recall": 0.0,
+            "specificity": 0.9925,
+            "balanced_accuracy": 0.49625,
+            "f1": 0.0,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                397,
+                3
+              ],
+              [
+                13,
+                0
+              ]
+            ]
+          },
+          "scoliosis": {
+            "positive_images": 27,
+            "negative_images": 386,
+            "prevalence": 0.06537530266343826,
+            "auroc": 0.772116676261754,
+            "average_precision": 0.2356960064856563,
+            "precision": 0.2682926829268293,
+            "recall": 0.4074074074074074,
+            "specificity": 0.9222797927461139,
+            "balanced_accuracy": 0.6648436000767607,
+            "f1": 0.3235294117647059,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                356,
+                30
+              ],
+              [
+                16,
+                11
+              ]
+            ]
+          },
+          "vascular hilar enlargement": {
+            "positive_images": 11,
+            "negative_images": 402,
+            "prevalence": 0.026634382566585957,
+            "auroc": 0.6094527363184079,
+            "average_precision": 0.05365396550228123,
+            "precision": 0.09090909090909091,
+            "recall": 0.09090909090909091,
+            "specificity": 0.9751243781094527,
+            "balanced_accuracy": 0.5330167345092718,
+            "f1": 0.09090909090909091,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                392,
+                10
+              ],
+              [
+                10,
+                1
+              ]
+            ]
+          },
+          "vertebral degenerative changes": {
+            "positive_images": 22,
+            "negative_images": 391,
+            "prevalence": 0.053268765133171914,
+            "auroc": 0.7039060683561962,
+            "average_precision": 0.1099317787492013,
+            "precision": 0.12121212121212122,
+            "recall": 0.18181818181818182,
+            "specificity": 0.9258312020460358,
+            "balanced_accuracy": 0.5538246919321088,
+            "f1": 0.14545454545454545,
+            "confusion_matrix_true_rows_predicted_columns": [
+              [
+                362,
+                29
+              ],
+              [
+                18,
+                4
+              ]
+            ]
+          }
+        },
+        "valid_ranking_labels": 19,
+        "total_labels": 19,
+        "macro_auroc": 0.7419673239851601,
+        "macro_average_precision": 0.2128092863423582,
+        "micro_auroc": 0.753398711420787,
+        "micro_average_precision": 0.20958154203908816,
+        "macro_f1": 0.2056433840351895,
+        "micro_f1": 0.2591283863368669,
+        "hamming_loss": 0.08015802217407926,
+        "exact_match_accuracy": 0.39709443099273606
+      }
+    }
+  ],
+  "metrics": {
+    "train": {
+      "images": 1665,
+      "threshold": 0.5,
+      "per_label": {
+        "COPD signs": {
+          "positive_images": 180,
+          "negative_images": 1485,
+          "prevalence": 0.10810810810810811,
+          "auroc": 0.9612682379349046,
+          "average_precision": 0.7610133913189585,
+          "precision": 0.36666666666666664,
+          "recall": 0.9777777777777777,
+          "specificity": 0.7952861952861953,
+          "balanced_accuracy": 0.8865319865319865,
+          "f1": 0.5333333333333333,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1181,
+              304
+            ],
+            [
+              4,
+              176
+            ]
+          ]
+        },
+        "air trapping": {
+          "positive_images": 84,
+          "negative_images": 1581,
+          "prevalence": 0.05045045045045045,
+          "auroc": 0.991084605885365,
+          "average_precision": 0.8543206763222427,
+          "precision": 0.2545454545454545,
+          "recall": 1.0,
+          "specificity": 0.8444022770398482,
+          "balanced_accuracy": 0.922201138519924,
+          "f1": 0.4057971014492754,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1335,
+              246
+            ],
+            [
+              0,
+              84
+            ]
+          ]
+        },
+        "aortic atheromatosis": {
+          "positive_images": 58,
+          "negative_images": 1607,
+          "prevalence": 0.034834834834834835,
+          "auroc": 0.998648155698131,
+          "average_precision": 0.9715615930273733,
+          "precision": 0.20422535211267606,
+          "recall": 1.0,
+          "specificity": 0.8593652769135034,
+          "balanced_accuracy": 0.9296826384567517,
+          "f1": 0.3391812865497076,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1381,
+              226
+            ],
+            [
+              0,
+              58
+            ]
+          ]
+        },
+        "aortic elongation": {
+          "positive_images": 134,
+          "negative_images": 1531,
+          "prevalence": 0.08048048048048048,
+          "auroc": 0.9888815231484641,
+          "average_precision": 0.8863784658438403,
+          "precision": 0.3181818181818182,
+          "recall": 0.9925373134328358,
+          "specificity": 0.813847158719791,
+          "balanced_accuracy": 0.9031922360763134,
+          "f1": 0.48188405797101447,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1246,
+              285
+            ],
+            [
+              1,
+              133
+            ]
+          ]
+        },
+        "apical pleural thickening": {
+          "positive_images": 61,
+          "negative_images": 1604,
+          "prevalence": 0.03663663663663664,
+          "auroc": 0.999652508074077,
+          "average_precision": 0.991522220650575,
+          "precision": 0.17039106145251395,
+          "recall": 1.0,
+          "specificity": 0.8148379052369077,
+          "balanced_accuracy": 0.9074189526184538,
+          "f1": 0.2911694510739857,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1307,
+              297
+            ],
+            [
+              0,
+              61
+            ]
+          ]
+        },
+        "callus rib fracture": {
+          "positive_images": 31,
+          "negative_images": 1634,
+          "prevalence": 0.018618618618618618,
+          "auroc": 0.9999210328898014,
+          "average_precision": 0.996028836754643,
+          "precision": 0.18674698795180722,
+          "recall": 1.0,
+          "specificity": 0.9173806609547124,
+          "balanced_accuracy": 0.9586903304773562,
+          "f1": 0.3147208121827411,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1499,
+              135
+            ],
+            [
+              0,
+              31
+            ]
+          ]
+        },
+        "cardiomegaly": {
+          "positive_images": 124,
+          "negative_images": 1541,
+          "prevalence": 0.07447447447447447,
+          "auroc": 0.9877174436373531,
+          "average_precision": 0.850622874871137,
+          "precision": 0.32978723404255317,
+          "recall": 1.0,
+          "specificity": 0.836469824789098,
+          "balanced_accuracy": 0.918234912394549,
+          "f1": 0.496,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1289,
+              252
+            ],
+            [
+              0,
+              124
+            ]
+          ]
+        },
+        "chronic changes": {
+          "positive_images": 139,
+          "negative_images": 1526,
+          "prevalence": 0.08348348348348349,
+          "auroc": 0.9809159225699388,
+          "average_precision": 0.8243263643886332,
+          "precision": 0.3374083129584352,
+          "recall": 0.9928057553956835,
+          "specificity": 0.8224115334207077,
+          "balanced_accuracy": 0.9076086444081957,
+          "f1": 0.5036496350364964,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1255,
+              271
+            ],
+            [
+              1,
+              138
+            ]
+          ]
+        },
+        "costophrenic angle blunting": {
+          "positive_images": 53,
+          "negative_images": 1612,
+          "prevalence": 0.03183183183183183,
+          "auroc": 0.998958284563884,
+          "average_precision": 0.9740818318578952,
+          "precision": 0.18466898954703834,
+          "recall": 1.0,
+          "specificity": 0.8548387096774194,
+          "balanced_accuracy": 0.9274193548387097,
+          "f1": 0.31176470588235294,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1378,
+              234
+            ],
+            [
+              0,
+              53
+            ]
+          ]
+        },
+        "infiltrates": {
+          "positive_images": 40,
+          "negative_images": 1625,
+          "prevalence": 0.024024024024024024,
+          "auroc": 0.9997384615384615,
+          "average_precision": 0.9910322617419062,
+          "precision": 0.2857142857142857,
+          "recall": 1.0,
+          "specificity": 0.9384615384615385,
+          "balanced_accuracy": 0.9692307692307692,
+          "f1": 0.4444444444444444,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1525,
+              100
+            ],
+            [
+              0,
+              40
+            ]
+          ]
+        },
+        "interstitial pattern": {
+          "positive_images": 50,
+          "negative_images": 1615,
+          "prevalence": 0.03003003003003003,
+          "auroc": 0.9996532507739938,
+          "average_precision": 0.9900344341900901,
+          "precision": 0.24752475247524752,
+          "recall": 1.0,
+          "specificity": 0.9058823529411765,
+          "balanced_accuracy": 0.9529411764705882,
+          "f1": 0.3968253968253968,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1463,
+              152
+            ],
+            [
+              0,
+              50
+            ]
+          ]
+        },
+        "kyphosis": {
+          "positive_images": 47,
+          "negative_images": 1618,
+          "prevalence": 0.02822822822822823,
+          "auroc": 0.9996186518686058,
+          "average_precision": 0.989526352641833,
+          "precision": 0.34814814814814815,
+          "recall": 1.0,
+          "specificity": 0.9456118665018541,
+          "balanced_accuracy": 0.9728059332509271,
+          "f1": 0.5164835164835165,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1530,
+              88
+            ],
+            [
+              0,
+              47
+            ]
+          ]
+        },
+        "laminar atelectasis": {
+          "positive_images": 32,
+          "negative_images": 1633,
+          "prevalence": 0.01921921921921922,
+          "auroc": 0.9995598591549295,
+          "average_precision": 0.981661265836391,
+          "precision": 0.1568627450980392,
+          "recall": 1.0,
+          "specificity": 0.8946723821187997,
+          "balanced_accuracy": 0.9473361910593998,
+          "f1": 0.2711864406779661,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1461,
+              172
+            ],
+            [
+              0,
+              32
+            ]
+          ]
+        },
+        "pleural effusion": {
+          "positive_images": 35,
+          "negative_images": 1630,
+          "prevalence": 0.021021021021021023,
+          "auroc": 0.9998597721297108,
+          "average_precision": 0.9937761584820409,
+          "precision": 0.29914529914529914,
+          "recall": 1.0,
+          "specificity": 0.9496932515337423,
+          "balanced_accuracy": 0.9748466257668711,
+          "f1": 0.4605263157894737,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1548,
+              82
+            ],
+            [
+              0,
+              35
+            ]
+          ]
+        },
+        "pneumonia": {
+          "positive_images": 48,
+          "negative_images": 1617,
+          "prevalence": 0.02882882882882883,
+          "auroc": 0.9985183467326325,
+          "average_precision": 0.9681294202117349,
+          "precision": 0.3380281690140845,
+          "recall": 1.0,
+          "specificity": 0.9418676561533704,
+          "balanced_accuracy": 0.9709338280766853,
+          "f1": 0.5052631578947369,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1523,
+              94
+            ],
+            [
+              0,
+              48
+            ]
+          ]
+        },
+        "pseudonodule": {
+          "positive_images": 38,
+          "negative_images": 1627,
+          "prevalence": 0.022822822822822823,
+          "auroc": 0.9999838255750009,
+          "average_precision": 0.9993252361673414,
+          "precision": 0.38,
+          "recall": 1.0,
+          "specificity": 0.9618930547019053,
+          "balanced_accuracy": 0.9809465273509527,
+          "f1": 0.5507246376811594,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1565,
+              62
+            ],
+            [
+              0,
+              38
+            ]
+          ]
+        },
+        "scoliosis": {
+          "positive_images": 119,
+          "negative_images": 1546,
+          "prevalence": 0.07147147147147147,
+          "auroc": 0.9916401230608674,
+          "average_precision": 0.9075678439615597,
+          "precision": 0.2723112128146453,
+          "recall": 1.0,
+          "specificity": 0.7943078913324709,
+          "balanced_accuracy": 0.8971539456662354,
+          "f1": 0.42805755395683454,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1228,
+              318
+            ],
+            [
+              0,
+              119
+            ]
+          ]
+        },
+        "vascular hilar enlargement": {
+          "positive_images": 66,
+          "negative_images": 1599,
+          "prevalence": 0.03963963963963964,
+          "auroc": 0.9980290711998028,
+          "average_precision": 0.938665539850121,
+          "precision": 0.2129032258064516,
+          "recall": 1.0,
+          "specificity": 0.8474046278924328,
+          "balanced_accuracy": 0.9237023139462164,
+          "f1": 0.35106382978723405,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1355,
+              244
+            ],
+            [
+              0,
+              66
+            ]
+          ]
+        },
+        "vertebral degenerative changes": {
+          "positive_images": 86,
+          "negative_images": 1579,
+          "prevalence": 0.05165165165165165,
+          "auroc": 0.9981810683829919,
+          "average_precision": 0.9679957179837351,
+          "precision": 0.23822714681440443,
+          "recall": 1.0,
+          "specificity": 0.8258391386953768,
+          "balanced_accuracy": 0.9129195693476884,
+          "f1": 0.38478747203579416,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1304,
+              275
+            ],
+            [
+              0,
+              86
+            ]
+          ]
+        }
+      },
+      "valid_ranking_labels": 19,
+      "total_labels": 19,
+      "macro_auroc": 0.9943068497273113,
+      "macro_average_precision": 0.9388194992685293,
+      "micro_auroc": 0.9925515775536159,
+      "micro_average_precision": 0.8904314049201996,
+      "macro_f1": 0.42036121837134016,
+      "micro_f1": 0.42478670857656037,
+      "hamming_loss": 0.12147937411095305,
+      "exact_match_accuracy": 0.34894894894894896
+    },
+    "validation": {
+      "images": 413,
+      "threshold": 0.5,
+      "per_label": {
+        "COPD signs": {
+          "positive_images": 48,
+          "negative_images": 365,
+          "prevalence": 0.1162227602905569,
+          "auroc": 0.7712899543378995,
+          "average_precision": 0.40213769955385326,
+          "precision": 0.22556390977443608,
+          "recall": 0.625,
+          "specificity": 0.7178082191780822,
+          "balanced_accuracy": 0.6714041095890411,
+          "f1": 0.3314917127071823,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              262,
+              103
+            ],
+            [
+              18,
+              30
+            ]
+          ]
+        },
+        "air trapping": {
+          "positive_images": 13,
+          "negative_images": 400,
+          "prevalence": 0.031476997578692496,
+          "auroc": 0.6732692307692308,
+          "average_precision": 0.1253466109347316,
+          "precision": 0.0449438202247191,
+          "recall": 0.3076923076923077,
+          "specificity": 0.7875,
+          "balanced_accuracy": 0.5475961538461538,
+          "f1": 0.0784313725490196,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              315,
+              85
+            ],
+            [
+              9,
+              4
+            ]
+          ]
+        },
+        "aortic atheromatosis": {
+          "positive_images": 13,
+          "negative_images": 400,
+          "prevalence": 0.031476997578692496,
+          "auroc": 0.8411538461538461,
+          "average_precision": 0.16277829354208145,
+          "precision": 0.10588235294117647,
+          "recall": 0.6923076923076923,
+          "specificity": 0.81,
+          "balanced_accuracy": 0.7511538461538462,
+          "f1": 0.1836734693877551,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              324,
+              76
+            ],
+            [
+              4,
+              9
+            ]
+          ]
+        },
+        "aortic elongation": {
+          "positive_images": 26,
+          "negative_images": 387,
+          "prevalence": 0.06295399515738499,
+          "auroc": 0.8505267342476645,
+          "average_precision": 0.22134115990315525,
+          "precision": 0.171875,
+          "recall": 0.8461538461538461,
+          "specificity": 0.7260981912144703,
+          "balanced_accuracy": 0.7861260186841582,
+          "f1": 0.2857142857142857,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              281,
+              106
+            ],
+            [
+              4,
+              22
+            ]
+          ]
+        },
+        "apical pleural thickening": {
+          "positive_images": 17,
+          "negative_images": 396,
+          "prevalence": 0.04116222760290557,
+          "auroc": 0.6795900178253119,
+          "average_precision": 0.07381540631825165,
+          "precision": 0.07547169811320754,
+          "recall": 0.47058823529411764,
+          "specificity": 0.7525252525252525,
+          "balanced_accuracy": 0.6115567439096851,
+          "f1": 0.13008130081300814,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              298,
+              98
+            ],
+            [
+              9,
+              8
+            ]
+          ]
+        },
+        "callus rib fracture": {
+          "positive_images": 5,
+          "negative_images": 408,
+          "prevalence": 0.012106537530266344,
+          "auroc": 0.9235294117647059,
+          "average_precision": 0.21562946538556296,
+          "precision": 0.058823529411764705,
+          "recall": 0.6,
+          "specificity": 0.8823529411764706,
+          "balanced_accuracy": 0.7411764705882353,
+          "f1": 0.10714285714285714,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              360,
+              48
+            ],
+            [
+              2,
+              3
+            ]
+          ]
+        },
+        "cardiomegaly": {
+          "positive_images": 32,
+          "negative_images": 381,
+          "prevalence": 0.0774818401937046,
+          "auroc": 0.8739337270341208,
+          "average_precision": 0.43003478897845276,
+          "precision": 0.2524271844660194,
+          "recall": 0.8125,
+          "specificity": 0.7979002624671916,
+          "balanced_accuracy": 0.8052001312335958,
+          "f1": 0.3851851851851852,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              304,
+              77
+            ],
+            [
+              6,
+              26
+            ]
+          ]
+        },
+        "chronic changes": {
+          "positive_images": 38,
+          "negative_images": 375,
+          "prevalence": 0.09200968523002422,
+          "auroc": 0.7571228070175439,
+          "average_precision": 0.1975089888665769,
+          "precision": 0.20353982300884957,
+          "recall": 0.6052631578947368,
+          "specificity": 0.76,
+          "balanced_accuracy": 0.6826315789473685,
+          "f1": 0.304635761589404,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              285,
+              90
+            ],
+            [
+              15,
+              23
+            ]
+          ]
+        },
+        "costophrenic angle blunting": {
+          "positive_images": 16,
+          "negative_images": 397,
+          "prevalence": 0.0387409200968523,
+          "auroc": 0.7792821158690176,
+          "average_precision": 0.24171814017757498,
+          "precision": 0.1111111111111111,
+          "recall": 0.625,
+          "specificity": 0.7984886649874056,
+          "balanced_accuracy": 0.7117443324937027,
+          "f1": 0.18867924528301888,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              317,
+              80
+            ],
+            [
+              6,
+              10
+            ]
+          ]
+        },
+        "infiltrates": {
+          "positive_images": 18,
+          "negative_images": 395,
+          "prevalence": 0.043583535108958835,
+          "auroc": 0.6531645569620254,
+          "average_precision": 0.06958181633974705,
+          "precision": 0.07142857142857142,
+          "recall": 0.2222222222222222,
+          "specificity": 0.8683544303797468,
+          "balanced_accuracy": 0.5452883263009844,
+          "f1": 0.10810810810810811,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              343,
+              52
+            ],
+            [
+              14,
+              4
+            ]
+          ]
+        },
+        "interstitial pattern": {
+          "positive_images": 22,
+          "negative_images": 391,
+          "prevalence": 0.053268765133171914,
+          "auroc": 0.8050453382934201,
+          "average_precision": 0.3019087868186484,
+          "precision": 0.1935483870967742,
+          "recall": 0.5454545454545454,
+          "specificity": 0.8721227621483376,
+          "balanced_accuracy": 0.7087886538014415,
+          "f1": 0.2857142857142857,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              341,
+              50
+            ],
+            [
+              10,
+              12
+            ]
+          ]
+        },
+        "kyphosis": {
+          "positive_images": 9,
+          "negative_images": 404,
+          "prevalence": 0.021791767554479417,
+          "auroc": 0.9026402640264026,
+          "average_precision": 0.3419255255341482,
+          "precision": 0.16666666666666666,
+          "recall": 0.5555555555555556,
+          "specificity": 0.9381188118811881,
+          "balanced_accuracy": 0.7468371837183718,
+          "f1": 0.2564102564102564,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              379,
+              25
+            ],
+            [
+              4,
+              5
+            ]
+          ]
+        },
+        "laminar atelectasis": {
+          "positive_images": 18,
+          "negative_images": 395,
+          "prevalence": 0.043583535108958835,
+          "auroc": 0.5496483825597749,
+          "average_precision": 0.06424287570961791,
+          "precision": 0.05714285714285714,
+          "recall": 0.2222222222222222,
+          "specificity": 0.8329113924050633,
+          "balanced_accuracy": 0.5275668073136428,
+          "f1": 0.09090909090909091,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              329,
+              66
+            ],
+            [
+              14,
+              4
+            ]
+          ]
+        },
+        "pleural effusion": {
+          "positive_images": 15,
+          "negative_images": 398,
+          "prevalence": 0.03631961259079903,
+          "auroc": 0.9556113902847572,
+          "average_precision": 0.5761092153460574,
+          "precision": 0.3333333333333333,
+          "recall": 0.8,
+          "specificity": 0.9396984924623115,
+          "balanced_accuracy": 0.8698492462311558,
+          "f1": 0.47058823529411764,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              374,
+              24
+            ],
+            [
+              3,
+              12
+            ]
+          ]
+        },
+        "pneumonia": {
+          "positive_images": 21,
+          "negative_images": 392,
+          "prevalence": 0.05084745762711865,
+          "auroc": 0.7834062196307093,
+          "average_precision": 0.3421068678385207,
+          "precision": 0.19607843137254902,
+          "recall": 0.47619047619047616,
+          "specificity": 0.8954081632653061,
+          "balanced_accuracy": 0.6857993197278911,
+          "f1": 0.2777777777777778,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              351,
+              41
+            ],
+            [
+              11,
+              10
+            ]
+          ]
+        },
+        "pseudonodule": {
+          "positive_images": 13,
+          "negative_images": 400,
+          "prevalence": 0.031476997578692496,
+          "auroc": 0.5746153846153846,
+          "average_precision": 0.048082249279527915,
+          "precision": 0.10344827586206896,
+          "recall": 0.23076923076923078,
+          "specificity": 0.935,
+          "balanced_accuracy": 0.5828846153846154,
+          "f1": 0.14285714285714285,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              374,
+              26
+            ],
+            [
+              10,
+              3
+            ]
+          ]
+        },
+        "scoliosis": {
+          "positive_images": 27,
+          "negative_images": 386,
+          "prevalence": 0.06537530266343826,
+          "auroc": 0.7152178084820571,
+          "average_precision": 0.15526792297402772,
+          "precision": 0.12396694214876033,
+          "recall": 0.5555555555555556,
+          "specificity": 0.7253886010362695,
+          "balanced_accuracy": 0.6404720782959126,
+          "f1": 0.20270270270270271,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              280,
+              106
+            ],
+            [
+              12,
+              15
+            ]
+          ]
+        },
+        "vascular hilar enlargement": {
+          "positive_images": 11,
+          "negative_images": 402,
+          "prevalence": 0.026634382566585957,
+          "auroc": 0.7331524197195839,
+          "average_precision": 0.07423247786839612,
+          "precision": 0.0449438202247191,
+          "recall": 0.36363636363636365,
+          "specificity": 0.7885572139303483,
+          "balanced_accuracy": 0.5760967887833559,
+          "f1": 0.08,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              317,
+              85
+            ],
+            [
+              7,
+              4
+            ]
+          ]
+        },
+        "vertebral degenerative changes": {
+          "positive_images": 22,
+          "negative_images": 391,
+          "prevalence": 0.053268765133171914,
+          "auroc": 0.7388979307137875,
+          "average_precision": 0.1509363050473365,
+          "precision": 0.13402061855670103,
+          "recall": 0.5909090909090909,
+          "specificity": 0.7851662404092071,
+          "balanced_accuracy": 0.688037665659149,
+          "f1": 0.2184873949579832,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              307,
+              84
+            ],
+            [
+              9,
+              13
+            ]
+          ]
+        }
+      },
+      "valid_ranking_labels": 19,
+      "total_labels": 19,
+      "macro_auroc": 0.7663735547530128,
+      "macro_average_precision": 0.22077392612717206,
+      "micro_auroc": 0.7823973268122739,
+      "micro_average_precision": 0.20645106058532942,
+      "macro_f1": 0.21729422026858847,
+      "micro_f1": 0.22568902756110246,
+      "hamming_loss": 0.18975404613227986,
+      "exact_match_accuracy": 0.18886198547215496
+    },
+    "test": {
+      "images": 363,
+      "threshold": 0.5,
+      "per_label": {
+        "COPD signs": {
+          "positive_images": 38,
+          "negative_images": 325,
+          "prevalence": 0.1046831955922865,
+          "auroc": 0.7505263157894737,
+          "average_precision": 0.3335560440505164,
+          "precision": 0.19642857142857142,
+          "recall": 0.5789473684210527,
+          "specificity": 0.7230769230769231,
+          "balanced_accuracy": 0.6510121457489879,
+          "f1": 0.29333333333333333,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              235,
+              90
+            ],
+            [
+              16,
+              22
+            ]
+          ]
+        },
+        "air trapping": {
+          "positive_images": 24,
+          "negative_images": 339,
+          "prevalence": 0.06611570247933884,
+          "auroc": 0.6660521140609637,
+          "average_precision": 0.13785311776341425,
+          "precision": 0.1,
+          "recall": 0.3333333333333333,
+          "specificity": 0.7876106194690266,
+          "balanced_accuracy": 0.56047197640118,
+          "f1": 0.15384615384615385,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              267,
+              72
+            ],
+            [
+              16,
+              8
+            ]
+          ]
+        },
+        "aortic atheromatosis": {
+          "positive_images": 15,
+          "negative_images": 348,
+          "prevalence": 0.04132231404958678,
+          "auroc": 0.6798850574712644,
+          "average_precision": 0.21761805594402664,
+          "precision": 0.09230769230769231,
+          "recall": 0.4,
+          "specificity": 0.8304597701149425,
+          "balanced_accuracy": 0.6152298850574713,
+          "f1": 0.15,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              289,
+              59
+            ],
+            [
+              9,
+              6
+            ]
+          ]
+        },
+        "aortic elongation": {
+          "positive_images": 24,
+          "negative_images": 339,
+          "prevalence": 0.06611570247933884,
+          "auroc": 0.8150196656833826,
+          "average_precision": 0.29044357608055404,
+          "precision": 0.15384615384615385,
+          "recall": 0.6666666666666666,
+          "specificity": 0.7404129793510325,
+          "balanced_accuracy": 0.7035398230088495,
+          "f1": 0.25,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              251,
+              88
+            ],
+            [
+              8,
+              16
+            ]
+          ]
+        },
+        "apical pleural thickening": {
+          "positive_images": 11,
+          "negative_images": 352,
+          "prevalence": 0.030303030303030304,
+          "auroc": 0.7306301652892562,
+          "average_precision": 0.07583684802627448,
+          "precision": 0.07216494845360824,
+          "recall": 0.6363636363636364,
+          "specificity": 0.7443181818181818,
+          "balanced_accuracy": 0.6903409090909091,
+          "f1": 0.12962962962962962,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              262,
+              90
+            ],
+            [
+              4,
+              7
+            ]
+          ]
+        },
+        "callus rib fracture": {
+          "positive_images": 7,
+          "negative_images": 356,
+          "prevalence": 0.01928374655647383,
+          "auroc": 0.6211878009630818,
+          "average_precision": 0.09887296452528845,
+          "precision": 0.024390243902439025,
+          "recall": 0.14285714285714285,
+          "specificity": 0.8876404494382022,
+          "balanced_accuracy": 0.5152487961476725,
+          "f1": 0.041666666666666664,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              316,
+              40
+            ],
+            [
+              6,
+              1
+            ]
+          ]
+        },
+        "cardiomegaly": {
+          "positive_images": 25,
+          "negative_images": 338,
+          "prevalence": 0.06887052341597796,
+          "auroc": 0.8391715976331361,
+          "average_precision": 0.3489855598614073,
+          "precision": 0.20454545454545456,
+          "recall": 0.72,
+          "specificity": 0.7928994082840237,
+          "balanced_accuracy": 0.7564497041420118,
+          "f1": 0.3185840707964602,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              268,
+              70
+            ],
+            [
+              7,
+              18
+            ]
+          ]
+        },
+        "chronic changes": {
+          "positive_images": 27,
+          "negative_images": 336,
+          "prevalence": 0.0743801652892562,
+          "auroc": 0.8062169312169313,
+          "average_precision": 0.24697980875744638,
+          "precision": 0.1978021978021978,
+          "recall": 0.6666666666666666,
+          "specificity": 0.7827380952380952,
+          "balanced_accuracy": 0.7247023809523809,
+          "f1": 0.3050847457627119,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              263,
+              73
+            ],
+            [
+              9,
+              18
+            ]
+          ]
+        },
+        "costophrenic angle blunting": {
+          "positive_images": 18,
+          "negative_images": 345,
+          "prevalence": 0.049586776859504134,
+          "auroc": 0.6246376811594203,
+          "average_precision": 0.1353785521354449,
+          "precision": 0.11764705882352941,
+          "recall": 0.4444444444444444,
+          "specificity": 0.8260869565217391,
+          "balanced_accuracy": 0.6352657004830917,
+          "f1": 0.18604651162790697,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              285,
+              60
+            ],
+            [
+              10,
+              8
+            ]
+          ]
+        },
+        "infiltrates": {
+          "positive_images": 10,
+          "negative_images": 353,
+          "prevalence": 0.027548209366391185,
+          "auroc": 0.5779036827195467,
+          "average_precision": 0.04690948988170157,
+          "precision": 0.02702702702702703,
+          "recall": 0.1,
+          "specificity": 0.8980169971671388,
+          "balanced_accuracy": 0.4990084985835694,
+          "f1": 0.0425531914893617,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              317,
+              36
+            ],
+            [
+              9,
+              1
+            ]
+          ]
+        },
+        "interstitial pattern": {
+          "positive_images": 13,
+          "negative_images": 350,
+          "prevalence": 0.03581267217630854,
+          "auroc": 0.7384615384615385,
+          "average_precision": 0.20659935554392872,
+          "precision": 0.09615384615384616,
+          "recall": 0.38461538461538464,
+          "specificity": 0.8657142857142858,
+          "balanced_accuracy": 0.6251648351648352,
+          "f1": 0.15384615384615385,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              303,
+              47
+            ],
+            [
+              8,
+              5
+            ]
+          ]
+        },
+        "kyphosis": {
+          "positive_images": 9,
+          "negative_images": 354,
+          "prevalence": 0.024793388429752067,
+          "auroc": 0.7890772128060264,
+          "average_precision": 0.29748329736718254,
+          "precision": 0.16666666666666666,
+          "recall": 0.5555555555555556,
+          "specificity": 0.9293785310734464,
+          "balanced_accuracy": 0.742467043314501,
+          "f1": 0.2564102564102564,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              329,
+              25
+            ],
+            [
+              4,
+              5
+            ]
+          ]
+        },
+        "laminar atelectasis": {
+          "positive_images": 12,
+          "negative_images": 351,
+          "prevalence": 0.03305785123966942,
+          "auroc": 0.7469135802469136,
+          "average_precision": 0.10308552084656307,
+          "precision": 0.09523809523809523,
+          "recall": 0.5,
+          "specificity": 0.8376068376068376,
+          "balanced_accuracy": 0.6688034188034189,
+          "f1": 0.16,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              294,
+              57
+            ],
+            [
+              6,
+              6
+            ]
+          ]
+        },
+        "pleural effusion": {
+          "positive_images": 3,
+          "negative_images": 360,
+          "prevalence": 0.008264462809917356,
+          "auroc": 0.9407407407407408,
+          "average_precision": 0.16072489601901366,
+          "precision": 0.034482758620689655,
+          "recall": 0.3333333333333333,
+          "specificity": 0.9222222222222223,
+          "balanced_accuracy": 0.6277777777777778,
+          "f1": 0.0625,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              332,
+              28
+            ],
+            [
+              2,
+              1
+            ]
+          ]
+        },
+        "pneumonia": {
+          "positive_images": 19,
+          "negative_images": 344,
+          "prevalence": 0.05234159779614325,
+          "auroc": 0.7789167686658507,
+          "average_precision": 0.26710235529550647,
+          "precision": 0.18518518518518517,
+          "recall": 0.2631578947368421,
+          "specificity": 0.936046511627907,
+          "balanced_accuracy": 0.5996022031823746,
+          "f1": 0.21739130434782608,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              322,
+              22
+            ],
+            [
+              14,
+              5
+            ]
+          ]
+        },
+        "pseudonodule": {
+          "positive_images": 6,
+          "negative_images": 357,
+          "prevalence": 0.01652892561983471,
+          "auroc": 0.7002801120448179,
+          "average_precision": 0.05485675133146524,
+          "precision": 0.034482758620689655,
+          "recall": 0.16666666666666666,
+          "specificity": 0.9215686274509803,
+          "balanced_accuracy": 0.5441176470588235,
+          "f1": 0.05714285714285714,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              329,
+              28
+            ],
+            [
+              5,
+              1
+            ]
+          ]
+        },
+        "scoliosis": {
+          "positive_images": 27,
+          "negative_images": 336,
+          "prevalence": 0.0743801652892562,
+          "auroc": 0.7513227513227513,
+          "average_precision": 0.19557039347348468,
+          "precision": 0.168141592920354,
+          "recall": 0.7037037037037037,
+          "specificity": 0.7202380952380952,
+          "balanced_accuracy": 0.7119708994708995,
+          "f1": 0.2714285714285714,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              242,
+              94
+            ],
+            [
+              8,
+              19
+            ]
+          ]
+        },
+        "vascular hilar enlargement": {
+          "positive_images": 20,
+          "negative_images": 343,
+          "prevalence": 0.05509641873278237,
+          "auroc": 0.6650145772594752,
+          "average_precision": 0.10189361788184872,
+          "precision": 0.1111111111111111,
+          "recall": 0.5,
+          "specificity": 0.7667638483965015,
+          "balanced_accuracy": 0.6333819241982508,
+          "f1": 0.18181818181818182,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              263,
+              80
+            ],
+            [
+              10,
+              10
+            ]
+          ]
+        },
+        "vertebral degenerative changes": {
+          "positive_images": 15,
+          "negative_images": 348,
+          "prevalence": 0.04132231404958678,
+          "auroc": 0.7021072796934866,
+          "average_precision": 0.09968922379323804,
+          "precision": 0.07446808510638298,
+          "recall": 0.4666666666666667,
+          "specificity": 0.75,
+          "balanced_accuracy": 0.6083333333333334,
+          "f1": 0.12844036697247707,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              261,
+              87
+            ],
+            [
+              8,
+              7
+            ]
+          ]
+        }
+      },
+      "valid_ranking_labels": 19,
+      "total_labels": 19,
+      "macro_auroc": 0.7328455564856873,
+      "macro_average_precision": 0.17997049624096342,
+      "micro_auroc": 0.7598353962179558,
+      "micro_average_precision": 0.17388098977532324,
+      "macro_f1": 0.176827473427292,
+      "micro_f1": 0.20085731781996327,
+      "hamming_loss": 0.18921270117442365,
+      "exact_match_accuracy": 0.209366391184573
+    }
+  },
+  "training_prevalence_baseline": {
+    "train": {
+      "images": 1665,
+      "threshold": 0.5,
+      "per_label": {
+        "COPD signs": {
+          "positive_images": 180,
+          "negative_images": 1485,
+          "prevalence": 0.10810810810810811,
+          "auroc": 0.5,
+          "average_precision": 0.10810810810810811,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1485,
+              0
+            ],
+            [
+              180,
+              0
+            ]
+          ]
+        },
+        "air trapping": {
+          "positive_images": 84,
+          "negative_images": 1581,
+          "prevalence": 0.05045045045045045,
+          "auroc": 0.5,
+          "average_precision": 0.05045045045045045,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1581,
+              0
+            ],
+            [
+              84,
+              0
+            ]
+          ]
+        },
+        "aortic atheromatosis": {
+          "positive_images": 58,
+          "negative_images": 1607,
+          "prevalence": 0.034834834834834835,
+          "auroc": 0.5,
+          "average_precision": 0.034834834834834835,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1607,
+              0
+            ],
+            [
+              58,
+              0
+            ]
+          ]
+        },
+        "aortic elongation": {
+          "positive_images": 134,
+          "negative_images": 1531,
+          "prevalence": 0.08048048048048048,
+          "auroc": 0.5,
+          "average_precision": 0.08048048048048048,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1531,
+              0
+            ],
+            [
+              134,
+              0
+            ]
+          ]
+        },
+        "apical pleural thickening": {
+          "positive_images": 61,
+          "negative_images": 1604,
+          "prevalence": 0.03663663663663664,
+          "auroc": 0.5,
+          "average_precision": 0.03663663663663664,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1604,
+              0
+            ],
+            [
+              61,
+              0
+            ]
+          ]
+        },
+        "callus rib fracture": {
+          "positive_images": 31,
+          "negative_images": 1634,
+          "prevalence": 0.018618618618618618,
+          "auroc": 0.5,
+          "average_precision": 0.018618618618618618,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1634,
+              0
+            ],
+            [
+              31,
+              0
+            ]
+          ]
+        },
+        "cardiomegaly": {
+          "positive_images": 124,
+          "negative_images": 1541,
+          "prevalence": 0.07447447447447447,
+          "auroc": 0.5,
+          "average_precision": 0.07447447447447447,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1541,
+              0
+            ],
+            [
+              124,
+              0
+            ]
+          ]
+        },
+        "chronic changes": {
+          "positive_images": 139,
+          "negative_images": 1526,
+          "prevalence": 0.08348348348348349,
+          "auroc": 0.5,
+          "average_precision": 0.08348348348348349,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1526,
+              0
+            ],
+            [
+              139,
+              0
+            ]
+          ]
+        },
+        "costophrenic angle blunting": {
+          "positive_images": 53,
+          "negative_images": 1612,
+          "prevalence": 0.03183183183183183,
+          "auroc": 0.5,
+          "average_precision": 0.03183183183183183,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1612,
+              0
+            ],
+            [
+              53,
+              0
+            ]
+          ]
+        },
+        "infiltrates": {
+          "positive_images": 40,
+          "negative_images": 1625,
+          "prevalence": 0.024024024024024024,
+          "auroc": 0.5,
+          "average_precision": 0.024024024024024024,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1625,
+              0
+            ],
+            [
+              40,
+              0
+            ]
+          ]
+        },
+        "interstitial pattern": {
+          "positive_images": 50,
+          "negative_images": 1615,
+          "prevalence": 0.03003003003003003,
+          "auroc": 0.5,
+          "average_precision": 0.03003003003003003,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1615,
+              0
+            ],
+            [
+              50,
+              0
+            ]
+          ]
+        },
+        "kyphosis": {
+          "positive_images": 47,
+          "negative_images": 1618,
+          "prevalence": 0.02822822822822823,
+          "auroc": 0.5,
+          "average_precision": 0.02822822822822823,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1618,
+              0
+            ],
+            [
+              47,
+              0
+            ]
+          ]
+        },
+        "laminar atelectasis": {
+          "positive_images": 32,
+          "negative_images": 1633,
+          "prevalence": 0.01921921921921922,
+          "auroc": 0.5,
+          "average_precision": 0.01921921921921922,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1633,
+              0
+            ],
+            [
+              32,
+              0
+            ]
+          ]
+        },
+        "pleural effusion": {
+          "positive_images": 35,
+          "negative_images": 1630,
+          "prevalence": 0.021021021021021023,
+          "auroc": 0.5,
+          "average_precision": 0.021021021021021023,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1630,
+              0
+            ],
+            [
+              35,
+              0
+            ]
+          ]
+        },
+        "pneumonia": {
+          "positive_images": 48,
+          "negative_images": 1617,
+          "prevalence": 0.02882882882882883,
+          "auroc": 0.5,
+          "average_precision": 0.02882882882882883,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1617,
+              0
+            ],
+            [
+              48,
+              0
+            ]
+          ]
+        },
+        "pseudonodule": {
+          "positive_images": 38,
+          "negative_images": 1627,
+          "prevalence": 0.022822822822822823,
+          "auroc": 0.5,
+          "average_precision": 0.022822822822822823,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1627,
+              0
+            ],
+            [
+              38,
+              0
+            ]
+          ]
+        },
+        "scoliosis": {
+          "positive_images": 119,
+          "negative_images": 1546,
+          "prevalence": 0.07147147147147147,
+          "auroc": 0.5,
+          "average_precision": 0.07147147147147147,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1546,
+              0
+            ],
+            [
+              119,
+              0
+            ]
+          ]
+        },
+        "vascular hilar enlargement": {
+          "positive_images": 66,
+          "negative_images": 1599,
+          "prevalence": 0.03963963963963964,
+          "auroc": 0.5,
+          "average_precision": 0.03963963963963964,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1599,
+              0
+            ],
+            [
+              66,
+              0
+            ]
+          ]
+        },
+        "vertebral degenerative changes": {
+          "positive_images": 86,
+          "negative_images": 1579,
+          "prevalence": 0.05165165165165165,
+          "auroc": 0.5,
+          "average_precision": 0.05165165165165165,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              1579,
+              0
+            ],
+            [
+              86,
+              0
+            ]
+          ]
+        }
+      },
+      "valid_ranking_labels": 19,
+      "total_labels": 19,
+      "macro_auroc": 0.5,
+      "macro_average_precision": 0.04504504504504505,
+      "micro_auroc": 0.6587675743479852,
+      "micro_average_precision": 0.07768915422283156,
+      "macro_f1": 0.0,
+      "micro_f1": 0.0,
+      "hamming_loss": 0.04504504504504504,
+      "exact_match_accuracy": 0.5303303303303303
+    },
+    "validation": {
+      "images": 413,
+      "threshold": 0.5,
+      "per_label": {
+        "COPD signs": {
+          "positive_images": 48,
+          "negative_images": 365,
+          "prevalence": 0.1162227602905569,
+          "auroc": 0.5,
+          "average_precision": 0.1162227602905569,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              365,
+              0
+            ],
+            [
+              48,
+              0
+            ]
+          ]
+        },
+        "air trapping": {
+          "positive_images": 13,
+          "negative_images": 400,
+          "prevalence": 0.031476997578692496,
+          "auroc": 0.5,
+          "average_precision": 0.031476997578692496,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              400,
+              0
+            ],
+            [
+              13,
+              0
+            ]
+          ]
+        },
+        "aortic atheromatosis": {
+          "positive_images": 13,
+          "negative_images": 400,
+          "prevalence": 0.031476997578692496,
+          "auroc": 0.5,
+          "average_precision": 0.031476997578692496,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              400,
+              0
+            ],
+            [
+              13,
+              0
+            ]
+          ]
+        },
+        "aortic elongation": {
+          "positive_images": 26,
+          "negative_images": 387,
+          "prevalence": 0.06295399515738499,
+          "auroc": 0.5,
+          "average_precision": 0.06295399515738499,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              387,
+              0
+            ],
+            [
+              26,
+              0
+            ]
+          ]
+        },
+        "apical pleural thickening": {
+          "positive_images": 17,
+          "negative_images": 396,
+          "prevalence": 0.04116222760290557,
+          "auroc": 0.5,
+          "average_precision": 0.04116222760290557,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              396,
+              0
+            ],
+            [
+              17,
+              0
+            ]
+          ]
+        },
+        "callus rib fracture": {
+          "positive_images": 5,
+          "negative_images": 408,
+          "prevalence": 0.012106537530266344,
+          "auroc": 0.5,
+          "average_precision": 0.012106537530266344,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              408,
+              0
+            ],
+            [
+              5,
+              0
+            ]
+          ]
+        },
+        "cardiomegaly": {
+          "positive_images": 32,
+          "negative_images": 381,
+          "prevalence": 0.0774818401937046,
+          "auroc": 0.5,
+          "average_precision": 0.0774818401937046,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              381,
+              0
+            ],
+            [
+              32,
+              0
+            ]
+          ]
+        },
+        "chronic changes": {
+          "positive_images": 38,
+          "negative_images": 375,
+          "prevalence": 0.09200968523002422,
+          "auroc": 0.5,
+          "average_precision": 0.09200968523002422,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              375,
+              0
+            ],
+            [
+              38,
+              0
+            ]
+          ]
+        },
+        "costophrenic angle blunting": {
+          "positive_images": 16,
+          "negative_images": 397,
+          "prevalence": 0.0387409200968523,
+          "auroc": 0.5,
+          "average_precision": 0.0387409200968523,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              397,
+              0
+            ],
+            [
+              16,
+              0
+            ]
+          ]
+        },
+        "infiltrates": {
+          "positive_images": 18,
+          "negative_images": 395,
+          "prevalence": 0.043583535108958835,
+          "auroc": 0.5,
+          "average_precision": 0.043583535108958835,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              395,
+              0
+            ],
+            [
+              18,
+              0
+            ]
+          ]
+        },
+        "interstitial pattern": {
+          "positive_images": 22,
+          "negative_images": 391,
+          "prevalence": 0.053268765133171914,
+          "auroc": 0.5,
+          "average_precision": 0.053268765133171914,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              391,
+              0
+            ],
+            [
+              22,
+              0
+            ]
+          ]
+        },
+        "kyphosis": {
+          "positive_images": 9,
+          "negative_images": 404,
+          "prevalence": 0.021791767554479417,
+          "auroc": 0.5,
+          "average_precision": 0.021791767554479417,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              404,
+              0
+            ],
+            [
+              9,
+              0
+            ]
+          ]
+        },
+        "laminar atelectasis": {
+          "positive_images": 18,
+          "negative_images": 395,
+          "prevalence": 0.043583535108958835,
+          "auroc": 0.5,
+          "average_precision": 0.043583535108958835,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              395,
+              0
+            ],
+            [
+              18,
+              0
+            ]
+          ]
+        },
+        "pleural effusion": {
+          "positive_images": 15,
+          "negative_images": 398,
+          "prevalence": 0.03631961259079903,
+          "auroc": 0.5,
+          "average_precision": 0.03631961259079903,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              398,
+              0
+            ],
+            [
+              15,
+              0
+            ]
+          ]
+        },
+        "pneumonia": {
+          "positive_images": 21,
+          "negative_images": 392,
+          "prevalence": 0.05084745762711865,
+          "auroc": 0.5,
+          "average_precision": 0.05084745762711865,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              392,
+              0
+            ],
+            [
+              21,
+              0
+            ]
+          ]
+        },
+        "pseudonodule": {
+          "positive_images": 13,
+          "negative_images": 400,
+          "prevalence": 0.031476997578692496,
+          "auroc": 0.5,
+          "average_precision": 0.031476997578692496,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              400,
+              0
+            ],
+            [
+              13,
+              0
+            ]
+          ]
+        },
+        "scoliosis": {
+          "positive_images": 27,
+          "negative_images": 386,
+          "prevalence": 0.06537530266343826,
+          "auroc": 0.5,
+          "average_precision": 0.06537530266343826,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              386,
+              0
+            ],
+            [
+              27,
+              0
+            ]
+          ]
+        },
+        "vascular hilar enlargement": {
+          "positive_images": 11,
+          "negative_images": 402,
+          "prevalence": 0.026634382566585957,
+          "auroc": 0.5,
+          "average_precision": 0.026634382566585957,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              402,
+              0
+            ],
+            [
+              11,
+              0
+            ]
+          ]
+        },
+        "vertebral degenerative changes": {
+          "positive_images": 22,
+          "negative_images": 391,
+          "prevalence": 0.053268765133171914,
+          "auroc": 0.5,
+          "average_precision": 0.053268765133171914,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              391,
+              0
+            ],
+            [
+              22,
+              0
+            ]
+          ]
+        }
+      },
+      "valid_ranking_labels": 19,
+      "total_labels": 19,
+      "macro_auroc": 0.5,
+      "macro_average_precision": 0.04893589906970817,
+      "micro_auroc": 0.6138498537228102,
+      "micro_average_precision": 0.07703377189329576,
+      "macro_f1": 0.0,
+      "micro_f1": 0.0,
+      "hamming_loss": 0.04893589906970817,
+      "exact_match_accuracy": 0.48184019370460046
+    },
+    "test": {
+      "images": 363,
+      "threshold": 0.5,
+      "per_label": {
+        "COPD signs": {
+          "positive_images": 38,
+          "negative_images": 325,
+          "prevalence": 0.1046831955922865,
+          "auroc": 0.5,
+          "average_precision": 0.1046831955922865,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              325,
+              0
+            ],
+            [
+              38,
+              0
+            ]
+          ]
+        },
+        "air trapping": {
+          "positive_images": 24,
+          "negative_images": 339,
+          "prevalence": 0.06611570247933884,
+          "auroc": 0.5,
+          "average_precision": 0.06611570247933884,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              339,
+              0
+            ],
+            [
+              24,
+              0
+            ]
+          ]
+        },
+        "aortic atheromatosis": {
+          "positive_images": 15,
+          "negative_images": 348,
+          "prevalence": 0.04132231404958678,
+          "auroc": 0.5,
+          "average_precision": 0.04132231404958678,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              348,
+              0
+            ],
+            [
+              15,
+              0
+            ]
+          ]
+        },
+        "aortic elongation": {
+          "positive_images": 24,
+          "negative_images": 339,
+          "prevalence": 0.06611570247933884,
+          "auroc": 0.5,
+          "average_precision": 0.06611570247933884,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              339,
+              0
+            ],
+            [
+              24,
+              0
+            ]
+          ]
+        },
+        "apical pleural thickening": {
+          "positive_images": 11,
+          "negative_images": 352,
+          "prevalence": 0.030303030303030304,
+          "auroc": 0.5,
+          "average_precision": 0.030303030303030304,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              352,
+              0
+            ],
+            [
+              11,
+              0
+            ]
+          ]
+        },
+        "callus rib fracture": {
+          "positive_images": 7,
+          "negative_images": 356,
+          "prevalence": 0.01928374655647383,
+          "auroc": 0.5,
+          "average_precision": 0.01928374655647383,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              356,
+              0
+            ],
+            [
+              7,
+              0
+            ]
+          ]
+        },
+        "cardiomegaly": {
+          "positive_images": 25,
+          "negative_images": 338,
+          "prevalence": 0.06887052341597796,
+          "auroc": 0.5,
+          "average_precision": 0.06887052341597796,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              338,
+              0
+            ],
+            [
+              25,
+              0
+            ]
+          ]
+        },
+        "chronic changes": {
+          "positive_images": 27,
+          "negative_images": 336,
+          "prevalence": 0.0743801652892562,
+          "auroc": 0.5,
+          "average_precision": 0.0743801652892562,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              336,
+              0
+            ],
+            [
+              27,
+              0
+            ]
+          ]
+        },
+        "costophrenic angle blunting": {
+          "positive_images": 18,
+          "negative_images": 345,
+          "prevalence": 0.049586776859504134,
+          "auroc": 0.5,
+          "average_precision": 0.049586776859504134,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              345,
+              0
+            ],
+            [
+              18,
+              0
+            ]
+          ]
+        },
+        "infiltrates": {
+          "positive_images": 10,
+          "negative_images": 353,
+          "prevalence": 0.027548209366391185,
+          "auroc": 0.5,
+          "average_precision": 0.027548209366391185,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              353,
+              0
+            ],
+            [
+              10,
+              0
+            ]
+          ]
+        },
+        "interstitial pattern": {
+          "positive_images": 13,
+          "negative_images": 350,
+          "prevalence": 0.03581267217630854,
+          "auroc": 0.5,
+          "average_precision": 0.03581267217630854,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              350,
+              0
+            ],
+            [
+              13,
+              0
+            ]
+          ]
+        },
+        "kyphosis": {
+          "positive_images": 9,
+          "negative_images": 354,
+          "prevalence": 0.024793388429752067,
+          "auroc": 0.5,
+          "average_precision": 0.024793388429752067,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              354,
+              0
+            ],
+            [
+              9,
+              0
+            ]
+          ]
+        },
+        "laminar atelectasis": {
+          "positive_images": 12,
+          "negative_images": 351,
+          "prevalence": 0.03305785123966942,
+          "auroc": 0.5,
+          "average_precision": 0.03305785123966942,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              351,
+              0
+            ],
+            [
+              12,
+              0
+            ]
+          ]
+        },
+        "pleural effusion": {
+          "positive_images": 3,
+          "negative_images": 360,
+          "prevalence": 0.008264462809917356,
+          "auroc": 0.5,
+          "average_precision": 0.008264462809917356,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              360,
+              0
+            ],
+            [
+              3,
+              0
+            ]
+          ]
+        },
+        "pneumonia": {
+          "positive_images": 19,
+          "negative_images": 344,
+          "prevalence": 0.05234159779614325,
+          "auroc": 0.5,
+          "average_precision": 0.05234159779614325,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              344,
+              0
+            ],
+            [
+              19,
+              0
+            ]
+          ]
+        },
+        "pseudonodule": {
+          "positive_images": 6,
+          "negative_images": 357,
+          "prevalence": 0.01652892561983471,
+          "auroc": 0.5,
+          "average_precision": 0.01652892561983471,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              357,
+              0
+            ],
+            [
+              6,
+              0
+            ]
+          ]
+        },
+        "scoliosis": {
+          "positive_images": 27,
+          "negative_images": 336,
+          "prevalence": 0.0743801652892562,
+          "auroc": 0.5,
+          "average_precision": 0.0743801652892562,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              336,
+              0
+            ],
+            [
+              27,
+              0
+            ]
+          ]
+        },
+        "vascular hilar enlargement": {
+          "positive_images": 20,
+          "negative_images": 343,
+          "prevalence": 0.05509641873278237,
+          "auroc": 0.5,
+          "average_precision": 0.05509641873278237,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              343,
+              0
+            ],
+            [
+              20,
+              0
+            ]
+          ]
+        },
+        "vertebral degenerative changes": {
+          "positive_images": 15,
+          "negative_images": 348,
+          "prevalence": 0.04132231404958678,
+          "auroc": 0.5,
+          "average_precision": 0.04132231404958678,
+          "precision": 0.0,
+          "recall": 0.0,
+          "specificity": 1.0,
+          "balanced_accuracy": 0.5,
+          "f1": 0.0,
+          "confusion_matrix_true_rows_predicted_columns": [
+            [
+              348,
+              0
+            ],
+            [
+              15,
+              0
+            ]
+          ]
+        }
+      },
+      "valid_ranking_labels": 19,
+      "total_labels": 19,
+      "macro_auroc": 0.5,
+      "macro_average_precision": 0.046831955922865015,
+      "micro_auroc": 0.6352230995355567,
+      "micro_average_precision": 0.07308015789667208,
+      "macro_f1": 0.0,
+      "micro_f1": 0.0,
+      "hamming_loss": 0.046831955922865015,
+      "exact_match_accuracy": 0.5206611570247934
+    }
+  },
+  "training_seconds": 787.7438211999834,
+  "fit_wall_seconds": 857.4397112999868,
+  "backbone_updated": true,
+  "trainable_parameters": 11186259,
+  "environment": {
+    "python": "3.13.5",
+    "torch": "2.7.1+cpu",
+    "torchvision": "0.22.1+cpu",
+    "sklearn": "1.7.0",
+    "numpy": "2.3.1",
+    "device": "cpu",
+    "threads": 4
+  },
+  "limitations": [
+    "Single seed, small convenience sample and previously inspected exploratory test split",
+    "Absent annotation treated as zero, not confirmed clinical absence",
+    "Raw label terms without hierarchy propagation; findings subset, not all PadChest labels",
+    "Patient-based uncertainty intervals not yet estimated",
+    "Ranking metrics omit labels with only one observed class; counts reported",
+    "No unlearning performed in this experiment"
+  ]
+}

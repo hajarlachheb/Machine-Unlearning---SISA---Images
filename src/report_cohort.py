@@ -16,7 +16,7 @@ def main():
     stem.parent.mkdir(parents=True, exist_ok=True)
     stem.with_suffix(".json").write_text(json.dumps(result, indent=2), encoding="utf-8")
     lines = ["# Expanded PadChest cohort: archives 6 and 54", "",
-             "Verified and prepared data for the next multilabel ResNet-18 run. **No model has been retrained on this expanded cache yet.**", "",
+             "Verified data preparation for the expanded multilabel ResNet-18 experiment. Model training results are reported separately.", "",
              "| Check | Result |", "|---|---|",
              f"| Available PNG filenames | {sum(s['png_files'] for s in result['sources'])} across both sources; no missing/unexpected names |",
              f"| Eligible images decoded and checked | {result['verified_eligible_pngs']} |",

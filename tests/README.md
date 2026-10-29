@@ -10,4 +10,6 @@ The multilabel checks preserve simultaneous findings, ensure label selection use
 
 Expanded-cohort checks cover patients whose images span sources, duplicate and missing image rejection, mixed ZIP/folder decoding, preservation of prior cached pixels and patient splits, and fixed label order when more common labels become available. These extend the selected regression suite to 25 tests.
 
+Three additional cohort-comparison checks align predictions by image identity, reject missing or changed original test records, and prevent original patients from appearing in the additional-patient group. Run these with `python -m unittest discover -s tests -p test_compare_cohorts.py -v`.
+
 On restricted Windows hosts where the default temporary directory is inaccessible, point Python's `tempfile.tempdir` to a writable local directory before invoking the unittest runner. Do not change scientific behavior to work around host permissions.

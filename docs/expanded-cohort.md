@@ -22,7 +22,7 @@ Export aggregate counts without patient identifiers after preparation succeeds:
 python -m src.report_cohort outputs/cohort-6-54-20261027/summary.json --previous-results results/multilabel-resnet18-20261022.json --output-stem results/cohort-6-54-20261027
 ```
 
-## Next training run
+## Training on the expanded cohort
 
 The expanded configuration explicitly fixes the **same ordered 19-label vocabulary** from the initial multilabel experiment. New common labels are not added automatically. Training-image positive weights will be recalculated from the expanded training split. This isolates dataset expansion while keeping model, targets, preprocessing, epochs and split rule unchanged.
 
@@ -31,6 +31,14 @@ python -m src.train_multilabel --config configs/multilabel_resnet18_expanded.jso
 python -m src.report_multilabel outputs/multilabel-resnet18-expanded-run/results.json --output-stem results/multilabel-resnet18-expanded-run
 ```
 
-These commands describe the next training experiment; preparing the data does not train a model. Use fresh output directories. Model initialization remains the original ImageNet checkpoint, rather than the binary or prior multilabel fitted checkpoint.
+These commands reproduce the expanded training experiment; preparing the data alone does not train a model. Use fresh output directories. Model initialization remains the original ImageNet checkpoint, rather than the binary or prior multilabel fitted checkpoint.
+
+The run launched on October 27 completed all six epochs and was checked on October 29. Validation macro AUROC selected epoch 3. Training took 787.7 seconds; the full fitting loop including validation/checkpoint writes took 857.4 seconds. Full-test macro AUROC/AP/micro F1 are 0.733/0.180/0.201. See the [results and curves](../results/multilabel-resnet18-expanded-20261027.md).
+
+The [comparison on identical original test images](../results/multilabel-expanded-comparison-20261029.md) checks unchanged patient/study/label identity, ordered label vocabulary, input-manifest hashes and exact equality of initial model parameters and buffers. Original-test macro AUROC changed from 0.705 to 0.814, AP from 0.193 to 0.314, and micro F1 remained about 0.215 at threshold 0.5. Both models were selected using their own validation cohorts. Three added synthetic alignment checks passed; no model training code or hyperparameters were changed for this evaluation.
+
+```powershell
+python -m src.compare_cohorts --old-run outputs/multilabel-resnet18-20261022 --new-run outputs/multilabel-resnet18-expanded-20261027 --old-data outputs/normal-resnet18-20261021/data --new-data outputs/cohort-6-54-20261027 --output-stem results/multilabel-expanded-comparison-20261029
+```
 
 For comparisons, report the original held-out cohort and the additional held-out patients separately as well as the expanded aggregate: aggregate scores across different test populations are not a controlled estimate of improvement. Previous test patients remain previously inspected, even when new patients are added. Sparse findings and the archive-based convenience sample still limit generalization. The frequency-selected label vocabulary remains an exploratory task definition; exact SISA requires the treatment described in the [multilabel protocol](multilabel-training-protocol.md).
