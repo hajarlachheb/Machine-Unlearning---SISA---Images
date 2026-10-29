@@ -2,7 +2,22 @@
 
 Research project: reduce whole-patient deletion time in SISA for medical-image classification, while preserving diagnostic utility and establishing the conditions for exact unlearning.
 
-## First train one conventional model
+## Multilabel ResNet-18: the current conventional baseline
+
+Train one ResNet-18 to predict **19 findings independently**, allowing several positives per image. Labels are selected from training-patient support only; a new head is fine-tuned with weighted `BCEWithLogitsLoss` from ImageNet initialization. The 686-image patient-disjoint cohort and 224×224 preprocessing are unchanged. This is a supported-label subset of PadChest, not its full catalogue.
+
+```powershell
+python -m src.train_multilabel --data-dir outputs/normal-resnet18-20261021/data --output outputs/my-multilabel-run
+python -m src.report_multilabel outputs/my-multilabel-run/results.json --output-stem results/my-multilabel-run
+```
+
+The audited cache and official ImageNet checkpoint are required; their preparation is documented in the earlier conventional protocol below. See the [multilabel protocol](docs/multilabel-training-protocol.md) and [first measured multilabel results](results/multilabel-resnet18-20261022.md). The six-epoch run selected epoch 4: test macro AUROC 0.705, macro AP 0.193 and micro F1 0.215 at threshold 0.5. Sparse held-out support and overfitting limit interpretation. The next SISA experiment should use this multilabel task with a matched model and preprocessing.
+
+The new `54` image folder is verified and combined with `6.zip`: **2,441 eligible images from 2,317 patients**, with zero patient overlap. See the [expanded-cohort audit](results/cohort-6-54-20261027.md) and [reproduction commands](docs/expanded-cohort.md). All 686 original images retain identical pixels and splits, and the 19-label task is fixed.
+
+**Expanded-data training is complete:** six epochs on 1,665 training images took 13.13 minutes on CPU; validation selected epoch 3. The [expanded test results](results/multilabel-resnet18-expanded-20261027.md) are macro AUROC 0.733, macro AP 0.180 and micro F1 0.201 at threshold 0.5 on 363 images. On the **same original 99 test images**, AUROC increased from 0.705 to 0.814 and AP from 0.193 to 0.314, while micro F1 stayed approximately 0.215. See the [aligned comparison](results/multilabel-expanded-comparison-20261029.md). Ranking improved in this exploratory run, but overfitting and weak fixed-threshold predictions remain.
+
+## Earlier binary pipeline check
 
 Use **ResNet-18 with ImageNet weights**, fine-tuning all layers on the downloaded PadChest subset. This conventional baseline uses one model, no shards or slices, and 224×224 inputs prepared from the original PNGs. See the [model choice, training settings and commands](docs/normal-training-protocol.md). Checkpoint selection uses validation AUROC. The current target is presence of the `normal` annotation, not a confirmed normal-versus-abnormal diagnosis.
 

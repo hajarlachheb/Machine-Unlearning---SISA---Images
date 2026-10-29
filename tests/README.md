@@ -6,4 +6,10 @@ The SISA tests compare full state and predictions after early/late, cross-shard,
 
 The conventional-training checks cover grayscale-to-ImageNet normalization, detection of a majority-only classifier, actual backbone/head updates and restoration of ResNet predictions including batch-normalization buffers. They use randomly initialized weights and synthetic images, with no downloads.
 
+The multilabel checks preserve simultaneous findings, ensure label selection uses training patients only, validate positive-class weighting, check independent sigmoid/BCE behavior, handle missing held-out classes without NaNs, reject inconsistent patient splits and verify an actual ResNet multilabel update and output restoration.
+
+Expanded-cohort checks cover patients whose images span sources, duplicate and missing image rejection, mixed ZIP/folder decoding, preservation of prior cached pixels and patient splits, and fixed label order when more common labels become available. These extend the selected regression suite to 25 tests.
+
+Three additional cohort-comparison checks align predictions by image identity, reject missing or changed original test records, and prevent original patients from appearing in the additional-patient group. Run these with `python -m unittest discover -s tests -p test_compare_cohorts.py -v`.
+
 On restricted Windows hosts where the default temporary directory is inaccessible, point Python's `tempfile.tempdir` to a writable local directory before invoking the unittest runner. Do not change scientific behavior to work around host permissions.

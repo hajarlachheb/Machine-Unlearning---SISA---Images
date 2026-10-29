@@ -1,0 +1,21 @@
+{
+  "seed": 20261021,
+  "architecture": "resnet18",
+  "initialization": "ImageNet1K_V1",
+  "weights_sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+  "epochs": 6,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "weight_decay": 0.0001,
+  "image_size": 224,
+  "threads": 4,
+  "allowed_projections": ["PA", "AP"],
+  "excluded_labels": ["exclude", "suboptimal study"],
+  "split_percentages": [70, 15, 15],
+  "min_positive_train_patients": 10,
+  "min_negative_train_patients": 10,
+  "excluded_targets": ["normal", "unchanged"],
+  "positive_weight": "training_negative_images_divided_by_positive_images",
+  "selection": "validation_macro_auroc",
+  "threshold": 0.5
+}

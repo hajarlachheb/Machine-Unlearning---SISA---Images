@@ -1,0 +1,294 @@
+{
+  "complete_patients_before_filters": 2531,
+  "excluded_images": {
+    "projection": 1480,
+    "quality_label": 39
+  },
+  "sources": [
+    {
+      "image_dir": "6",
+      "kind": "zip",
+      "png_files": 1645,
+      "missing": 0,
+      "unexpected": 0
+    },
+    {
+      "image_dir": "54",
+      "kind": "folder",
+      "png_files": 4297,
+      "missing": 0,
+      "unexpected": 0
+    }
+  ],
+  "eligible_images": 2441,
+  "eligible_patients": 2317,
+  "previous_images_preserved_and_pixels_identical": 686,
+  "verified_eligible_pngs": 2441,
+  "splits": {
+    "train": {
+      "patients": 1586,
+      "images": 1665,
+      "patients_with_multiple_eligible_images": 72,
+      "annotation_method_images": {
+        "Physician": 1665
+      },
+      "labels": {
+        "COPD signs": {
+          "positive_images": 180,
+          "positive_patients": 174
+        },
+        "air trapping": {
+          "positive_images": 84,
+          "positive_patients": 82
+        },
+        "aortic atheromatosis": {
+          "positive_images": 58,
+          "positive_patients": 56
+        },
+        "aortic elongation": {
+          "positive_images": 134,
+          "positive_patients": 131
+        },
+        "apical pleural thickening": {
+          "positive_images": 61,
+          "positive_patients": 61
+        },
+        "callus rib fracture": {
+          "positive_images": 31,
+          "positive_patients": 31
+        },
+        "cardiomegaly": {
+          "positive_images": 124,
+          "positive_patients": 115
+        },
+        "chronic changes": {
+          "positive_images": 139,
+          "positive_patients": 138
+        },
+        "costophrenic angle blunting": {
+          "positive_images": 53,
+          "positive_patients": 52
+        },
+        "infiltrates": {
+          "positive_images": 40,
+          "positive_patients": 40
+        },
+        "interstitial pattern": {
+          "positive_images": 50,
+          "positive_patients": 47
+        },
+        "kyphosis": {
+          "positive_images": 47,
+          "positive_patients": 45
+        },
+        "laminar atelectasis": {
+          "positive_images": 32,
+          "positive_patients": 31
+        },
+        "pleural effusion": {
+          "positive_images": 35,
+          "positive_patients": 34
+        },
+        "pneumonia": {
+          "positive_images": 48,
+          "positive_patients": 48
+        },
+        "pseudonodule": {
+          "positive_images": 38,
+          "positive_patients": 38
+        },
+        "scoliosis": {
+          "positive_images": 119,
+          "positive_patients": 113
+        },
+        "vascular hilar enlargement": {
+          "positive_images": 66,
+          "positive_patients": 64
+        },
+        "vertebral degenerative changes": {
+          "positive_images": 86,
+          "positive_patients": 86
+        }
+      }
+    },
+    "validation": {
+      "patients": 386,
+      "images": 413,
+      "patients_with_multiple_eligible_images": 23,
+      "annotation_method_images": {
+        "Physician": 413
+      },
+      "labels": {
+        "COPD signs": {
+          "positive_images": 48,
+          "positive_patients": 46
+        },
+        "air trapping": {
+          "positive_images": 13,
+          "positive_patients": 13
+        },
+        "aortic atheromatosis": {
+          "positive_images": 13,
+          "positive_patients": 13
+        },
+        "aortic elongation": {
+          "positive_images": 26,
+          "positive_patients": 25
+        },
+        "apical pleural thickening": {
+          "positive_images": 17,
+          "positive_patients": 17
+        },
+        "callus rib fracture": {
+          "positive_images": 5,
+          "positive_patients": 4
+        },
+        "cardiomegaly": {
+          "positive_images": 32,
+          "positive_patients": 29
+        },
+        "chronic changes": {
+          "positive_images": 38,
+          "positive_patients": 37
+        },
+        "costophrenic angle blunting": {
+          "positive_images": 16,
+          "positive_patients": 15
+        },
+        "infiltrates": {
+          "positive_images": 18,
+          "positive_patients": 18
+        },
+        "interstitial pattern": {
+          "positive_images": 22,
+          "positive_patients": 20
+        },
+        "kyphosis": {
+          "positive_images": 9,
+          "positive_patients": 7
+        },
+        "laminar atelectasis": {
+          "positive_images": 18,
+          "positive_patients": 17
+        },
+        "pleural effusion": {
+          "positive_images": 15,
+          "positive_patients": 14
+        },
+        "pneumonia": {
+          "positive_images": 21,
+          "positive_patients": 18
+        },
+        "pseudonodule": {
+          "positive_images": 13,
+          "positive_patients": 13
+        },
+        "scoliosis": {
+          "positive_images": 27,
+          "positive_patients": 25
+        },
+        "vascular hilar enlargement": {
+          "positive_images": 11,
+          "positive_patients": 11
+        },
+        "vertebral degenerative changes": {
+          "positive_images": 22,
+          "positive_patients": 21
+        }
+      }
+    },
+    "test": {
+      "patients": 345,
+      "images": 363,
+      "patients_with_multiple_eligible_images": 17,
+      "annotation_method_images": {
+        "Physician": 363
+      },
+      "labels": {
+        "COPD signs": {
+          "positive_images": 38,
+          "positive_patients": 36
+        },
+        "air trapping": {
+          "positive_images": 24,
+          "positive_patients": 22
+        },
+        "aortic atheromatosis": {
+          "positive_images": 15,
+          "positive_patients": 15
+        },
+        "aortic elongation": {
+          "positive_images": 24,
+          "positive_patients": 23
+        },
+        "apical pleural thickening": {
+          "positive_images": 11,
+          "positive_patients": 11
+        },
+        "callus rib fracture": {
+          "positive_images": 7,
+          "positive_patients": 7
+        },
+        "cardiomegaly": {
+          "positive_images": 25,
+          "positive_patients": 24
+        },
+        "chronic changes": {
+          "positive_images": 27,
+          "positive_patients": 26
+        },
+        "costophrenic angle blunting": {
+          "positive_images": 18,
+          "positive_patients": 16
+        },
+        "infiltrates": {
+          "positive_images": 10,
+          "positive_patients": 10
+        },
+        "interstitial pattern": {
+          "positive_images": 13,
+          "positive_patients": 13
+        },
+        "kyphosis": {
+          "positive_images": 9,
+          "positive_patients": 9
+        },
+        "laminar atelectasis": {
+          "positive_images": 12,
+          "positive_patients": 12
+        },
+        "pleural effusion": {
+          "positive_images": 3,
+          "positive_patients": 3
+        },
+        "pneumonia": {
+          "positive_images": 19,
+          "positive_patients": 18
+        },
+        "pseudonodule": {
+          "positive_images": 6,
+          "positive_patients": 6
+        },
+        "scoliosis": {
+          "positive_images": 27,
+          "positive_patients": 27
+        },
+        "vascular hilar enlargement": {
+          "positive_images": 20,
+          "positive_patients": 19
+        },
+        "vertebral degenerative changes": {
+          "positive_images": 15,
+          "positive_patients": 15
+        }
+      }
+    }
+  },
+  "metadata_sha256": "ec49e52aa45609365f6b2f4d269d2e6242e56ca76bab932dce61ddb45fb3bade",
+  "preparation_seconds": 635.8518151000026,
+  "patient_overlap": {
+    "train/validation": 0,
+    "train/test": 0,
+    "validation/test": 0
+  }
+}

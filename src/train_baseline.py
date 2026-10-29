@@ -46,13 +46,13 @@ class Images(Dataset):
         return torch.from_numpy(self.images[i].copy()), self.rows[i]["target"]
 
 
-def build_model(weights, expected_hash):
+def build_model(weights, expected_hash, num_classes=2):
     digest = hashlib.sha256(weights.read_bytes()).hexdigest()
     if digest != expected_hash:
         raise ValueError("Pretrained checkpoint SHA256 mismatch")
     model = resnet18(weights=None)
     model.load_state_dict(torch.load(weights, map_location="cpu", weights_only=True))
-    model.fc = nn.Linear(model.fc.in_features, 2)
+    model.fc = nn.Linear(model.fc.in_features, num_classes)
     return model
 
 
