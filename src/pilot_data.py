@@ -30,6 +30,13 @@ def assignment(patient, config):
             "slice": keyed_int(seed, "slice", patient) % config["slices"] if split == "train" else -1}
 
 
+def fresh_assignment(patient, rule):
+    """Split for patients added under a pre-registered fresh-test rule (no labels or results used)."""
+    draw = keyed_int(rule["seed"], rule["namespace"], patient) % 100
+    return ("fresh_test" if draw < rule["fresh_test_draw_below"] else
+            "train" if draw < rule["train_draw_below"] else "validation")
+
+
 def normalized_labels(raw):
     if raw.strip().lower() in {"", "nan", "none", "null"}:
         return None

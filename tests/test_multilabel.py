@@ -116,6 +116,31 @@ class MultilabelTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "patient split"):
                 load_cache(path, config)
 
+    def test_cache_checks_fresh_rule_for_added_patients_and_stable_rule_for_others(self):
+        from src.pilot_data import assignment, fresh_assignment
+        rule = {"seed": 7, "namespace": "fresh-split", "fresh_test_draw_below": 32, "train_draw_below": 88,
+                "applies_to": ["new"]}
+        config = {"seed": 1, "image_size": 4, "allowed_projections": ["PA"], "excluded_labels": [],
+                  "split_percentages": [70, 15, 15], "shards": 1, "slices": 1}
+        old = next(f"o{i}" for i in range(100) if assignment(f"o{i}", config)["split"] == "train"
+                   and fresh_assignment(f"o{i}", rule) != "train")  # Rules disagree, so a wrong rule is caught.
+        new = next(f"n{i}" for i in range(100) if fresh_assignment(f"n{i}", rule) == "fresh_test")
+        good = [{"image": "1", "patient": old, "split": "train", "origin": "old", "labels": ["x"]},
+                {"image": "2", "patient": new, "split": "fresh_test", "origin": "new", "labels": ["x"]}]
+        for rows, error in [(good, None),
+                            ([dict(good[0]), dict(good[1], split="train")], "patient split"),
+                            ([dict(good[0], origin="new"), good[1]], "patient split")]:
+            with tempfile.TemporaryDirectory() as folder:
+                path = Path(folder)
+                (path / "config.json").write_text(json.dumps(dict(config, fresh_split=rule)))
+                (path / "manifest.json").write_text(json.dumps(rows))
+                np.save(path / "images.npy", np.zeros((len(rows), 1, 4, 4), dtype=np.float32))
+                if error is None:
+                    self.assertEqual([r["split"] for r in load_cache(path, config)[0]], ["train", "fresh_test"])
+                else:
+                    with self.assertRaisesRegex(ValueError, error):
+                        load_cache(path, config)
+
 
 if __name__ == "__main__":
     unittest.main()

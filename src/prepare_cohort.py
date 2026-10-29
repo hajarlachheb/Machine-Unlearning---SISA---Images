@@ -116,8 +116,9 @@ def prepare(metadata, specifications, output, config, previous_cache=None):
         print(f"Inventory matched: {len(available)} PNGs; preparing {len(selected)} eligible images", flush=True)
         arrays = np.lib.format.open_memmap(output / "images.npy", mode="w+", dtype=np.float32,
                                            shape=(len(selected), 1, config["image_size"], config["image_size"]))
-        previous_checked = 0
-        for i, (row, labels) in enumerate(selected):
+        previous_checked = degenerate = 0
+        for n, (row, labels) in enumerate(selected):
+            i = n - degenerate
             source = sources[row["ImageDir"]]
             payload = source.read(row["ImageID"])
             with Image.open(io.BytesIO(payload)) as image:
@@ -127,6 +128,12 @@ def prepare(metadata, specifications, output, config, previous_cache=None):
                 pixels = np.asarray(image)
             if pixels.shape != (int(row["Rows_DICOM"]), int(row["Columns_DICOM"])):
                 raise ValueError("Decoded shape differs from metadata")
+            lo, hi = np.percentile(pixels, [1, 99])
+            if hi <= lo:  # Explicit eligibility rule: no usable intensity window (e.g. blank image).
+                if row["ImageID"] in old_lookup:
+                    raise ValueError("A previously eligible image is now degenerate")
+                degenerate += 1
+                continue
             arrays[i] = preprocess_pixels(pixels, row["PhotometricInterpretation_DICOM"], config["image_size"])
             record = {"patient": row["PatientID"], "image": row["ImageID"], "member": source.member(row["ImageID"]),
                       "source": row["ImageDir"], "source_png_sha256": hashlib.sha256(payload).hexdigest(),
@@ -141,10 +148,18 @@ def prepare(metadata, specifications, output, config, previous_cache=None):
                     raise ValueError("Preprocessing differs from the previous cache")
                 previous_checked += 1
             manifest.append(record)
-            if (i + 1) % 100 == 0:
-                print(f"Verified and prepared {i+1}/{len(selected)} images", flush=True)
+            if (n + 1) % 100 == 0:
+                print(f"Verified and prepared {n+1}/{len(selected)} images", flush=True)
         arrays.flush()
+        if degenerate:
+            trimmed = np.lib.format.open_memmap(output / "images.trimmed.npy", mode="w+", dtype=np.float32,
+                                                shape=(len(manifest),) + arrays.shape[1:])
+            trimmed[:] = arrays[:len(manifest)]
+            trimmed.flush()
+            del trimmed
+            (output / "images.trimmed.npy").replace(output / "images.npy")
         del arrays
+        summary["excluded_images"]["degenerate_pixels"] = degenerate
     if previous_cache and previous_checked != len(old_lookup):
         raise ValueError("Expanded cohort lost previously eligible images")
     summary.update({"sources": source_audit, "eligible_images": len(manifest),

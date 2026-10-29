@@ -18,9 +18,31 @@ from sklearn.metrics import average_precision_score, f1_score, roc_auc_score
 import torch
 from torch.utils.data import Dataset, DataLoader
 import torchvision
+from torchvision.transforms import InterpolationMode
+from torchvision.transforms import functional as TF
 
-from src.pilot_data import assignment
+from src.pilot_data import assignment, fresh_assignment
 from src.train_baseline import build_model, checkpoint, imagenet_input
+
+
+# Mild, anatomically plausible jitter. No flips: chest laterality is diagnostic.
+TRAIN_AUGMENTATION = {"rotation_degrees": 5.0, "translate_fraction": 0.02,
+                      "brightness": 0.10, "contrast": 0.10, "horizontal_flip": False}
+
+
+def augment_batch(gray, settings, generator):
+    """Training-only random rotation, translation, brightness and contrast per image."""
+    max_shift = round(settings["translate_fraction"] * gray.shape[-1])
+    out = []
+    for image in gray:
+        u = torch.rand(5, generator=generator) * 2 - 1  # Uniform in [-1, 1].
+        image = TF.affine(image, angle=float(u[0]) * settings["rotation_degrees"],
+                          translate=[round(float(u[1]) * max_shift), round(float(u[2]) * max_shift)],
+                          scale=1.0, shear=[0.0], interpolation=InterpolationMode.BILINEAR, fill=0.0)
+        image = TF.adjust_brightness(image, 1 + float(u[3]) * settings["brightness"])
+        image = TF.adjust_contrast(image, 1 + float(u[4]) * settings["contrast"])
+        out.append(image.clamp(0, 1))
+    return torch.stack(out)
 
 
 def save_json(path, value):
@@ -78,9 +100,9 @@ def positive_weights(train_targets):
     return torch.as_tensor((len(train_targets) - positives) / positives, dtype=torch.float32)
 
 
-def summarize_support(rows, targets, labels):
+def summarize_support(rows, targets, labels, splits=("train", "validation", "test")):
     result = {}
-    for split in ("train", "validation", "test"):
+    for split in splits:
         ids = [i for i, r in enumerate(rows) if r["split"] == split]
         part = targets[ids]
         result[split] = {"images": len(ids), "patients": len({rows[i]["patient"] for i in ids}),
@@ -148,11 +170,13 @@ class MultilabelImages(Dataset):
         return torch.from_numpy(self.images[i].copy()), torch.from_numpy(self.targets[i].copy())
 
 
-def train_epoch(model, loader, optimizer, criterion, epoch, device="cpu"):
+def train_epoch(model, loader, optimizer, criterion, epoch, device="cpu", augment=None):
     model.train()
     loss_sum, count = 0.0, 0
     started = last_message = time.perf_counter()
     for step, (gray, target) in enumerate(loader, 1):
+        if augment is not None:
+            gray = augment_batch(gray, *augment)
         gray, target = gray.to(device), target.to(device)
         optimizer.zero_grad(set_to_none=True)
         # Feed logits directly to BCEWithLogitsLoss (no sigmoid before the loss).
@@ -189,9 +213,16 @@ def load_cache(data_dir, config):
     rows = json.loads((data_dir / "manifest.json").read_text())
     if len({r["image"] for r in rows}) != len(rows):
         raise ValueError("Duplicate cached images")
+    fresh = source_config.get("fresh_split")
+    if fresh and any(r["split"] == "test" for r in rows):
+        raise ValueError("A fresh-test cohort must not contain the old exploratory test split")
     splits = {}
     for r in rows:
-        if r["split"] != assignment(r["patient"], source_config)["split"]:
+        if fresh and r.get("origin") in fresh["applies_to"]:
+            expected = fresh_assignment(r["patient"], fresh)
+        else:
+            expected = assignment(r["patient"], source_config)["split"]
+        if r["split"] != expected:
             raise ValueError("Cached patient split does not match stable assignment")
         if not r["labels"] or not isinstance(r["labels"], list):
             raise ValueError("Missing label annotations")
@@ -213,8 +244,14 @@ def main():
     parser.add_argument("--weights", type=Path, default=Path("outputs/model-cache/resnet18-f37072fd.pth"))
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--device", default="cpu", help="cpu (default, reference protocol) or e.g. cuda:0")
+    parser.add_argument("--run-seed", type=int, default=None, help="Training RNG seed; cohort split seed remains in config")
+    parser.add_argument("--validation-only", action="store_true", help="Do not inspect or score the exploratory test split")
+    parser.add_argument("--evaluate-fresh-test", action="store_true",
+                        help="Score the pre-registered fresh_test split; final evaluation only, once")
+    parser.add_argument("--train-augmentation", action="store_true", help="Mild rotation/translation/intensity jitter on training images only")
     args = parser.parse_args()
     config = json.loads(args.config.read_text())
+    run_seed = config["seed"] if args.run_seed is None else args.run_seed
     if (config["architecture"] != "resnet18" or config["initialization"] != "ImageNet1K_V1" or
             config["positive_weight"] != "training_negative_images_divided_by_positive_images" or
             config["selection"] != "validation_macro_auroc"):
@@ -222,23 +259,35 @@ def main():
     args.output.mkdir(parents=True, exist_ok=False)
     torch.set_num_threads(config["threads"])
     torch.use_deterministic_algorithms(True)
-    random.seed(config["seed"])
-    np.random.seed(config["seed"])
-    torch.manual_seed(config["seed"])
+    random.seed(run_seed)
+    np.random.seed(run_seed)
+    torch.manual_seed(run_seed)
     rows, images, provenance = load_cache(args.data_dir, config)
+    # Held-out split: the old exploratory "test", or the pre-registered "fresh_test" if the cohort has one.
+    held_out = "fresh_test" if any(r["split"] == "fresh_test" for r in rows) else "test"
+    if args.evaluate_fresh_test and (held_out != "fresh_test" or args.validation_only):
+        raise ValueError("--evaluate-fresh-test needs a fresh-test cohort and excludes --validation-only")
+    if held_out == "fresh_test" and not (args.validation_only or args.evaluate_fresh_test):
+        raise ValueError("Fresh-test cohort: pass --validation-only, or --evaluate-fresh-test for the final run")
     labels, audit = select_labels(rows, config)
     targets = encode_targets(rows, labels)
     train_indices = [i for i, row in enumerate(rows) if row["split"] == "train"]
     weights = positive_weights(targets[train_indices])
-    config.update({"labels": labels, "pos_weight": weights.tolist()})
+    config.update({"labels": labels, "pos_weight": weights.tolist(), "run_seed": run_seed})
+    augment = None
+    if args.train_augmentation:
+        config["train_augmentation"] = TRAIN_AUGMENTATION
+        # Separate stream so shuffling and initialization match the unaugmented run.
+        augment = (TRAIN_AUGMENTATION, torch.Generator().manual_seed(run_seed + 10**9))
     save_json(args.output / "config.json", config)
     save_json(args.output / "label_selection.json", audit)
     # Vocabulary/weights have now been fixed, before examining held-out support.
-    support = summarize_support(rows, targets, labels)
+    evaluated_splits = ("train", "validation") if args.validation_only else ("train", "validation", held_out)
+    support = summarize_support(rows, targets, labels, evaluated_splits)
     save_json(args.output / "support.json", support)
     loaders = {s: DataLoader(MultilabelImages(images, targets, rows, s), batch_size=config["batch_size"],
-                            num_workers=0) for s in ("train", "validation", "test")}
-    generator = torch.Generator().manual_seed(config["seed"])
+                            num_workers=0) for s in evaluated_splits}
+    generator = torch.Generator().manual_seed(run_seed)
     train = DataLoader(loaders["train"].dataset, batch_size=config["batch_size"], shuffle=True,
                        generator=generator, num_workers=0)
     model = build_model(args.weights, config["weights_sha256"], num_classes=len(labels)).to(args.device)
@@ -251,7 +300,7 @@ def main():
     print(f"Full fine-tuning: {len(train.dataset)} images; {config['epochs']} epochs on {args.device}", flush=True)
     fit_started = time.perf_counter()
     for epoch in range(1, config["epochs"] + 1):
-        loss, seconds = train_epoch(model, train, optimizer, criterion, epoch, args.device)
+        loss, seconds = train_epoch(model, train, optimizer, criterion, epoch, args.device, augment)
         validation, _ = evaluate(model, loaders["validation"], labels, config["threshold"], args.device)
         score = validation["macro_auroc"]
         if score is None:
@@ -277,6 +326,7 @@ def main():
     result = {"experiment": "multilabel_resnet18_imagenet_full_finetune", "config": config,
               "label_selection": audit, "support": support, "cache_sha256": provenance,
               "best_epoch": best_epoch, "history": history, "metrics": final,
+              "test_evaluated": "test" in final, "fresh_test_evaluated": "fresh_test" in final,
               "training_prevalence_baseline": baseline, "training_seconds": sum(h["training_seconds"] for h in history),
               "fit_wall_seconds": fit_seconds, "backbone_updated": not torch.equal(initial_conv, model.conv1.weight),
               "trainable_parameters": sum(p.numel() for p in model.parameters() if p.requires_grad),
@@ -291,8 +341,15 @@ def main():
                               "Ranking metrics omit labels with only one observed class; counts reported",
                               "No unlearning performed in this experiment"]}
     save_json(args.output / "results.json", result)
-    print(json.dumps({"best_epoch": best_epoch, "test_macro_auroc": final["test"]["macro_auroc"],
-                     "test_mAP": final["test"]["macro_average_precision"], "training_seconds": result["training_seconds"]}), flush=True)
+    summary = {"run_seed": run_seed, "best_epoch": best_epoch,
+               "validation_macro_auroc": final["validation"]["macro_auroc"],
+               "validation_macro_ap": final["validation"]["macro_average_precision"],
+               "test_evaluated": "test" in final, "fresh_test_evaluated": "fresh_test" in final,
+               "training_seconds": result["training_seconds"]}
+    if "test" in final:
+        summary.update({"test_macro_auroc": final["test"]["macro_auroc"],
+                        "test_mAP": final["test"]["macro_average_precision"]})
+    print(json.dumps(summary), flush=True)
 
 
 if __name__ == "__main__":
